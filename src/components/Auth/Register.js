@@ -70,7 +70,17 @@ const Register = () => {
           </Form.Group>
 
           <Form.Group controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label={t('auth.rememberMe')} />
+            <Form.Check
+              type="checkbox"
+              label={
+                <>
+                  {t('auth.acceptTerms')}{' '}
+                  <a href="/terms-and-conditions" target="_blank">
+                    {t('auth.termsAndConditions')}
+                  </a>
+                </>
+              }
+            />
           </Form.Group>
 
           <Button variant="primary" type="submit" onClick={handleRegister}>

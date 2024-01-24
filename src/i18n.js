@@ -24,6 +24,10 @@ i18n
             register: 'Register',
             signInWith42: 'Login via 42Sign-in',
             signIn: 'Login',
+            passwordMismatch: 'Password empty/invalid',
+            confirmPassword: 'Confirm password',
+            termsAndConditions: 'Terms & Conditions',
+            acceptTerms: 'i accept Terms & Conditions'
             
           },
           game: {
@@ -63,6 +67,10 @@ i18n
             forgotPassword: 'Mot de passe oublié?',
             notRegistered: 'Pas encore inscrit?',
             registerHere: 'Inscrivez-vous ici',
+            passwordMismatch: 'Mot de passe vide/invalide',
+          confirmPassword: 'Confirmer le mot de passe',
+          termsAndConditions: 'Termes et conditions',
+          acceptTerms: 'J\'accepte les termes et conditions',
           },
           game: {
             title: 'Jeu de Ping Pong',
@@ -81,7 +89,8 @@ i18n
             privacyPolicy: "Politique de confidentialité",
             impressum: "Mentions légales",
             madeWith: "Fabriqué avec",
-            at42Vienna: "chez 42Vienna"
+            at42Vienna: "chez 42Vienna",
+            
           }
         },
       },
@@ -103,6 +112,10 @@ i18n
             register: 'Kayıt ol',
             signInWith42: '42Signin ile girin',
             signIn: 'Giriş yap',
+            passwordMismatch: 'Şifre boş/geçersiz',
+            confirmPassword: 'Şifreyi Onayla',
+            termsAndConditions: 'Koşullar ve Şartlar',
+            acceptTerms: 'Şartları ve Koşulları Kabul Ediyorum',
           },
           game: {
             title: 'Oyna!',
@@ -144,6 +157,10 @@ i18n
             register: 'Регистрация',
             signInWith42: 'Влезте с 42Sign-in',
             signIn: 'Вход',
+            passwordMismatch: 'Парола празна/невалидна',
+            confirmPassword: 'Потвърди парола',
+            termsAndConditions: 'Условия и правила',
+            acceptTerms: 'Приемам условията и правилата',
           },
           game: {
             title: 'Играй!',
@@ -185,6 +202,11 @@ i18n
             register: 'تسجيل',
             signInWith42: 'تسجيل الدخول بواسطة 42Sign-in',
             signIn: 'تسجيل الدخول',
+            passwordMismatch: 'كلمة المرور فارغة/غير صالحة',
+            confirmPassword: 'تأكيد كلمة المرور',
+            termsAndConditions: 'الشروط والأحكام',
+            acceptTerms: 'أوافق على الشروط والأحكام',
+
           },
           game: {
             title: 'اللعب!',
@@ -225,6 +247,10 @@ i18n
             notRegistered: 'Noch nicht registriert?',
             registerHere: 'Hier registrieren',
             register: 'Registrieren',
+            passwordMismatch: 'Passwort leer/ungültig',
+            confirmPassword: 'Passwort bestätigen',
+            termsAndConditions: 'Geschäftsbedingungen',
+            acceptTerms: 'Ich akzeptiere die Geschäftsbedingungen',
           },
           game: {
             title: 'Spiel es!',
