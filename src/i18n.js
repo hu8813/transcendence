@@ -101,6 +101,71 @@ i18n
           },
         },
       },
+      bg: {
+        translation: {
+          home: {
+            welcome: 'Добре дошли в Приложението за игра на пинг-понг!',
+          },
+          auth: {
+            email: 'Имейл',
+            enterEmail: 'Въведете вашия имейл',
+            password: 'Парола',
+            enterPassword: 'Въведете вашия парола',
+            rememberMe: 'Запомни ме',
+            login: 'Вход',
+            forgotPassword: 'Забравена парола?',
+            notRegistered: 'Все още нямате регистрация?',
+            registerHere: 'Регистрирайте се тук',
+            register: 'Регистрация',
+          },
+          game: {
+            title: 'Играй!',
+          },
+          leaderboard: {
+            title: 'Таблица с резултати',
+          },
+          chat: {
+            title: 'Чат',
+          },
+          common: {
+            home: 'Начало',
+            switchLanguage: 'Смени езика',
+          },
+        },
+      },
+      ar: {
+        translation: {
+          home: {
+            welcome: 'مرحبًا بك في تطبيق لعبة كرة الطاولة!',
+          },
+          auth: {
+            email: 'البريد الإلكتروني',
+            enterEmail: 'أدخل بريدك الإلكتروني',
+            password: 'كلمة المرور',
+            enterPassword: 'أدخل كلمة المرور الخاصة بك',
+            rememberMe: 'تذكرني',
+            login: 'تسجيل الدخول',
+            forgotPassword: 'هل نسيت كلمة المرور؟',
+            notRegistered: 'ليس لديك حساب؟',
+            registerHere: 'سجل هنا',
+            register: 'تسجيل',
+          },
+          game: {
+            title: 'اللعب!',
+          },
+          leaderboard: {
+            title: 'الترتيب',
+          },
+          chat: {
+            title: 'الدردشة',
+          },
+          common: {
+            home: 'الرئيسية',
+            switchLanguage: 'تغيير اللغة',
+          },
+        },
+      },
+    
       de: {
         translation: {
           home: {
