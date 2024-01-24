@@ -31,6 +31,7 @@ const Login = () => {
           <FiUser className="mr-2" /> {/* Use your preferred 42 icon */}
           Sign In with 42
         </Button>
+         or
         <Form>
           {/* Include your regular sign-in form fields here */}
           <Form.Group controlId="formBasicEmail">
