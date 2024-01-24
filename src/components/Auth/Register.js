@@ -83,7 +83,7 @@ const Register = () => {
               }
             />
           </Form.Group>
-
+         
           <Button variant="primary" type="submit" onClick={handleRegister}>
             {t('auth.register')}
           </Button>
