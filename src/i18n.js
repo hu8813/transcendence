@@ -22,7 +22,7 @@ i18n
             notRegistered: 'Not registered yet?',
             registerHere: 'Register here',
             register: 'Register',
-            signInWith42: 'Login with 42Sign-in',
+            signInWith42: 'Login via 42Sign-in',
             signIn: 'Login',
             
           },

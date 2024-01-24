@@ -24,30 +24,11 @@ const Navbar = () => {
   return (
     <BootstrapNavbar expand="md" className="pong-navbar">
   
-  <div className="language-container">
-  <ReactFlagsSelect
-    countries={['US', 'DE', 'FR', 'TR', 'EG', 'BG']}
-    customLabels={{ US: 'EN', FR: 'FR', DE: 'DE', TR: 'TR', EG: 'EG', BG: 'BG' }}
-    selected={i18n.language.toUpperCase()}
-    onSelect={(countryCode) => changeLanguage(countryCode.toLowerCase())}
-    placeholder="ENG"
-    defaultCountry="US"
-    selectedSize={20}
-    optionsSize={16}
-    optionStyles={{
-      backgroundColor: '#000 !important', // Set a background color for the dropdown options
-      color: '#fff !important', // Set the text color for the dropdown options
-    }}
-  />
-</div>
+  
 
 
 
-      <div>
-      <Link to="/" className="navbar-brand">
-        Ping Pong 42
-      </Link>
-      </div>
+      
       <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
       <BootstrapNavbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
@@ -73,6 +54,27 @@ const Navbar = () => {
           )}
         </Nav>
       </BootstrapNavbar.Collapse>
+      <div>
+      <Link to="/" className="navbar-brand">
+        Ping Pong 42
+      </Link>
+      </div>
+      <div className="language-container">
+  <ReactFlagsSelect
+    countries={['US', 'DE', 'FR', 'TR', 'EG', 'BG']}
+    customLabels={{ US: 'EN', FR: 'FR', DE: 'DE', TR: 'TR', EG: 'EG', BG: 'BG' }}
+    selected={i18n.language.toUpperCase()}
+    onSelect={(countryCode) => changeLanguage(countryCode.toLowerCase())}
+    placeholder="ENG"
+    defaultCountry="US"
+    selectedSize={20}
+    optionsSize={16}
+    optionStyles={{
+      backgroundColor: '#000 !important', // Set a background color for the dropdown options
+      color: '#fff !important', // Set the text color for the dropdown options
+    }}
+  />
+</div>
     </BootstrapNavbar>
   );
 };
