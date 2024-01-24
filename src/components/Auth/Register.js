@@ -39,8 +39,9 @@ const Register = () => {
 
   return (
     <Container>
-      <h2>{t('auth.register')}</h2>
+     
       <div className="register-container text-center">
+      <h2>{t('auth.register')}</h2>
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>{t('auth.email')}</Form.Label>
