@@ -24,39 +24,50 @@
     }
   }
   
-  .pong-navbar {
-    background-color: #212529;
-    font-family: 'Press Start 2P', cursive;
-  }
   
-  .navbar-brand {
-    font-size: 1.5rem;
-    color: #fff;
-    text-align: center; /* Center the title */
-    margin: 10px 0; /* Add margin to the title */
-  }
-  
-  .nav-link {
-    color: #fff !important;
-    margin: 10px 10px; /* Add top and bottom margin between items */
-    padding: 15px 10px; /* Add padding for better clickability */
-    transition: background-color 0.3s ease; /* Add smooth hover effect */
-  }
-  
-  .nav-link:hover {
-    background-color: #343a40; /* Change background color on hover */
-  }
-  
-  .navbar-toggler-icon {
-    background-color: #fff;
-  }
-  
-  .language-button {
-    margin-left: 10px;
-  }
-  
-  .language-container {
-    display: flex;
-    justify-content: center;
-  }
-  
+.pong-navbar {
+  background-color: #212529;
+  font-family: 'Press Start 2P', cursive;
+  display: flex;
+  justify-content: space-between; /* Align items at both ends of the container */
+  align-items: center; /* Center items vertically */
+  padding: 10px; /* Add padding for better appearance */
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: #fff;
+  text-align: center; /* Center the title */
+  margin: 10px 0; /* Add margin to the title */
+  flex: 1; /* Take remaining space */
+}
+
+.language-container {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center; /* Center items vertically */
+  margin-right: 10px; /* Add right margin */
+}
+
+.nav-link {
+  color: #fff !important;
+  margin: 10px 10px;
+  padding: 15px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #343a40;
+}
+
+.navbar-toggler-icon {
+  background-color: #fff;
+}
+
+.language-button {
+  margin-left: 10px;
+}
+
+.language-container select {
+  margin-left: 10px; /* Adjust the margin for the select element */
+}

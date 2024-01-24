@@ -1,45 +1,61 @@
-// Import Link component from react-router-dom
-import { Link } from 'react-router-dom';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { Form, Button, Container } from 'react-bootstrap';
+import { FiUser } from 'react-icons/fi'; // Use your preferred 42 icon
 
 const Login = () => {
-  const { t } = useTranslation();
+  const handleSignIn = (provider) => {
+    if (provider === '42') {
+      // Redirect the user to the 42 API authorization URL
+      // Use your actual client ID and redirect URI
+      const clientId = process.env.REACT_APP_CLIENT_ID;
+      const redirectUri = process.env.REACT_APP_REDIRECT_URI;
+      const authUrl = `https://api.intra.42.fr/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
 
-  // Implement login logic here
-  const handleLogin = () => {
-    // Add your login logic
+      window.location.href = authUrl;
+    } else {
+      // Implement your logic for regular sign-in
+    }
   };
 
   return (
     <Container>
-      <h2>{t('auth.login')}</h2>
-      <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>{t('auth.email')}</Form.Label>
-          <Form.Control type="email" placeholder={t('auth.enterEmail')} />
-        </Form.Group>
-
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>{t('auth.password')}</Form.Label>
-          <Form.Control type="password" placeholder={t('auth.enterPassword')} />
-        </Form.Group>
-
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label={t('auth.rememberMe')} />
-        </Form.Group>
-
-        <Button variant="primary" type="submit" onClick={handleLogin}>
-          {t('auth.login')}
+      <div className="bg-white p-8 rounded shadow-md text-center">
+        <h1 className="text-2xl font-semibold mb-4">Login Page</h1>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleSignIn('42')}
+          className="rounded focus:outline-none hover:bg-blue-600"
+        >
+          <FiUser className="mr-2" /> {/* Use your preferred 42 icon */}
+          Sign In with 42
         </Button>
-      </Form>
-      <p>{t('auth.forgotPassword')}</p>
-      <p>
-        {t('auth.notRegistered')}{' '}
-        {/* Use the imported Link component here */}
-        <Link to="/register">{t('auth.registerHere')}</Link>
-      </p>
+        <Form>
+          {/* Include your regular sign-in form fields here */}
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={() => handleSignIn('regular')}
+            className="mt-3"
+          >
+            Sign In
+          </Button>
+        </Form>
+        <p className="mt-4">
+          Don't have an account? <Link to="/register" className="text-blue-500">Go to Register</Link>
+        </p>
+      </div>
     </Container>
   );
 };
