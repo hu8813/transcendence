@@ -36,7 +36,7 @@
 
 .navbar-brand {
   font-size: 1.5rem;
-  color: #fff;
+  color: #d2d2d2;
   text-align: center; /* Center the title */
   margin: 10px 0; /* Add margin to the title */
   flex: 1; /* Take remaining space */
@@ -50,7 +50,7 @@
 }
 
 .nav-link {
-  color: #fff !important;
+  color: #d2d2d2 !important;
   margin: 10px 10px;
   padding: 15px 10px;
   transition: background-color 0.3s ease;
@@ -61,7 +61,7 @@
 }
 
 .navbar-toggler-icon {
-  background-color: #fff;
+  background-color: #d2d2d2;
 }
 
 .language-button {
