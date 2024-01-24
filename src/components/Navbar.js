@@ -9,10 +9,11 @@ import './Navbar.css';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
-  const [isLoggedIn, setLoggedIn] = useState(false); // Set initial login status
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
+    localStorage.setItem('language', language); // Save the selected language in localStorage
   };
 
   const handleLogout = () => {

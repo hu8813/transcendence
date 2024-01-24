@@ -1,13 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
+import i18n from './i18n';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+const LanguageInitializer = () => {
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem('language');
+    i18n.changeLanguage(storedLanguage || 'en');
+  }, []);
+
+  return null; // The LanguageInitializer component doesn't render anything
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <LanguageInitializer />
     <App />
   </React.StrictMode>
 );

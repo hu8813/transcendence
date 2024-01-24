@@ -199,8 +199,8 @@ i18n
         },
       },
     },
-    lng: 'en', // default language
-    fallbackLng: 'en', // fallback language
+    lng: localStorage.getItem('language') || 'en', // Get the language from localStorage
+    fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
     },

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import i18n from '../../i18n'; 
 import { Form, Button, Container } from 'react-bootstrap';
 import { FiUser } from 'react-icons/fi'; // Use your preferred 42 icon
+
+
 
 const Login = () => {
   const handleSignIn = (provider) => {
@@ -17,7 +21,12 @@ const Login = () => {
       // Implement your logic for regular sign-in
     }
   };
-
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem('language');
+    if (storedLanguage) {
+      i18n.changeLanguage(storedLanguage);
+    }
+  }, []);
   return (
     <Container>
       <div className="bg-white p-8 rounded shadow-md text-center">
