@@ -26,10 +26,10 @@ const Navbar = () => {
       <div className="language-container">
         <ReactFlagsSelect
           countries={['US', 'DE', 'FR', 'TR', 'EG', 'BG']}
-          customLabels={{ US: 'EN', FR: 'FR', DE: 'DE', TR: 'TR', EG: 'AR', BG: 'BG' }}
+          customLabels={{ US: 'EN', FR: 'FR', DE: 'DE', TR: 'TR', EG: 'EG', BG: 'BG' }}
           selected={i18n.language.toUpperCase()}
           onSelect={(countryCode) => changeLanguage(countryCode.toLowerCase())}
-          placeholder="ENG"
+          placeholder="Language"
         />
       </div>
       <div>
