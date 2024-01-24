@@ -40,7 +40,11 @@ const Navbar = () => {
     }}
   />
 </div>
-    
+<div>
+      <Link to="/" className="navbar-brand mr-auto">
+  Ping Pong 42
+</Link>
+      </div>
       <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
   
       <BootstrapNavbar.Collapse id="basic-navbar-nav">
@@ -70,11 +74,7 @@ const Navbar = () => {
         
       </BootstrapNavbar.Collapse>
       
-      <div>
-      <Link to="/" className="navbar-brand mr-auto">
-  Ping Pong 42
-</Link>
-      </div>
+      
      
     </BootstrapNavbar>
   );
