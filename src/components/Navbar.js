@@ -44,10 +44,7 @@ const Navbar = () => {
             <FiGlobe className="mr-2" />
             {t('auth.login')}
           </Link>
-          <Link to="/register" className="nav-link">
-            <FiGlobe className="mr-2" />
-            {t('auth.register')}
-          </Link>
+          
           {isLoggedIn && (
             <>
               <Link to="/game" className="nav-link">
