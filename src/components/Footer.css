@@ -1,29 +1,52 @@
 /* Footer.css */
+/* Footer.css */
 .footer-container {
-    background-color: #343a40; /* Dark background color */
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  .social-icons {
-    margin-bottom: 10px;
-  }
-  
-  .social-icon {
-    color: #fff;
-    margin: 0 10px;
-    text-decoration: none;
-  }
-  
-  .footer-text {
-    font-size: 14px;
-  }
-  
-  .heart-icon {
-    color: #e74c3c; /* Heart icon color */
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #212529;
+  color: #ffffff;
+  padding: 10px 20px;
+  margin-top: 20px; /* Add margin space at the top */
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px; /* Add margin space between links */
+}
+
+.footer-link {
+  color: #d2d2d2; /* Change link color to a readable one */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease; /* Add a smooth color transition on hover */
+
+}
+
+.footer-link:hover {
+  color: #2980b9; /* Change link color on hover */
+}
+
+.footer-text {
+  flex: 1;
+  text-align: center;
+}
+
+.heart-icon {
+  color: #e74c3c; /* Change heart icon color */
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px; /* Add margin space between social icons */
+}
+
+.social-icon {
+  color: #ffffff; /* Change social icon color */
+  font-size: 1.5em;
+  transition: color 0.3s ease; /* Add a smooth color transition on hover */
+}
+
+.social-icon:hover {
+  color: #f39c12; /* Change social icon color on hover */
+}
