@@ -19,7 +19,8 @@
 .home-container {
   text-align: center;
   background-color: #000; /* Dark background color */
-
+  margin-top: 0px;
+  
 }
 
 .home-container h1 {
