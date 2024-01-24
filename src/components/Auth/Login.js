@@ -1,11 +1,13 @@
-// Login.js
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 import { Form, Button, Container } from 'react-bootstrap';
 import { FiUser } from 'react-icons/fi';
+
 import './Login.css'; // Create a Login.css file for styling
+// Import necessary libraries and components
+
 
 const Login = () => {
   const { t } = useTranslation();
@@ -33,8 +35,7 @@ const Login = () => {
 
   return (
     <Container>
-      <div className="login-container bg-white p-8 rounded shadow-md text-center">
-        <h1 className="text-2xl font-semibold mb-4">{t('auth.login')}</h1>
+      <div className="wrapper">
         <Button
           variant="contained"
           color="primary"
@@ -47,32 +48,24 @@ const Login = () => {
         <div className="or-separator mb-4">
           <span className="or-text">{t('common.or')}</span>
         </div>
-        <Form className="text-left">
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>{t('auth.email')}</Form.Label>
-            <Form.Control type="email" placeholder={t('auth.enterEmail')} />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>{t('auth.password')}</Form.Label>
-            <Form.Control type="password" placeholder={t('auth.enterPassword')} />
-          </Form.Group>
-
-          <Button
-            variant="primary"
-            type="submit"
-            onClick={() => handleSignIn('regular')}
-            className="mt-3"
-          >
-            {t('auth.signIn')}
-          </Button>
-        </Form>
-        <p className="mt-4">
-          {t('auth.notRegistered')}{' '}
-          <Link to="/register" className="text-blue-500">
-            {t('auth.registerHere')}
-          </Link>
-        </p>
+        <div className="text-center mt-4 name">
+          {t('auth.signIn')}
+        </div>
+     
+        <form className="p-3 mt-3">
+          <div className="form-field d-flex align-items-center">
+            <span className="far fa-user"></span>
+            <input type="text" name="userName" id="userName" placeholder={t('auth.email')} />
+          </div>
+          <div className="form-field d-flex align-items-center">
+            <span className="fas fa-key"></span>
+            <input type="password" name="password" id="pwd" placeholder={t('auth.password')} />
+          </div>
+          <button className="btn mt-3">{t('auth.login')}</button>
+        </form>
+        <div className="text-center fs-6">
+          <Link to="/forgot-password">{t('auth.forgotPassword')}</Link> {t('common.or')} <Link to="/register">{t('auth.registerHere')}</Link>
+        </div>
       </div>
     </Container>
   );
