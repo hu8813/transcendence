@@ -1,3 +1,4 @@
+// Login.js
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -5,7 +6,6 @@ import i18n from '../../i18n';
 import { Form, Button, Container } from 'react-bootstrap';
 import { FiUser } from 'react-icons/fi';
 import './Login.css'; // Create a Login.css file for styling
-
 
 const Login = () => {
   const { t } = useTranslation();
@@ -39,13 +39,15 @@ const Login = () => {
           variant="contained"
           color="primary"
           onClick={() => handleSignIn('42')}
-          className="rounded focus:outline-none hover:bg-blue-600"
+          className="rounded focus:outline-none hover:bg-blue-600 mb-4"
         >
           <FiUser className="mr-2" />
           {t('auth.signInWith42')}
         </Button>
-        <span>{t('common.or')}</span>
-        <Form>
+        <div className="or-separator mb-4">
+          <span className="or-text">{t('common.or')}</span>
+        </div>
+        <Form className="text-left">
           <Form.Group controlId="formBasicEmail">
             <Form.Label>{t('auth.email')}</Form.Label>
             <Form.Control type="email" placeholder={t('auth.enterEmail')} />

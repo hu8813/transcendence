@@ -9,7 +9,7 @@ i18n
       en: {
         translation: {
           home: {
-            welcome: 'Welcome to the Ping Pong Game App!',
+            welcome: 'Welcome to the Ping Pong Game!',
           },
           auth: {
             email: 'Email',
@@ -51,7 +51,7 @@ i18n
       fr: {
         translation: {
           home: {
-            welcome: 'Bienvenue dans l\'application Ping Pong Game!',
+            welcome: 'Bienvenue dans l\'application Ping Pong!',
           },
           auth: {
             email: 'E-mail',
@@ -120,7 +120,7 @@ i18n
           },
           footer: {
             privacyPolicy: "Gizlilik Politikası",
-            impressum: "Impressum",
+            impressum: "İletişim",
             madeWith: "",
             at42Vienna: "42Vienna'da"
           }
@@ -161,7 +161,7 @@ i18n
           },
           footer: {
             privacyPolicy: "Политика за поверителност",
-            impressum: "Impressum",
+            impressum: "Импресум",
             madeWith: "Изработено с",
             at42Vienna: "в 42Vienna"
           }
@@ -202,7 +202,7 @@ i18n
           },
           footer: {
             privacyPolicy: "سياسة الخصوصية",
-            impressum: "Impressum",
+            impressum: "إشهار الموقع",
             madeWith: "صُنع بواسطة",
             at42Vienna: "في 42Vienna"
           }
