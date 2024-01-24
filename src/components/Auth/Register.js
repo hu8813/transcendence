@@ -2,6 +2,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Form, Button, Container } from 'react-bootstrap';
+import './Register.css'; // Create a Register.css file for styling
 
 const Register = () => {
   const { t } = useTranslation();
@@ -14,6 +15,7 @@ const Register = () => {
   return (
     <Container>
       <h2>{t('auth.register')}</h2>
+        <div className="register-container text-center">
       <Form>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>{t('auth.email')}</Form.Label>
@@ -33,6 +35,7 @@ const Register = () => {
           {t('auth.register')}
         </Button>
       </Form>
+      </div>
     </Container>
   );
 };

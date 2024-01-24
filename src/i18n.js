@@ -40,6 +40,12 @@ i18n
             switchLanguage: 'Switch Language',
             or: 'or',
           },
+          footer: {
+            privacyPolicy: 'Privacy Policy',
+            impressum: 'Impressum',
+            madeWith: 'Made with',
+            at42Vienna: 'at 42Vienna',
+          },
         },
       },
       fr: {
@@ -71,12 +77,18 @@ i18n
             home: 'Accueil',
             switchLanguage: 'Changer la langue',
           },
+          footer: {
+            privacyPolicy: "Politique de confidentialité",
+            impressum: "Mentions légales",
+            madeWith: "Fabriqué avec",
+            at42Vienna: "chez 42Vienna"
+          }
         },
       },
       tr: {
         translation: {
           home: {
-            welcome: 'Ping Pong Oyunu Uygulamasına Hoş Geldiniz!',
+            welcome: 'Ping Pong Oyununa Hoş Geldin!',
           },
           auth: {
             email: 'E-posta',
@@ -106,12 +118,18 @@ i18n
             or: 'veya',
             switchLanguage: 'Dil Değiştir',
           },
+          footer: {
+            privacyPolicy: "Gizlilik Politikası",
+            impressum: "Impressum",
+            madeWith: "",
+            at42Vienna: "42Vienna'da"
+          }
         },
       },
       bg: {
         translation: {
           home: {
-            welcome: 'Добре дошли в Приложението за игра на пинг-понг!',
+            welcome: 'Добре дошли в Приложението на пинг-понг!',
           },
           auth: {
             email: 'Имейл',
@@ -141,6 +159,12 @@ i18n
             or: 'или',
             switchLanguage: 'Смени езика',
           },
+          footer: {
+            privacyPolicy: "Политика за поверителност",
+            impressum: "Impressum",
+            madeWith: "Изработено с",
+            at42Vienna: "в 42Vienna"
+          }
         },
       },
       eg: {
@@ -176,6 +200,12 @@ i18n
             or: 'أو',
             switchLanguage: 'تغيير اللغة',
           },
+          footer: {
+            privacyPolicy: "سياسة الخصوصية",
+            impressum: "Impressum",
+            madeWith: "صُنع بواسطة",
+            at42Vienna: "في 42Vienna"
+          }
         },
       },
     
@@ -210,6 +240,13 @@ i18n
             switchLanguage: 'Sprache wechseln',
             or: 'oder',
           },
+          footer: {
+            privacyPolicy: "Datenschutz",
+            impressum: "Impressum",
+            madeWith: "Erstellt mit",
+            at42Vienna: "bei 42Vienna"
+          }
+          
         },
       },
     },
