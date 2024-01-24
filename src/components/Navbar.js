@@ -29,7 +29,7 @@ const Navbar = () => {
     customLabels={{ US: 'EN', FR: 'FR', DE: 'DE' }}
     selected={i18n.language.toUpperCase()}
     onSelect={(countryCode) => changeLanguage(countryCode.toLowerCase())}
-    placeholder="Select a language" 
+    placeholder="Language" 
   />
 </div>
 
