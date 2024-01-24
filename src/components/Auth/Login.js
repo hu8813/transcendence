@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 import { Form, Button, Container } from 'react-bootstrap';
 import { FiUser } from 'react-icons/fi';
+import './Login.css'; // Create a Login.css file for styling
+
 
 const Login = () => {
   const { t } = useTranslation();
@@ -31,7 +33,7 @@ const Login = () => {
 
   return (
     <Container>
-      <div className="bg-white p-8 rounded shadow-md text-center">
+      <div className="login-container bg-white p-8 rounded shadow-md text-center">
         <h1 className="text-2xl font-semibold mb-4">{t('auth.login')}</h1>
         <Button
           variant="contained"

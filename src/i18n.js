@@ -208,6 +208,7 @@ i18n
           common: {
             home: 'Startseite',
             switchLanguage: 'Sprache wechseln',
+            or: 'oder',
           },
         },
       },
