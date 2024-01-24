@@ -22,6 +22,9 @@ i18n
             notRegistered: 'Not registered yet?',
             registerHere: 'Register here',
             register: 'Register',
+            signInWith42: 'Login with 42Sign-in',
+            signIn: 'Login',
+            
           },
           game: {
             title: 'Play!',
@@ -35,6 +38,7 @@ i18n
           common: {
             home: 'Home',
             switchLanguage: 'Switch Language',
+            or: 'or',
           },
         },
       },
@@ -85,6 +89,8 @@ i18n
             notRegistered: 'Henüz kayıtlı değil misiniz?',
             registerHere: 'Buradan kaydolun',
             register: 'Kayıt ol',
+            signInWith42: '42Signin ile girin',
+            signIn: 'Giriş yap',
           },
           game: {
             title: 'Oyna!',
@@ -97,6 +103,7 @@ i18n
           },
           common: {
             home: 'Anasayfa',
+            or: 'veya',
             switchLanguage: 'Dil Değiştir',
           },
         },
@@ -117,6 +124,8 @@ i18n
             notRegistered: 'Все още нямате регистрация?',
             registerHere: 'Регистрирайте се тук',
             register: 'Регистрация',
+            signInWith42: 'Влезте с 42Sign-in',
+            signIn: 'Вход',
           },
           game: {
             title: 'Играй!',
@@ -129,6 +138,7 @@ i18n
           },
           common: {
             home: 'Начало',
+            or: 'или',
             switchLanguage: 'Смени езика',
           },
         },
@@ -149,6 +159,8 @@ i18n
             notRegistered: 'ليس لديك حساب؟',
             registerHere: 'سجل هنا',
             register: 'تسجيل',
+            signInWith42: 'تسجيل الدخول بواسطة 42Sign-in',
+            signIn: 'تسجيل الدخول',
           },
           game: {
             title: 'اللعب!',
@@ -161,6 +173,7 @@ i18n
           },
           common: {
             home: 'الرئيسية',
+            or: 'أو',
             switchLanguage: 'تغيير اللغة',
           },
         },

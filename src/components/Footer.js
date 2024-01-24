@@ -18,7 +18,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-text">
-        Made with <AiFillHeart className="heart-icon" /> by 42 Students
+        Made with <AiFillHeart className="heart-icon" /> at 42
       </div>
  
     </footer>
