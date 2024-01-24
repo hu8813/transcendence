@@ -1,6 +1,31 @@
 /* App.css */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #212529;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-/* Default styles */
+.App {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-container {
+  margin-top: auto;
+  padding: 20px;
+  background-color: #212529;
+  color: #fff;
+  text-align: center;
+}
+
+
 
 /* Responsive styles for screens smaller than 767px (typical mobile devices) */
 @media (max-width: 767px) {
@@ -14,12 +39,11 @@
 
   .App {
     font-size: 14px;
+    flex: 1; /* Make the main content area (App) grow to fill remaining space */
+
   }
 }
 
-.App {
-  text-align: center;
-}
 
 .App-logo {
   height: 40vmin;

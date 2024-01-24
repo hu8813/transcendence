@@ -18,10 +18,13 @@
   /* Home.css */
 .home-container {
   text-align: center;
+  background-color: #000; /* Dark background color */
+
 }
 
 .home-container h1 {
   margin: 0 auto;
+  color: #fff; /* White text color */
   max-width: 50%; /* Adjust the max-width as needed */
 }
 

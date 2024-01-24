@@ -1,5 +1,4 @@
 /* Footer.css */
-/* Footer.css */
 .footer-container {
   display: flex;
   justify-content: space-between;
@@ -7,46 +6,44 @@
   background-color: #212529;
   color: #ffffff;
   padding: 10px 20px;
-  margin-top: 20px; /* Add margin space at the top */
+  margin-top: auto; /* Align to the bottom */
 }
 
 .footer-links {
   display: flex;
-  gap: 20px; /* Add margin space between links */
+  gap: 20px;
 }
 
 .footer-link {
-  color: #d2d2d2; /* Change link color to a readable one */
+  color: #d2d2d2;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease; /* Add a smooth color transition on hover */
-
+  transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-  color: #2980b9; /* Change link color on hover */
+  color: #2980b9;
 }
 
 .footer-text {
-  flex: 1;
-  text-align: center;
+  text-align: right; /* Right-align the text */
 }
 
 .heart-icon {
-  color: #e74c3c; /* Change heart icon color */
+  color: #e74c3c;
 }
 
 .social-icons {
   display: flex;
-  gap: 10px; /* Add margin space between social icons */
+  gap: 10px;
 }
 
 .social-icon {
-  color: #ffffff; /* Change social icon color */
+  color: #ffffff;
   font-size: 1.5em;
-  transition: color 0.3s ease; /* Add a smooth color transition on hover */
+  transition: color 0.3s ease;
 }
 
 .social-icon:hover {
-  color: #f39c12; /* Change social icon color on hover */
+  color: #f39c12;
 }
