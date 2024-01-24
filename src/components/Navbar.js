@@ -26,13 +26,13 @@ const Navbar = () => {
   
   <div className="language-container">
   <ReactFlagsSelect
-    countries={['US', 'DE', 'FR', 'TR', 'EG', 'BG']}
-    customLabels={{ US: 'EN', FR: 'FR', DE: 'DE', TR: 'TR', EG: 'EG', BG: 'BG' }}
+    countries={['US', 'AT', 'FR', 'TR', 'EG', 'BG']}
+    customLabels={{ US: 'EN', FR: 'FR', AT: 'DE', TR: 'TR', EG: 'EG', BG: 'BG' }}
     selected={i18n.language.toUpperCase()}
     onSelect={(countryCode) => changeLanguage(countryCode.toLowerCase())}
     placeholder="ENG"
     defaultCountry="US"
-    selectedSize={20}
+    selectedSize={16}
     optionsSize={16}
     optionStyles={{
       backgroundColor: '#000 !important', // Set a background color for the dropdown options
