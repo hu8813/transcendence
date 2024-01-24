@@ -12,11 +12,19 @@ i18n
             welcome: 'Welcome to the Ping Pong Game App!',
           },
           auth: {
+            email: 'Email',
+            enterEmail: 'Enter your email',
+            password: 'Password',
+            enterPassword: 'Enter your password',
+            rememberMe: 'Remember me',
             login: 'Login',
+            forgotPassword: 'Forgot your password?',
+            notRegistered: 'Not registered yet?',
+            registerHere: 'Register here',
             register: 'Register',
           },
           game: {
-            title: 'Play it!',
+            title: 'Play!',
           },
           leaderboard: {
             title: 'Leaderboard',
@@ -36,8 +44,15 @@ i18n
             welcome: 'Bienvenue dans l\'application Ping Pong Game!',
           },
           auth: {
+            email: 'E-mail',
+            enterEmail: 'Entrez votre adresse e-mail',
+            password: 'Mot de passe',
+            enterPassword: 'Entrez votre mot de passe',
+            rememberMe: 'Se souvenir de moi',
             login: 'Connexion',
-            register: 'S\'inscrire',
+            forgotPassword: 'Mot de passe oublié?',
+            notRegistered: 'Pas encore inscrit?',
+            registerHere: 'Inscrivez-vous ici',
           },
           game: {
             title: 'Jeu de Ping Pong',
@@ -60,7 +75,15 @@ i18n
             welcome: 'Willkommen in der Ping Pong Game App!',
           },
           auth: {
+            email: 'E-Mail',
+            enterEmail: 'Geben Sie Ihre E-Mail-Adresse ein',
+            password: 'Passwort',
+            enterPassword: 'Geben Sie Ihr Passwort ein',
+            rememberMe: 'Erinnere dich an mich',
             login: 'Anmelden',
+            forgotPassword: 'Passwort vergessen?',
+            notRegistered: 'Noch nicht registriert?',
+            registerHere: 'Hier registrieren',
             register: 'Registrieren',
           },
           game: {

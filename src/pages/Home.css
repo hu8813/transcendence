@@ -15,10 +15,16 @@
     /* Additional responsive styles for other elements */
   }
   
-  .home-container {
-    background-color: #f0f0f0; /* Light gray background color */
-    padding: 20px; /* Add padding for content */
-  }
+  /* Home.css */
+.home-container {
+  text-align: center;
+}
+
+.home-container h1 {
+  margin: 0 auto;
+  max-width: 50%; /* Adjust the max-width as needed */
+}
+
   
   .game-container {
     display: flex;

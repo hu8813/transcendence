@@ -18,11 +18,7 @@ const Navbar = () => {
   return (
     <BootstrapNavbar expand="md" className="pong-navbar">
         
-      <Link to="/" className="navbar-brand">
-        Pong Game
-
-        
-      </Link>
+     
       <div className="language-container">
   <ReactFlagsSelect
     countries={['US', 'FR', 'DE']}
@@ -31,6 +27,11 @@ const Navbar = () => {
     onSelect={(countryCode) => changeLanguage(countryCode.toLowerCase())}
     placeholder="Language" 
   />
+   <Link to="/" className="navbar-brand">
+        Ping Pong 42
+
+        
+      </Link>
 </div>
 
       <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
