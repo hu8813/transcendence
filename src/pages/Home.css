@@ -18,13 +18,11 @@
   /* Home.css */
 /* Home.css */
 .home-container {
-  height: 100%; /* Set the height to 100% to fill the entire space */
-  background-color: #000; /* Set the background color */
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 20px; /* Add padding for content */
+  justify-content: center;
+  height: 100vh; /* Set the height to 100% of the viewport height */
 }
 
 h1 {
