@@ -1,0 +1,57 @@
+/* Home.css */
+
+/* Default styles */
+
+/* Responsive styles for screens smaller than 767px (typical mobile devices) */
+@media (max-width: 767px) {
+    body {
+      font-size: 14px;
+    }
+  
+    h1 {
+      font-size: 2em;
+    }
+  
+    /* Additional responsive styles for other elements */
+  }
+  
+  .home-container {
+    background-color: #f0f0f0; /* Light gray background color */
+    padding: 20px; /* Add padding for content */
+  }
+  
+  .game-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .ping-pong-table {
+    width: 300px;
+    height: 200px;
+    background-color: #000; /* Black color for the table */
+    position: relative;
+  }
+  
+  .ping-pong-ball {
+    width: 20px;
+    height: 20px;
+    background-color: #fff; /* White color for the ball */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: bounce 1s infinite alternate; /* Add bounce animation */
+  }
+  
+  @keyframes bounce {
+    from {
+      transform: translate(-50%, -50%) translateY(0);
+    }
+    to {
+      transform: translate(-50%, -50%) translateY(-50px);
+    }
+  }
+  

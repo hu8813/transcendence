@@ -1,0 +1,29 @@
+/* Footer.css */
+.footer-container {
+    background-color: #343a40; /* Dark background color */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .social-icons {
+    margin-bottom: 10px;
+  }
+  
+  .social-icon {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  .footer-text {
+    font-size: 14px;
+  }
+  
+  .heart-icon {
+    color: #e74c3c; /* Heart icon color */
+  }
+  

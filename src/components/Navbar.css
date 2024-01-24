@@ -1,0 +1,62 @@
+/* Navbar.css */
+
+/* Default styles */
+
+/* Responsive styles for screens smaller than 767px (typical mobile devices) */
+@media (max-width: 767px) {
+    .navbar-brand {
+      font-size: 1.2rem;
+      margin: 5px 0;
+    }
+  
+    .nav-link {
+      margin: 5px 0;
+      padding: 10px 5px;
+    }
+  
+    .language-button {
+      margin-left: 0;
+    }
+  
+    .language-container {
+      justify-content: flex-end;
+      margin-right: 5px;
+    }
+  }
+  
+  .pong-navbar {
+    background-color: #212529;
+    font-family: 'Press Start 2P', cursive;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center; /* Center the title */
+    margin: 10px 0; /* Add margin to the title */
+  }
+  
+  .nav-link {
+    color: #fff !important;
+    margin: 10px 10px; /* Add top and bottom margin between items */
+    padding: 15px 10px; /* Add padding for better clickability */
+    transition: background-color 0.3s ease; /* Add smooth hover effect */
+  }
+  
+  .nav-link:hover {
+    background-color: #343a40; /* Change background color on hover */
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #fff;
+  }
+  
+  .language-button {
+    margin-left: 10px;
+  }
+  
+  .language-container {
+    display: flex;
+    justify-content: center;
+  }
+  
