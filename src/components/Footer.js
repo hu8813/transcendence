@@ -17,9 +17,12 @@ const Footer = () => {
        
       </div>
 
-      <div className="footer-text">
-        Made with <AiFillHeart className="heart-icon" /> at 42
-      </div>
+      <div className="footer-text" style={{ textAlign: 'right', paddingRight: '30px' }}>
+  Made with <AiFillHeart className="heart-icon" /> at 42Vienna
+</div>
+
+
+
  
     </footer>
   );
