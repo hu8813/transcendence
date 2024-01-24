@@ -1,4 +1,10 @@
 # transcendence
 
-Frontend: React
-Backend: Django
+## Work in Process..
+
+# Frontend: React
+
+
+# Backend: Django
+
+

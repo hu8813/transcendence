@@ -69,6 +69,38 @@ i18n
           },
         },
       },
+      tr: {
+        translation: {
+          home: {
+            welcome: 'Ping Pong Oyunu Uygulamasına Hoş Geldiniz!',
+          },
+          auth: {
+            email: 'E-posta',
+            enterEmail: 'E-posta adresinizi girin',
+            password: 'Şifre',
+            enterPassword: 'Şifrenizi girin',
+            rememberMe: 'Beni hatırla',
+            login: 'Giriş yap',
+            forgotPassword: 'Şifrenizi mi unuttunuz?',
+            notRegistered: 'Henüz kayıtlı değil misiniz?',
+            registerHere: 'Buradan kaydolun',
+            register: 'Kayıt ol',
+          },
+          game: {
+            title: 'Oyna!',
+          },
+          leaderboard: {
+            title: 'Liderlik Tablosu',
+          },
+          chat: {
+            title: 'Sohbet',
+          },
+          common: {
+            home: 'Anasayfa',
+            switchLanguage: 'Dil Değiştir',
+          },
+        },
+      },
       de: {
         translation: {
           home: {
