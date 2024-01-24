@@ -1,9 +1,71 @@
 /* Register.css */
 .register-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Set the height to 100% of the viewport height */
-  }
-  
+    max-width: 350px;
+    min-height: 600px; /* Adjusted height to accommodate the second password field */
+    margin: 80px auto;
+    padding: 40px 30px 30px 30px;
+    background-color: #000; /* Dark background color */
+    border-radius: 15px;
+    box-shadow: 13px 13px 20px #111, -13px -13px 20px #333; /* Dark shadow colors */
+}
+
+.register-container h2 {
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 1.3px;
+    padding-left: 10px;
+    color: #ccc; /* Lighter text color */
+}
+
+.register-container Form {
+    padding-left: 10px;
+}
+
+.register-container Form.Label {
+    color: #ccc; /* Lighter label text color */
+}
+
+.register-container Form.Control {
+    width: 100%;
+    display: block;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.2rem;
+    color: #999; /* Lighter text color */
+    padding: 10px 15px 10px 10px;
+    border-radius: 20px;
+    box-shadow: inset 8px 8px 8px #111, inset -8px -8px 8px #333; /* Dark shadow colors */
+    margin-bottom: 20px;
+}
+
+.register-container Form.Control.is-invalid {
+    border-color: #ff3d3d; /* Red border for invalid input */
+}
+
+.register-container Form.Check-label {
+    color: #ccc; /* Lighter label text color */
+}
+
+.register-container .btn {
+    width: 100%;
+    height: 40px;
+    background-color: #03A9F4; /* Blue color */
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px #111,
+        -3px -3px 3px #333; /* Dark shadow colors */
+    letter-spacing: 1.3px;
+}
+
+.register-container .btn:hover {
+    background-color: #039BE5; /* Darker blue color on hover */
+}
+
+.register-container .btn-primary {
+    background-color: #4CAF50; /* Green color */
+}
+
+.register-container .btn-primary:hover {
+    background-color: #45a049; /* Darker green color on hover */
+}
