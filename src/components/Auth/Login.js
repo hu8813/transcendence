@@ -16,8 +16,9 @@ const Login = () => {
     if (provider === '42') {
       // Redirect the user to the 42 API authorization URL
       // Use your actual client ID and redirect URI
-      const clientId = process.env.REACT_APP_CLIENT_ID;
-      const redirectUri = process.env.REACT_APP_REDIRECT_URI;
+      let clientId = process.env.REACT_APP_CLIENT_ID || "3744599425fa99708b404da0be2ed6f6d5d7f268d3288021eead9df2c5675536";
+      let redirectUri = process.env.REACT_APP_REDIRECT_URI || "https://42dashboard.vercel.app/login/42/return";
+      
       const authUrl = `https://api.intra.42.fr/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
 
       window.location.href = authUrl;
