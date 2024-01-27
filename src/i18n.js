@@ -231,7 +231,7 @@ i18n
         },
       },
     
-      de: {
+      at: {
         translation: {
           home: {
             welcome: 'Willkommen in der Ping Pong Game App!',
