@@ -66,6 +66,9 @@ const Login = () => {
         const accessToken = data.access_token;
         // Store the access token in a secure way, e.g., in local storage or state
         localStorage.setItem('access_token', accessToken);
+        alert(`Access Token: ${accessToken}`); // This will show a popup alert
+        console.log('Access Token:', accessToken); // This will log the token in the browser's console
+
 
         // Now you can use the access token to make authenticated requests to the 42 API on behalf of the user
         // You may want to redirect the user to a different page or display a success message here
