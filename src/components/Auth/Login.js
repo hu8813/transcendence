@@ -48,14 +48,14 @@ const Login = () => {
     let clientId = process.env.REACT_APP_CLIENT_ID || "3744599425fa99708b404da0be2ed6f6d5d7f268d3288021eead9df2c5675536";
     let clientSecret = process.env.REACT_APP_CLIENT_SECRET || "your-client-secret";
     let redirectUri = process.env.REACT_APP_REDIRECT_URI || "https://42dashboard.vercel.app/login/42/return";
-
+  
     const requestBody = new URLSearchParams();
     requestBody.append('client_id', clientId);
     requestBody.append('client_secret', clientSecret);
     requestBody.append('code', code);
     requestBody.append('redirect_uri', redirectUri);
     requestBody.append('grant_type', 'authorization_code');
-
+  
     fetch('https://api.intra.42.fr/oauth/token', {
       method: 'POST',
       body: requestBody,
@@ -66,18 +66,18 @@ const Login = () => {
         const accessToken = data.access_token;
         // Store the access token in a secure way, e.g., in local storage or state
         localStorage.setItem('access_token', accessToken);
-        alert(`Access Token: ${accessToken}`); // This will show a popup alert
-        console.log('Access Token:', accessToken); // This will log the token in the browser's console
-
-
-        // Now you can use the access token to make authenticated requests to the 42 API on behalf of the user
-        // You may want to redirect the user to a different page or display a success message here
+  
+        // Debugging: Log the access token to the console
+        console.log('Access Token:', accessToken);
+  
+        // Now you can use the access token for authenticated requests
       })
       .catch(error => {
         // Handle any errors that occur during the token exchange
         console.error('Error exchanging authorization code for access token:', error);
       });
   };
+  
 
   return (
     <Container>
