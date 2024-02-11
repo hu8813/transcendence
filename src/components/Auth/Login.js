@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
@@ -11,12 +11,13 @@ import './Login.css'; // Create a Login.css file for styling
 const Login = () => {
   const { t } = useTranslation();
   const location = useLocation(); // Get the current location to parse the callback URL
+  const [authCode, setAuthCode] = useState(null); // State to store authentication code
 
   const handleSignIn = (provider) => {
     if (provider === '42') {
       // Redirect the user to the 42 API authorization URL
       // Use your actual client ID and redirect URI
-      let clientId = process.env.REACT_APP_CLIENT_ID || "3744599425fa99708b404da0be2ed6f6d5d7f268d3288021eead9df2c5675536";
+      let clientId = process.env.REACT_APP_CLIENT_ID || "your-client-id";
       let redirectUri = process.env.REACT_APP_REDIRECT_URI || "https://42dashboard.vercel.app/login/42/return";
       
       const authUrl = `https://api.intra.42.fr/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
@@ -38,14 +39,16 @@ const Login = () => {
     const code = urlParams.get('code');
 
     if (code) {
-      // If an authorization code is present, exchange it for an access token
+      // If an authorization code is present, set it in state
+      setAuthCode(code);
+      // Exchange the code for an access token
       exchangeCodeForAccessToken(code);
     }
   }, [location.search]);
 
   const exchangeCodeForAccessToken = (code) => {
     // Make a POST request to exchange the code for an access token
-    let clientId = process.env.REACT_APP_CLIENT_ID || "3744599425fa99708b404da0be2ed6f6d5d7f268d3288021eead9df2c5675536";
+    let clientId = process.env.REACT_APP_CLIENT_ID || "your-client-id";
     let clientSecret = process.env.REACT_APP_CLIENT_SECRET || "your-client-secret";
     let redirectUri = process.env.REACT_APP_REDIRECT_URI || "https://42dashboard.vercel.app/login/42/return";
   
@@ -81,39 +84,40 @@ const Login = () => {
 
   return (
     <Container>
-    <div className="wrapper">
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => handleSignIn('42')}
-        className="rounded focus:outline-none hover:bg-blue-600 mb-4"
-      >
-        <FiUser className="mr-2" />
-        {t('auth.signInWith42')}
-      </Button>
-      <div className="or-separator mb-4">
-        <span className="or-text">{t('common.or')}</span>
-      </div>
-      <div className="text-center mt-4 name">
-        {t('auth.signIn')}
-      </div>
-   
-      <form className="p-3 mt-3">
-        <div className="form-field d-flex align-items-center">
-          <span className="far fa-user"></span>
-          <input type="text" name="userName" id="userName" placeholder={t('auth.email')} />
+      <div className="wrapper">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => handleSignIn('42')}
+          className="rounded focus:outline-none hover:bg-blue-600 mb-4"
+        >
+          <FiUser className="mr-2" />
+          {t('auth.signInWith42')}
+        </Button>
+        <div className="or-separator mb-4">
+          <span className="or-text">{t('common.or')}</span>
         </div>
-        <div className="form-field d-flex align-items-center">
-          <span className="fas fa-key"></span>
-          <input type="password" name="password" id="pwd" placeholder={t('auth.password')} />
+        <div className="text-center mt-4 name">
+          {t('auth.signIn')}
         </div>
-        <button className="btn mt-3">{t('auth.login')}</button>
-      </form>
-      <div className="text-center fs-6">
-        <Link to="/forgot-password">{t('auth.forgotPassword')}</Link> {t('common.or')} <Link to="/register">{t('auth.registerHere')}</Link>
-      </div>
+     
+        <form className="p-3 mt-3" method="post" action="https://four2trans-backend.onrender.com/login/"> {/* Changed method to "post" and action to "/login/" */}
+    <div className="form-field d-flex align-items-center">
+      <span className="far fa-user"></span>
+      <input type="text" name="username" id="userName" placeholder={t('auth.email')} /> {/* Changed name attribute to "username" */}
     </div>
-  </Container>
+    <div className="form-field d-flex align-items-center">
+      <span className="fas fa-key"></span>
+      <input type="password" name="password" id="pwd" placeholder={t('auth.password')} /> {/* Changed name attribute to "password" */}
+    </div>
+    <Button type="submit" className="btn mt-3">{t('auth.login')}</Button> {/* Changed to Button component */}
+  </form>
+
+        <div className="text-center fs-6">
+          <Link to="/forgot-password">{t('auth.forgotPassword')}</Link> {t('common.or')} <Link to="/register">{t('auth.registerHere')}</Link>
+        </div>
+      </div>
+    </Container>
   );
 };
 
