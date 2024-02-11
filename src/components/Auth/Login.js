@@ -21,11 +21,11 @@ const Login = () => {
     try {
       const response = await fetch('/get-csrf-token/');
       const data = await response.json();
-      const token = data.csrfToken || 'default-csrf-token'; // Set default value if token is empty
+      const token = data.csrfToken || 'ns9y1mCcGwoeH5Sh4WTcJZfdg600L0nm'; // Set default value if token is empty
       setCsrfToken(token);
     } catch (error) {
       console.error('Error fetching CSRF token:', error);
-      setCsrfToken('default-csrf-token'); // Set default value if fetch fails
+      setCsrfToken('ns9y1mCcGwoeH5Sh4WTcJZfdg600L0nm'); // Set default value if fetch fails
     }
   };
   
