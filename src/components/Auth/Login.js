@@ -124,7 +124,7 @@ const Login = () => {
           <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />
           <div className="form-field d-flex align-items-center">
             <span className="far fa-user"></span>
-            <input type="text" name="username" id="userName" placeholder={t('auth.email')} value="demo" />
+            <input type="text" name="username" id="userName" placeholder={t('auth.username')} value="demo" />
           </div>
           <div className="form-field d-flex align-items-center">
             <span className="fas fa-key"></span>

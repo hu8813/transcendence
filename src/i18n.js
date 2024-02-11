@@ -13,6 +13,7 @@ i18n
           },
           auth: {
             email: 'Email',
+            username: 'Username',
             enterEmail: 'Enter your email',
             password: 'Password',
             enterPassword: 'Enter your password',
@@ -59,6 +60,7 @@ i18n
           },
           auth: {
             email: 'E-mail',
+            username: 'Username',
             enterEmail: 'Entrez votre adresse e-mail',
             password: 'Mot de passe',
             enterPassword: 'Entrez votre mot de passe',
@@ -101,6 +103,7 @@ i18n
           },
           auth: {
             email: 'E-posta',
+            username: 'Kullanıcı adı',
             enterEmail: 'E-posta adresinizi girin',
             password: 'Şifre',
             enterPassword: 'Şifrenizi girin',
@@ -146,6 +149,7 @@ i18n
           },
           auth: {
             email: 'Имейл',
+            username: 'Username',
             enterEmail: 'Въведете вашия имейл',
             password: 'Парола',
             enterPassword: 'Въведете вашия парола',
@@ -191,6 +195,7 @@ i18n
           },
           auth: {
             email: 'البريد الإلكتروني',
+            username: 'Username',
             enterEmail: 'أدخل بريدك الإلكتروني',
             password: 'كلمة المرور',
             enterPassword: 'أدخل كلمة المرور الخاصة بك',
@@ -238,6 +243,7 @@ i18n
           },
           auth: {
             email: 'E-Mail',
+            username: 'Benutzername',
             enterEmail: 'Geben Sie Ihre E-Mail-Adresse ein',
             password: 'Passwort',
             enterPassword: 'Geben Sie Ihr Passwort ein',
