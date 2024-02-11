@@ -9,6 +9,17 @@ import './Login.css'; // Create a Login.css file for styling
 // Import necessary libraries and components
 
 const Login = () => {
+  const [csrftoken, setCsrfToken] = useState('');
+
+    useEffect(() => {
+        // Fetch the CSRF token from the cookie
+        const csrfCookie = document.cookie.split(';')
+            .find(cookie => cookie.trim().startsWith('csrftoken='));
+        if (csrfCookie) {
+            const token = csrfCookie.split('=')[1];
+            setCsrfToken(token);
+        }
+    }, []);
   const { t } = useTranslation();
   const location = useLocation(); // Get the current location to parse the callback URL
   const [authCode, setAuthCode] = useState(null); // State to store authentication code
@@ -104,6 +115,8 @@ const Login = () => {
         <form className="p-3 mt-3" method="post" action="https://four2trans-backend.onrender.com/login/"> {/* Changed method to "post" and action to "/login/" */}
     <div className="form-field d-flex align-items-center">
       <span className="far fa-user"></span>
+      <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />
+
       <input type="text" name="username" id="userName" placeholder={t('auth.email')} /> {/* Changed name attribute to "username" */}
     </div>
     <div className="form-field d-flex align-items-center">
