@@ -19,13 +19,16 @@ const Login = () => {
 
   const fetchCsrfToken = async () => {
     try {
-      const response = await fetch('https://four2trans-backend.onrender.com/get-csrf-token/'); // Change the URL to your Django endpoint that returns the CSRF token
+      const response = await fetch('/get-csrf-token/');
       const data = await response.json();
-      setCsrfToken(data.csrfToken);
+      const token = data.csrfToken || 'default-csrf-token'; // Set default value if token is empty
+      setCsrfToken(token);
     } catch (error) {
       console.error('Error fetching CSRF token:', error);
+      setCsrfToken('default-csrf-token'); // Set default value if fetch fails
     }
-  }; // Add the missing closing bracket here
+  };
+  
 
   const handleSignIn = (provider) => {
     if (provider === '42') {
