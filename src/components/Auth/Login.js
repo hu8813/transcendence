@@ -12,6 +12,7 @@ const Login = () => {
   const [csrftoken, setCsrfToken] = useState('');
   const { t } = useTranslation();
   const location = useLocation();
+  const [authCode, setAuthCode] = useState(null); 
 
   useEffect(() => {
     fetchCsrfToken();
