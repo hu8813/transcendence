@@ -10,19 +10,21 @@ import './Login.css'; // Create a Login.css file for styling
 
 const Login = () => {
   const [csrftoken, setCsrfToken] = useState('');
-
-    useEffect(() => {
-        // Fetch the CSRF token from the cookie
-        const csrfCookie = document.cookie.split(';')
-            .find(cookie => cookie.trim().startsWith('csrftoken='));
-        if (csrfCookie) {
-            const token = csrfCookie.split('=')[1];
-            setCsrfToken(token);
-        }
-    }, []);
   const { t } = useTranslation();
-  const location = useLocation(); // Get the current location to parse the callback URL
-  const [authCode, setAuthCode] = useState(null); // State to store authentication code
+  const location = useLocation();
+
+  useEffect(() => {
+    fetchCsrfToken();
+  }, []);
+
+  const fetchCsrfToken = async () => {
+    try {
+      const response = await fetch('/get-csrf-token/'); // Change the URL to your Django endpoint that returns the CSRF token
+      const data = await response.json();
+      setCsrfToken(data.csrfToken);
+    } catch (error) {
+      console.error('Error fetching CSRF token:', error);
+    }
 
   const handleSignIn = (provider) => {
     if (provider === '42') {
@@ -112,19 +114,19 @@ const Login = () => {
           {t('auth.signIn')}
         </div>
      
-        <form className="p-3 mt-3" method="post" action="https://four2trans-backend.onrender.com/login/"> {/* Changed method to "post" and action to "/login/" */}
-    <div className="form-field d-flex align-items-center">
-      <span className="far fa-user"></span>
-      <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />
 
-      <input type="text" name="username" id="userName" placeholder={t('auth.email')} /> {/* Changed name attribute to "username" */}
-    </div>
-    <div className="form-field d-flex align-items-center">
-      <span className="fas fa-key"></span>
-      <input type="password" name="password" id="pwd" placeholder={t('auth.password')} /> {/* Changed name attribute to "password" */}
-    </div>
-    <Button type="submit" className="btn mt-3">{t('auth.login')}</Button> {/* Changed to Button component */}
-  </form>
+        <form className="p-3 mt-3" method="post" action="https://four2trans-backend.onrender.com/login/">
+          <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />
+          <div className="form-field d-flex align-items-center">
+            <span className="far fa-user"></span>
+            <input type="text" name="username" id="userName" placeholder={t('auth.email')} />
+          </div>
+          <div className="form-field d-flex align-items-center">
+            <span className="fas fa-key"></span>
+            <input type="password" name="password" id="pwd" placeholder={t('auth.password')} />
+          </div>
+          <Button type="submit" className="btn mt-3">{t('auth.login')}</Button>
+        </form>
 
         <div className="text-center fs-6">
           <Link to="/forgot-password">{t('auth.forgotPassword')}</Link> {t('common.or')} <Link to="/register">{t('auth.registerHere')}</Link>
