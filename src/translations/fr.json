@@ -1,0 +1,43 @@
+{
+    "translation": {
+      "home": {
+        "welcome": "Bienvenue dans l'application Ping Pong!"
+      },
+      "auth": {
+        "email": "E-mail",
+        "username": "Nom d'utilisateur",
+        "enterEmail": "Entrez votre adresse e-mail",
+        "password": "Mot de passe",
+        "enterPassword": "Entrez votre mot de passe",
+        "rememberMe": "Se souvenir de moi",
+        "login": "Connexion",
+        "forgotPassword": "Mot de passe oublié?",
+        "notRegistered": "Pas encore inscrit?",
+        "registerHere": "Inscrivez-vous ici",
+        "passwordMismatch": "Mot de passe vide/invalide",
+        "confirmPassword": "Confirmer le mot de passe",
+        "termsAndConditions": "Termes et conditions",
+        "acceptTerms": "J'accepte les termes et conditions"
+      },
+      "game": {
+        "title": "Jeu de Ping Pong"
+      },
+      "leaderboard": {
+        "title": "Classement"
+      },
+      "chat": {
+        "title": "Discussion"
+      },
+      "common": {
+        "home": "Accueil",
+        "switchLanguage": "Changer la langue"
+      },
+      "footer": {
+        "privacyPolicy": "Politique de confidentialité",
+        "impressum": "Mentions légales",
+        "madeWith": "Fabriqué avec",
+        "at42Vienna": "chez 42Vienna"
+      }
+    }
+  }
+  

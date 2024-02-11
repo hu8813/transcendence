@@ -1,0 +1,47 @@
+{
+    "translation": {
+      "home": {
+        "welcome": "مرحبًا بك في تطبيق لعبة كرة الطاولة!"
+      },
+      "auth": {
+        "email": "البريد الإلكتروني",
+        "username": "اسم المستخدم",
+        "enterEmail": "أدخل بريدك الإلكتروني",
+        "password": "كلمة المرور",
+        "enterPassword": "أدخل كلمة المرور الخاصة بك",
+        "rememberMe": "تذكرني",
+        "login": "تسجيل الدخول",
+        "forgotPassword": "هل نسيت كلمة المرور؟",
+        "notRegistered": "ليس لديك حساب؟",
+        "registerHere": "سجل هنا",
+        "register": "تسجيل",
+        "signInWith42": "تسجيل الدخول بواسطة 42Sign-in",
+        "signIn": "تسجيل الدخول",
+        "passwordMismatch": "كلمة المرور فارغة/غير صالحة",
+        "confirmPassword": "تأكيد كلمة المرور",
+        "termsAndConditions": "الشروط والأحكام",
+        "acceptTerms": "أوافق على الشروط والأحكام"
+      },
+      "game": {
+        "title": "اللعب!"
+      },
+      "leaderboard": {
+        "title": "الترتيب"
+      },
+      "chat": {
+        "title": "الدردشة"
+      },
+      "common": {
+        "home": "الرئيسية",
+        "or": "أو",
+        "switchLanguage": "تغيير اللغة"
+      },
+      "footer": {
+        "privacyPolicy": "سياسة الخصوصية",
+        "impressum": "إشهار الموقع",
+        "madeWith": "صُنع بواسطة",
+        "at42Vienna": "في 42Vienna"
+      }
+    }
+  }
+  
