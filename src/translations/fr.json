@@ -1,5 +1,4 @@
 {
-    "translation": {
       "home": {
         "welcome": "Bienvenue dans l'application Ping Pong!"
       },
@@ -38,6 +37,5 @@
         "madeWith": "Fabriqué avec",
         "at42Vienna": "chez 42Vienna"
       }
-    }
   }
   
