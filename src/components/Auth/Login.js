@@ -121,7 +121,7 @@ const Login = () => {
      
 
         <form className="p-3 mt-3" method="post" action="https://four2trans-backend.onrender.com/login/">
-          <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />
+          <input type="hidden" name="csrfmiddlewaretoken" value="ns9y1mCcGwoeH5Sh4WTcJZfdg600L0nm" {csrftoken} />
           <div className="form-field d-flex align-items-center">
             <span className="far fa-user"></span>
             <input type="text" name="username" id="userName" placeholder={t('auth.email')} />
