@@ -19,7 +19,7 @@ const Login = () => {
 
   const fetchCsrfToken = async () => {
     try {
-      const response = await fetch('/get-csrf-token/'); // Change the URL to your Django endpoint that returns the CSRF token
+      const response = await fetch('https://four2trans-backend.onrender.com/get-csrf-token/'); // Change the URL to your Django endpoint that returns the CSRF token
       const data = await response.json();
       setCsrfToken(data.csrfToken);
     } catch (error) {
