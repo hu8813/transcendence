@@ -25,6 +25,7 @@ const Login = () => {
     } catch (error) {
       console.error('Error fetching CSRF token:', error);
     }
+  }; // Add the missing closing bracket here
 
   const handleSignIn = (provider) => {
     if (provider === '42') {
