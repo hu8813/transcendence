@@ -2,12 +2,12 @@
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import enTranslations from './translations/en.json';
-import frTranslations from './translations/fr.json';
-import trTranslations from './translations/tr.json';
-import bgTranslations from './translations/bg.json';
-import egTranslations from './translations/eg.json';
-import atTranslations from './translations/at.json';
+import enTranslations from './src/translations/en.json';
+import frTranslations from './src/translations/fr.json';
+import trTranslations from './src/translations/tr.json';
+import bgTranslations from './src/translations/bg.json';
+import egTranslations from './src/translations/eg.json';
+import atTranslations from './src/translations/at.json';
 
 i18n
   .use(initReactI18next)
