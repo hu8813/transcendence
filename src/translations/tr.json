@@ -1,0 +1,44 @@
+{
+  "home": {
+    "welcome": "Ping Pong Oyununa Hoş Geldin!"
+  },
+  "auth": {
+    "email": "E-posta",
+    "username": "Kullanıcı adı",
+    "enterEmail": "E-posta adresinizi girin",
+    "password": "Şifre",
+    "enterPassword": "Şifrenizi girin",
+    "rememberMe": "Beni hatırla",
+    "login": "Giriş yap",
+    "forgotPassword": "Şifrenizi mi unuttunuz?",
+    "notRegistered": "Henüz kayıtlı değil misiniz?",
+    "registerHere": "Buradan kaydolun",
+    "register": "Kayıt ol",
+    "signInWith42": "42Signin ile girin",
+    "signIn": "Giriş yap",
+    "passwordMismatch": "Şifre boş/geçersiz",
+    "confirmPassword": "Şifreyi Onayla",
+    "termsAndConditions": "Koşullar ve Şartlar",
+    "acceptTerms": "Şartları ve Koşulları Kabul Ediyorum"
+  },
+  "game": {
+    "title": "Oyna!"
+  },
+  "leaderboard": {
+    "title": "Liderlik Tablosu"
+  },
+  "chat": {
+    "title": "Sohbet"
+  },
+  "common": {
+    "home": "Anasayfa",
+    "or": "veya",
+    "switchLanguage": "Dil Değiştir"
+  },
+  "footer": {
+    "privacyPolicy": "Gizlilik Politikası",
+    "impressum": "İletişim",
+    "madeWith": "",
+    "at42Vienna": "42Vienna'da"
+  }
+}

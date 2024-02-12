@@ -1,0 +1,42 @@
+{
+  "home": {
+    "welcome": "Willkommen in der Ping Pong Game App!"
+  },
+  "auth": {
+    "email": "E-Mail",
+    "username": "Benutzername",
+    "enterEmail": "Geben Sie Ihre E-Mail-Adresse ein",
+    "password": "Passwort",
+    "enterPassword": "Geben Sie Ihr Passwort ein",
+    "rememberMe": "Erinnere dich an mich",
+    "login": "Anmelden",
+    "forgotPassword": "Passwort vergessen?",
+    "notRegistered": "Noch nicht registriert?",
+    "registerHere": "Hier registrieren",
+    "register": "Registrieren",
+    "passwordMismatch": "Passwort leer/ungültig",
+    "confirmPassword": "Passwort bestätigen",
+    "termsAndConditions": "Geschäftsbedingungen",
+    "acceptTerms": "Ich akzeptiere die Geschäftsbedingungen"
+  },
+  "game": {
+    "title": "Spiel es!"
+  },
+  "leaderboard": {
+    "title": "Bestenliste"
+  },
+  "chat": {
+    "title": "Chat"
+  },
+  "common": {
+    "home": "Startseite",
+    "switchLanguage": "Sprache wechseln",
+    "or": "oder"
+  },
+  "footer": {
+    "privacyPolicy": "Datenschutz",
+    "impressum": "Impressum",
+    "madeWith": "Erstellt mit",
+    "at42Vienna": "bei 42Vienna"
+  }
+}

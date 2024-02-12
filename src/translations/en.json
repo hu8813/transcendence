@@ -1,0 +1,44 @@
+{
+  "home": {
+    "welcome": "Welcome to the Ping Pong Game!"
+  },
+  "auth": {
+    "email": "Email",
+    "username": "Username",
+    "enterEmail": "Enter your email",
+    "password": "Password",
+    "enterPassword": "Enter your password",
+    "rememberMe": "Remember me",
+    "login": "Login",
+    "forgotPassword": "Forgot your password?",
+    "notRegistered": "Not registered yet?",
+    "registerHere": "Register here",
+    "register": "Register",
+    "signInWith42": "Login via 42Sign-in",
+    "signIn": "Login",
+    "passwordMismatch": "Password empty/invalid",
+    "confirmPassword": "Confirm password",
+    "termsAndConditions": "Terms & Conditions",
+    "acceptTerms": "i accept Terms & Conditions"
+  },
+  "game": {
+    "title": "Play!"
+  },
+  "leaderboard": {
+    "title": "Leaderboard"
+  },
+  "chat": {
+    "title": "Chat"
+  },
+  "common": {
+    "home": "Home",
+    "switchLanguage": "Switch Language",
+    "or": "or"
+  },
+  "footer": {
+    "privacyPolicy": "Privacy Policy",
+    "impressum": "Impressum",
+    "madeWith": "Made with",
+    "at42Vienna": "at 42Vienna"
+  }
+}
