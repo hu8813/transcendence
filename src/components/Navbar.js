@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Navbar as BootstrapNavbar, Nav, Button } from "react-bootstrap";
@@ -7,17 +7,29 @@ import ReactFlagsSelect from "react-flags-select";
 
 import "./Navbar.css";
 
-const Navbar = ({ isLoggedIn, setLoggedIn }) => {
+const Navbar = ({ isLoggedIn: initialIsLoggedIn, setLoggedIn }) => {
   const { t, i18n } = useTranslation();
+  const [isLoggedIn, setIsLoggedIn] = useState(initialIsLoggedIn);
+
+  useEffect(() => {
+    const storedIsLoggedIn = localStorage.getItem("isLoggedIn");
+    if (storedIsLoggedIn) {
+      setIsLoggedIn(JSON.parse(storedIsLoggedIn));
+    }
+  }, [initialIsLoggedIn]);
+
+  useEffect(() => {
+    localStorage.setItem("isLoggedIn", isLoggedIn);
+    setLoggedIn(isLoggedIn);
+  }, [isLoggedIn, setLoggedIn]);
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
-    localStorage.setItem("language", language); // Save the selected language in localStorage
+    localStorage.setItem("language", language);
   };
 
   const handleLogout = () => {
-    // Implement logout logic here
-    setLoggedIn(false);
+    setIsLoggedIn(false);
   };
 
   return (
@@ -40,8 +52,8 @@ const Navbar = ({ isLoggedIn, setLoggedIn }) => {
           selectedSize={16}
           optionsSize={16}
           optionStyles={{
-            backgroundColor: "#000 !important", // Set a background color for the dropdown options
-            color: "#fff !important", // Set the text color for the dropdown options
+            backgroundColor: "#000 !important",
+            color: "#fff !important",
           }}
         />
       </div>
@@ -51,7 +63,6 @@ const Navbar = ({ isLoggedIn, setLoggedIn }) => {
         </Link>
       </div>
       <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
-
       <BootstrapNavbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           {!isLoggedIn && (
@@ -62,12 +73,15 @@ const Navbar = ({ isLoggedIn, setLoggedIn }) => {
               </Link>
             </>
           )}
-
           {isLoggedIn && (
             <>
               <Link to="/game" className="nav-link">
                 <FiGlobe className="mr-2" />
                 {t("game.title")}
+              </Link>
+              <Link to="/chat" className="nav-link">
+                <FiGlobe className="mr-2" />
+                {t("chat.title")}
               </Link>
               <Link to="/leaderboard" className="nav-link">
                 <FiGlobe className="mr-2" />

@@ -1,6 +1,5 @@
-// Login.js
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18n";
 import { Form, Button, Container } from "react-bootstrap";
@@ -9,10 +8,10 @@ import { FiUser } from "react-icons/fi";
 import "./Login.css";
 
 const Login = ({ setLoggedIn }) => {
-  // Receive setLoggedIn as a prop
   const [csrftoken, setCsrfToken] = useState("");
   const { t } = useTranslation();
   const location = useLocation();
+  const navigate = useNavigate();
   const [authCode, setAuthCode] = useState(null);
   const [loginStatus, setLoginStatus] = useState("");
 
@@ -29,23 +28,6 @@ const Login = ({ setLoggedIn }) => {
     } catch (error) {
       console.error("Error fetching CSRF token:", error);
       setCsrfToken("ns9y1mCcGwoeH5Sh4WTcJZfdg600L0nm");
-    }
-  };
-
-  const handleSignIn = (provider) => {
-    if (provider === "42") {
-      // Redirect the user to the 42 API authorization URL
-      // Use your actual client ID and redirect URI
-      let clientId = process.env.REACT_APP_CLIENT_ID || "your-client-id";
-      let redirectUri =
-        process.env.REACT_APP_REDIRECT_URI ||
-        "https://42dashboard.vercel.app/login/42/return";
-
-      const authUrl = `https://api.intra.42.fr/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
-
-      window.location.href = authUrl;
-    } else {
-      // Implement your logic for regular sign-in
     }
   };
 
@@ -88,6 +70,9 @@ const Login = ({ setLoggedIn }) => {
         const accessToken = data.access_token;
         localStorage.setItem("access_token", accessToken);
         console.log("Access Token:", accessToken);
+
+        // Redirect to /game after successful login
+        window.location.href = "/game";
       })
       .catch((error) => {
         console.error(
@@ -114,6 +99,8 @@ const Login = ({ setLoggedIn }) => {
       setLoginStatus(data.trim()); // Update login status based on response from backend
       if (data.trim() === "Login successful") {
         setLoggedIn(true); // Update isLoggedIn state if login is successful
+        localStorage.setItem("isLoggedIn", true); // Set isLoggedIn to true in local storage
+        navigate("/game"); // Redirect to /game route after successful login
       }
     } catch (error) {
       console.error("Error logging in:", error);
@@ -127,7 +114,7 @@ const Login = ({ setLoggedIn }) => {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => handleSignIn("42")}
+          href={`https://api.intra.42.fr/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`}
           className="rounded focus:outline-none hover:bg-blue-600 mb-4"
         >
           <FiUser className="mr-2" />

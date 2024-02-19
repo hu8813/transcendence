@@ -1,6 +1,11 @@
 // App.js
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Update the import statement
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n"; // Import the i18n configuration
 
@@ -20,21 +25,26 @@ const App = () => {
     <I18nextProvider i18n={i18n}>
       <Router>
         <div>
-          <Navbar isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />{" "}
-          {/* Pass isLoggedIn and setLoggedIn as props */}
+          <Navbar isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
           <Routes>
-            {" "}
-            {/* Change from Switch to Routes */}
             <Route path="/" element={<Home />} />
             <Route
               path="/login"
               element={<Login setLoggedIn={setLoggedIn} />}
-            />{" "}
-            {/* Pass setLoggedIn as a prop to Login */}
+            />
             <Route path="/register" element={<Register />} />
-            <Route path="/game" element={<PongGame />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/chat" element={<Chat />} />
+            <Route
+              path="/game"
+              element={isLoggedIn ? <PongGame /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/chat"
+              element={isLoggedIn ? <Chat /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/leaderboard"
+              element={isLoggedIn ? <Leaderboard /> : <Navigate to="/login" />}
+            />
           </Routes>
           <Footer />
         </div>
