@@ -1,9 +1,10 @@
 {
   "home": {
-    "welcome": "Welcome to the Ping Pong Game!"
+    "welcome": "Welcome to the Pong Game!"
   },
   "auth": {
     "email": "Email",
+    "logout": "Logout",
     "username": "Username",
     "enterEmail": "Enter your email",
     "password": "Password",

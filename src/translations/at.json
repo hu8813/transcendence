@@ -1,9 +1,10 @@
 {
   "home": {
-    "welcome": "Willkommen in der Ping Pong Game App!"
+    "welcome": "Willkommen in der Pong Game App!"
   },
   "auth": {
     "email": "E-Mail",
+    "logout": "Abmelden",
     "username": "Benutzername",
     "enterEmail": "Geben Sie Ihre E-Mail-Adresse ein",
     "password": "Passwort",

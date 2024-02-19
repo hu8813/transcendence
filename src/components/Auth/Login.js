@@ -1,3 +1,4 @@
+// Login.js
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -7,7 +8,8 @@ import { FiUser } from "react-icons/fi";
 
 import "./Login.css";
 
-const Login = () => {
+const Login = ({ setLoggedIn }) => {
+  // Receive setLoggedIn as a prop
   const [csrftoken, setCsrfToken] = useState("");
   const { t } = useTranslation();
   const location = useLocation();
@@ -110,6 +112,9 @@ const Login = () => {
       const data = await response.text();
       console.log("Login Response:", data); // Log response data
       setLoginStatus(data.trim()); // Update login status based on response from backend
+      if (data.trim() === "Login successful") {
+        setLoggedIn(true); // Update isLoggedIn state if login is successful
+      }
     } catch (error) {
       console.error("Error logging in:", error);
       setLoginStatus("Error logging in"); // Update login status if an error occurs

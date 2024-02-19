@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { Navbar as BootstrapNavbar, Nav, Button } from 'react-bootstrap';
-import { FiGlobe } from 'react-icons/fi';
-import ReactFlagsSelect from 'react-flags-select';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Navbar as BootstrapNavbar, Nav, Button } from "react-bootstrap";
+import { FiGlobe } from "react-icons/fi";
+import ReactFlagsSelect from "react-flags-select";
 
-import './Navbar.css';
+import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, setLoggedIn }) => {
   const { t, i18n } = useTranslation();
-  const [isLoggedIn, setLoggedIn] = useState(false);
 
   const changeLanguage = (language) => {
     i18n.changeLanguage(language);
-    localStorage.setItem('language', language); // Save the selected language in localStorage
+    localStorage.setItem("language", language); // Save the selected language in localStorage
   };
 
   const handleLogout = () => {
@@ -23,59 +22,68 @@ const Navbar = () => {
 
   return (
     <BootstrapNavbar expand="md" className="pong-navbar">
-  
-  <div className="language-container">
-  <ReactFlagsSelect
-    countries={['US', 'AT', 'FR', 'TR', 'EG', 'BG']}
-    customLabels={{ US: 'EN', FR: 'FR', AT: 'AT', TR: 'TR', EG: 'EG', BG: 'BG' }}
-    selected={i18n.language.toUpperCase()}
-    onSelect={(countryCode) => changeLanguage(countryCode.toLowerCase())}
-    placeholder="ENG"
-    defaultCountry="US"
-    selectedSize={16}
-    optionsSize={16}
-    optionStyles={{
-      backgroundColor: '#000 !important', // Set a background color for the dropdown options
-      color: '#fff !important', // Set the text color for the dropdown options
-    }}
-  />
-</div>
-<div>
-      <Link to="/" className="navbar-brand mr-auto">
-  Ping Pong 42
-</Link>
+      <div className="language-container">
+        <ReactFlagsSelect
+          countries={["US", "AT", "FR", "TR", "EG", "BG"]}
+          customLabels={{
+            US: "EN",
+            FR: "FR",
+            AT: "AT",
+            TR: "TR",
+            EG: "EG",
+            BG: "BG",
+          }}
+          selected={i18n.language.toUpperCase()}
+          onSelect={(countryCode) => changeLanguage(countryCode.toLowerCase())}
+          placeholder="ENG"
+          defaultCountry="US"
+          selectedSize={16}
+          optionsSize={16}
+          optionStyles={{
+            backgroundColor: "#000 !important", // Set a background color for the dropdown options
+            color: "#fff !important", // Set the text color for the dropdown options
+          }}
+        />
+      </div>
+      <div>
+        <Link to="/" className="navbar-brand mr-auto">
+          Pong42
+        </Link>
       </div>
       <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
-  
+
       <BootstrapNavbar.Collapse id="basic-navbar-nav">
-      
         <Nav className="ml-auto">
-          <Link to="/login" className="nav-link">
-            <FiGlobe className="mr-2" />
-            {t('auth.login')}
-          </Link>
-          
+          {!isLoggedIn && (
+            <>
+              <Link to="/login" className="nav-link">
+                <FiGlobe className="mr-2" />
+                {t("auth.login")}
+              </Link>
+            </>
+          )}
+
           {isLoggedIn && (
             <>
               <Link to="/game" className="nav-link">
                 <FiGlobe className="mr-2" />
-                {t('game.title')}
+                {t("game.title")}
               </Link>
               <Link to="/leaderboard" className="nav-link">
                 <FiGlobe className="mr-2" />
-                {t('leaderboard.title')}
+                {t("leaderboard.title")}
               </Link>
-              <Button variant="link" className="nav-link" onClick={handleLogout}>
-                {t('auth.logout')}
+              <Button
+                variant="link"
+                className="nav-link"
+                onClick={handleLogout}
+              >
+                {t("auth.logout")}
               </Button>
             </>
           )}
         </Nav>
-        
       </BootstrapNavbar.Collapse>
-      
-      
-     
     </BootstrapNavbar>
   );
 };
