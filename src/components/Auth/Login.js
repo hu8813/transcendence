@@ -5,14 +5,14 @@ import i18n from "../../i18n";
 import { Form, Button, Container } from "react-bootstrap";
 import { FiUser } from "react-icons/fi";
 
-import "./Login.css"; // Create a Login.css file for styling
-// Import necessary libraries and components
+import "./Login.css";
 
 const Login = () => {
   const [csrftoken, setCsrfToken] = useState("");
   const { t } = useTranslation();
   const location = useLocation();
   const [authCode, setAuthCode] = useState(null);
+  const [loginStatus, setLoginStatus] = useState("");
 
   useEffect(() => {
     fetchCsrfToken();
@@ -22,11 +22,11 @@ const Login = () => {
     try {
       const response = await fetch("/get-csrf-token/");
       const data = await response.json();
-      const token = data.csrfToken || "ns9y1mCcGwoeH5Sh4WTcJZfdg600L0nm"; // Set default value if token is empty
+      const token = data.csrfToken || "ns9y1mCcGwoeH5Sh4WTcJZfdg600L0nm";
       setCsrfToken(token);
     } catch (error) {
       console.error("Error fetching CSRF token:", error);
-      setCsrfToken("ns9y1mCcGwoeH5Sh4WTcJZfdg600L0nm"); // Set default value if fetch fails
+      setCsrfToken("ns9y1mCcGwoeH5Sh4WTcJZfdg600L0nm");
     }
   };
 
@@ -53,20 +53,16 @@ const Login = () => {
       i18n.changeLanguage(storedLanguage);
     }
 
-    // Check if the callback URL contains an authorization code
     const urlParams = new URLSearchParams(location.search);
     const code = urlParams.get("code");
 
     if (code) {
-      // If an authorization code is present, set it in state
       setAuthCode(code);
-      // Exchange the code for an access token
       exchangeCodeForAccessToken(code);
     }
   }, [location.search]);
 
   const exchangeCodeForAccessToken = (code) => {
-    // Make a POST request to exchange the code for an access token
     let clientId = process.env.REACT_APP_CLIENT_ID || "your-client-id";
     let clientSecret =
       process.env.REACT_APP_CLIENT_SECRET || "your-client-secret";
@@ -87,23 +83,37 @@ const Login = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Handle the API response, which will include an access token
         const accessToken = data.access_token;
-        // Store the access token in a secure way, e.g., in local storage or state
         localStorage.setItem("access_token", accessToken);
-
-        // Debugging: Log the access token to the console
         console.log("Access Token:", accessToken);
-
-        // Now you can use the access token for authenticated requests
       })
       .catch((error) => {
-        // Handle any errors that occur during the token exchange
         console.error(
           "Error exchanging authorization code for access token:",
           error,
         );
       });
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch(
+        "https://four2trans-backend.onrender.com/login/",
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+      const data = await response.text();
+      console.log("Login Response:", data); // Log response data
+      setLoginStatus(data.trim()); // Update login status based on response from backend
+    } catch (error) {
+      console.error("Error logging in:", error);
+      setLoginStatus("Error logging in"); // Update login status if an error occurs
+    }
   };
 
   return (
@@ -123,11 +133,10 @@ const Login = () => {
         </div>
         <div className="text-center mt-4 name">{t("auth.signIn")}</div>
 
-        {csrftoken && ( // Conditionally render the form if csrftoken is not empty
+        {csrftoken && (
           <form
             className="p-3 mt-3"
-            method="post"
-            action="https://four2trans-backend.onrender.com/login/"
+            onSubmit={handleLogin} // Use onSubmit event to handle form submission
           >
             <input type="hidden" name="csrfmiddlewaretoken" value={csrftoken} />
             <div className="form-field d-flex align-items-center">
@@ -137,7 +146,7 @@ const Login = () => {
                 name="username"
                 id="userName"
                 placeholder={t("auth.username")}
-                value="demo"
+                defaultValue="demo"
               />
             </div>
             <div className="form-field d-flex align-items-center">
@@ -147,7 +156,7 @@ const Login = () => {
                 name="password"
                 id="pwd"
                 placeholder={t("auth.password")}
-                value="demo"
+                defaultValue="demo"
               />
             </div>
             <Button type="submit" className="btn mt-3">
@@ -160,6 +169,9 @@ const Login = () => {
           <Link to="/forgot-password">{t("auth.forgotPassword")}</Link>{" "}
           {t("common.or")} <Link to="/register">{t("auth.registerHere")}</Link>
         </div>
+
+        {/* Display login status */}
+        {loginStatus && <div className="text-center mt-3">{loginStatus}</div>}
       </div>
     </Container>
   );
