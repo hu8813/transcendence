@@ -6,8 +6,8 @@ const PongGame = () => {
 
   const canvasRef = useRef(null);
   const [context, setContext] = useState(null);
-  const [leftPaddleY, setLeftPaddleY] = useState(200);
-  const [rightPaddleY, setRightPaddleY] = useState(200);
+  const [leftPaddleY, setLeftPaddleY] = useState(250);
+  const [rightPaddleY, setRightPaddleY] = useState(250);
   const [ball, setBall] = useState({ x: 400, y: 300, vx: 1.5, vy: 1.5 }); // Adjust velocity values for slower movement
 
   useEffect(() => {
