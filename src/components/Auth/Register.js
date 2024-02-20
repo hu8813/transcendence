@@ -12,7 +12,6 @@ const Register = () => {
   const [registerStatus, setRegisterStatus] = useState("");
 
   // Function to handle registration
-  // Function to handle registration
   const handleRegister = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
@@ -43,6 +42,12 @@ const Register = () => {
         } else {
           console.log("Registration Response:", data); // Log response data
           setRegisterStatus(data.trim()); // Update register status based on response from backend
+          // Clear form fields
+          setUsername("");
+          setPassword("");
+          setConfirmPassword("");
+          // Clear password mismatch state
+          setPasswordMismatch(false);
         }
       } catch (error) {
         console.error("Error registering:", error);
@@ -110,20 +115,6 @@ const Register = () => {
             <Form.Control.Feedback type="invalid">
               {t("auth.passwordMismatch")}
             </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group controlId="formBasicCheckbox">
-            <Form.Check
-              type="checkbox"
-              label={
-                <>
-                  {t("auth.acceptTerms")}{" "}
-                  <a href="/terms-and-conditions" target="_blank">
-                    {t("auth.termsAndConditions")}
-                  </a>
-                </>
-              }
-            />
           </Form.Group>
 
           <Button variant="primary" type="submit">
