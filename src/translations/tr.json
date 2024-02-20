@@ -28,7 +28,8 @@
     "title": "Liderlik Tablosu"
   },
   "chat": {
-    "title": "Sohbet"
+    "title": "Sohbet",
+    "users": "Online Üyeler"
   },
   "common": {
     "home": "Anasayfa",
