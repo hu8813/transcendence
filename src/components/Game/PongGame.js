@@ -8,7 +8,7 @@ const PongGame = () => {
   const [context, setContext] = useState(null);
   const [leftPaddleY, setLeftPaddleY] = useState(250);
   const [rightPaddleY, setRightPaddleY] = useState(250);
-  const [ball, setBall] = useState({ x: 400, y: 300, vx: 1.5, vy: 1.5 }); // Adjust velocity values for slower movement
+  const [ball, setBall] = useState({ x: 400, y: 300, vx: 1, vy: 1 }); // Adjust initial velocity
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -117,18 +117,20 @@ const PongGame = () => {
     }
 
     // Check if ball goes out of bounds
-    if (
-      ball.x + ball.vx > canvasRef.current.width - 10 ||
-      ball.x + ball.vx < 10
-    ) {
-      // Reset ball position
-      setBall({
-        x: canvasRef.current.width / 2,
-        y: canvasRef.current.height / 2,
-        vx: 1.5,
-        vy: 1.5,
-      }); // Adjust velocity values for slower movement
+    if (ball.x + ball.vx > canvasRef.current.width - 10) {
+      resetBall(); // Player 1 scores
+    } else if (ball.x + ball.vx < 10) {
+      resetBall(); // Player 2 scores
     }
+  };
+
+  const resetBall = () => {
+    setBall({
+      x: canvasRef.current.width / 2,
+      y: canvasRef.current.height / 2,
+      vx: -ball.vx, // Change direction of the ball
+      vy: ball.vy,
+    });
   };
 
   const movePaddles = () => {
@@ -151,16 +153,16 @@ const PongGame = () => {
   const handleKeyDown = (event) => {
     switch (event.code) {
       case "ArrowDown":
-        setRightPaddleY(rightPaddleY + 20); // Adjust paddle movement speed
+        setRightPaddleY(rightPaddleY + 10); // Adjust paddle movement speed
         break;
       case "ArrowUp":
-        setRightPaddleY(rightPaddleY - 20); // Adjust paddle movement speed
+        setRightPaddleY(rightPaddleY - 10); // Adjust paddle movement speed
         break;
       case "KeyW":
-        setLeftPaddleY(leftPaddleY - 20); // Adjust paddle movement speed
+        setLeftPaddleY(leftPaddleY - 10); // Adjust paddle movement speed
         break;
       case "KeyS":
-        setLeftPaddleY(leftPaddleY + 20); // Adjust paddle movement speed
+        setLeftPaddleY(leftPaddleY + 10); // Adjust paddle movement speed
         break;
       default:
         break;
@@ -173,7 +175,7 @@ const PongGame = () => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [leftPaddleY, rightPaddleY]);
+  }, []);
 
   return (
     <div>

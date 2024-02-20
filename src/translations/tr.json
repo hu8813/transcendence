@@ -1,6 +1,6 @@
 {
   "home": {
-    "welcome": "Ping Pong Oyununa Hoş Geldin!"
+    "welcome": "Pong Oyununa Hoş Geldin!"
   },
   "auth": {
     "email": "E-posta",
@@ -28,7 +28,8 @@
     "title": "Liderlik Tablosu"
   },
   "chat": {
-    "title": "Sohbet"
+    "title": "Sohbet",
+    "users": "Online Üyeler"
   },
   "common": {
     "home": "Anasayfa",
