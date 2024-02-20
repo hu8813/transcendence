@@ -81,7 +81,7 @@ const Register = () => {
     if (registerSuccess) {
       // Redirect to onboarding page after 2 seconds
       const timeout = setTimeout(() => {
-        window.location.href = "/onboarding";
+        window.location.href = "/login";
       }, 2000);
 
       // Clear timeout on component unmount
@@ -153,7 +153,7 @@ const Register = () => {
         ) : (
           <div className="register-success text-center">
             <h3>Registration Successful!</h3>
-            <p>Redirecting to onboarding page...</p>
+            <p>Redirecting to login page...</p>
           </div>
         )}
       </div>
