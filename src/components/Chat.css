@@ -1,0 +1,50 @@
+/* Chat.css */
+.user-list {
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
+
+.user-list h3 {
+  margin-top: 0;
+}
+
+.user {
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.chat-container {
+  border: 1px solid #ccc;
+  height: 400px; /* Set the height of chat container */
+  overflow-y: auto;
+}
+
+.message-wrapper {
+  clear: both;
+  margin-bottom: 10px;
+}
+
+.chat-bubble {
+  border-radius: 5px;
+  display: inline-block;
+  padding: 10px 18px;
+  margin: 10px;
+  max-width: 80%;
+}
+
+.message {
+  font-size: 14px;
+}
+
+.message-detail {
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.message-input {
+  margin-top: 20px;
+}

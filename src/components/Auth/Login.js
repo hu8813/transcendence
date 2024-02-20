@@ -13,7 +13,9 @@ const Login = ({ setLoggedIn }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [authCode, setAuthCode] = useState(null);
-  const [loginStatus, setLoginStatus] = useState("");
+  const [loginStatus, setLoginStatus] = useState(
+    "Before clicking Login please wait a bit, as Django backend is on Free server which must be waken up first.",
+  );
 
   useEffect(() => {
     fetchCsrfToken();
@@ -138,7 +140,7 @@ const Login = ({ setLoggedIn }) => {
                 name="username"
                 id="userName"
                 placeholder={t("auth.username")}
-                defaultValue="demo"
+                defaultValue="user42"
               />
             </div>
             <div className="form-field d-flex align-items-center">
@@ -148,7 +150,7 @@ const Login = ({ setLoggedIn }) => {
                 name="password"
                 id="pwd"
                 placeholder={t("auth.password")}
-                defaultValue="demo"
+                defaultValue="Pass@42"
               />
             </div>
             <Button type="submit" className="btn mt-3">
