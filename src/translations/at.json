@@ -24,7 +24,10 @@
     "title": "Spiel es!"
   },
   "leaderboard": {
-    "title": "Bestenliste"
+    "title": "Bestenliste",
+    "rank": "Rang",
+    "player": "Spieler",
+    "kudos": "Punkte"
   },
   "chat": {
     "title": "Chat"

@@ -13,7 +13,9 @@ const Login = ({ setLoggedIn }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [authCode, setAuthCode] = useState(null);
-  const [loginStatus, setLoginStatus] = useState("");
+  const [loginStatus, setLoginStatus] = useState(
+    "Before clicking Login please wait a bit, as Django backend is on Free server which must be waken up first.",
+  );
 
   useEffect(() => {
     fetchCsrfToken();

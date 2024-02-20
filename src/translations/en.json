@@ -26,7 +26,10 @@
     "title": "Play!"
   },
   "leaderboard": {
-    "title": "Leaderboard"
+    "title": "Leaderboard",
+    "rank": "Rank",
+    "player": "Player",
+    "kudos": "Points"
   },
   "chat": {
     "title": "Chat"
