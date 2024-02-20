@@ -23,7 +23,8 @@
     "acceptTerms": "i accept Terms & Conditions"
   },
   "game": {
-    "title": "Play!"
+    "title": "Play!",
+    "controls": "Left Player: W/S - Right Player: UP/DOWN"
   },
   "leaderboard": {
     "title": "Leaderboard",
