@@ -31,11 +31,8 @@ const Register = () => {
         const data = await response.text();
 
         // Inside handleRegister function after fetching response
-        if (data.includes("errorlist")) {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(data, "text/html");
-          const errorList = htmlDoc.getElementsByClassName("errorlist")[0];
-          const errorMessage = errorList.textContent.trim();
+        if (data.includes("Error occurred")) {
+          const errorMessage = data.substring(data.indexOf(":") + 1).trim();
 
           if (errorMessage.includes("already exists")) {
             setRegisterStatus(
@@ -43,9 +40,11 @@ const Register = () => {
             );
           } else {
             setRegisterStatus(errorMessage);
+            console.log("Register Status:", errorMessage);
           }
         } else {
           setRegisterStatus(data.trim());
+          console.log("Register Status:", data.trim());
           setUsername("");
           setPassword("");
           setConfirmPassword("");
