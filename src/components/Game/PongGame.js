@@ -6,14 +6,25 @@ const PongGame = () => {
 
   const canvasRef = useRef(null);
   const [context, setContext] = useState(null);
-  const [leftPaddleY, setLeftPaddleY] = useState(200);
-  const [rightPaddleY, setRightPaddleY] = useState(200);
-  const [ball, setBall] = useState({ x: 400, y: 300, vx: 3, vy: 3 });
+  const [leftPaddleY, setLeftPaddleY] = useState(250);
+  const [rightPaddleY, setRightPaddleY] = useState(250);
+  const [ball, setBall] = useState({ x: 400, y: 300, vx: 1.5, vy: 1.5 }); // Adjust velocity values for slower movement
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     setContext(ctx);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const canvas = canvasRef.current;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -114,9 +125,9 @@ const PongGame = () => {
       setBall({
         x: canvasRef.current.width / 2,
         y: canvasRef.current.height / 2,
-        vx: 3,
-        vy: 3,
-      });
+        vx: 1.5,
+        vy: 1.5,
+      }); // Adjust velocity values for slower movement
     }
   };
 
@@ -168,7 +179,7 @@ const PongGame = () => {
     <div>
       <h2>{t("game.title")}</h2>
       <p>{t("game.controls")}</p>
-      <canvas ref={canvasRef} width={800} height={600} />
+      <canvas ref={canvasRef} width={1800} height={600} />
     </div>
   );
 };
