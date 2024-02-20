@@ -30,7 +30,8 @@
     "kudos": "Punkte"
   },
   "chat": {
-    "title": "Chat"
+    "title": "Chat",
+    "users": "Online Users"
   },
   "common": {
     "home": "Startseite",

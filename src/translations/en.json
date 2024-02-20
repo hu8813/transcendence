@@ -32,7 +32,8 @@
     "kudos": "Points"
   },
   "chat": {
-    "title": "Chat"
+    "title": "Chat",
+    "users": "Online Users"
   },
   "common": {
     "home": "Home",
