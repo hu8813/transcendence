@@ -12,7 +12,6 @@ import i18n from "./i18n"; // Import the i18n configuration
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./components/Auth/Login";
-import Onboarding from "./components/Auth/Onboarding";
 import Register from "./components/Auth/Register";
 import PongGame from "./components/Game/PongGame";
 import Footer from "./components/Footer";

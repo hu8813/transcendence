@@ -41,10 +41,13 @@ const Register = () => {
           } else {
             setRegisterStatus(errorMessage);
             console.log("Register Status:", errorMessage);
+            //setLoggedIn(true); // Update isLoggedIn state if login is successful
           }
         } else {
           setRegisterStatus(data.trim());
           console.log("Register Status:", data.trim());
+          // Move this line outside of the else block
+          localStorage.setItem("isLoggedIn", true);
           setUsername("");
           setPassword("");
           setConfirmPassword("");

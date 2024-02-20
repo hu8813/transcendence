@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import i18n from "../../i18n";
 import { Form, Button, Container } from "react-bootstrap";
 import { FiUser } from "react-icons/fi";
-
+import axios from "axios";
 import "./Login.css";
 
 const Login = ({ setLoggedIn }) => {
@@ -19,6 +19,7 @@ const Login = ({ setLoggedIn }) => {
 
   useEffect(() => {
     fetchCsrfToken();
+    wakeUpBackend();
   }, []);
 
   const fetchCsrfToken = async () => {
@@ -30,6 +31,22 @@ const Login = ({ setLoggedIn }) => {
     } catch (error) {
       console.error("Error fetching CSRF token:", error);
       setCsrfToken("ns9y1mCcGwoeH5Sh4WTcJZfdg600L0nm");
+    }
+  };
+
+  const wakeUpBackend = async () => {
+    try {
+      // Define the URL of your Django backend's ping endpoint
+      const pingURL = "https://four2trans-backend.onrender.com/ping/";
+
+      // Send an HTTP GET request to the ping endpoint using axios
+      const response = await axios.get(pingURL);
+
+      // Log the response message to the console
+      console.log(response.data.message);
+    } catch (error) {
+      // Log any errors to the console
+      console.error("Error waking up server:", error);
     }
   };
 
