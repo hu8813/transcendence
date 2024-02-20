@@ -21,7 +21,8 @@
     "acceptTerms": "Ich akzeptiere die Geschäftsbedingungen"
   },
   "game": {
-    "title": "Spiel es!"
+    "title": "Spiel es!",
+    "controls": "Spieler links: W/S - Spieler rechts: UP/DOWN"
   },
   "leaderboard": {
     "title": "Bestenliste",

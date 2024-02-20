@@ -6,12 +6,9 @@ const PongGame = () => {
 
   const canvasRef = useRef(null);
   const [context, setContext] = useState(null);
-  const [leftPaddleY, setLeftPaddleY] = useState(250);
-  const [rightPaddleY, setRightPaddleY] = useState(250);
-  const [ballX, setBallX] = useState(400);
-  const [ballY, setBallY] = useState(300);
-  const [ballSpeedX, setBallSpeedX] = useState(5);
-  const [ballSpeedY, setBallSpeedY] = useState(5);
+  const [leftPaddleY, setLeftPaddleY] = useState(200);
+  const [rightPaddleY, setRightPaddleY] = useState(200);
+  const [ball, setBall] = useState({ x: 400, y: 300, vx: 3, vy: 3 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,114 +18,156 @@ const PongGame = () => {
 
   useEffect(() => {
     if (context) {
-      draw();
-      window.addEventListener("keydown", handleKeyDown);
+      const animate = () => {
+        update();
+        draw();
+        requestAnimationFrame(animate);
+      };
+
+      animate();
+
       return () => {
-        window.removeEventListener("keydown", handleKeyDown);
+        cancelAnimationFrame(animate);
       };
     }
-  }, [context]);
-
-  useEffect(() => {
-    const animate = () => {
-      update();
-      draw();
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      cancelAnimationFrame(animate);
-    };
-  }, []);
+  }, [context, leftPaddleY, rightPaddleY, ball]);
 
   const draw = () => {
-    if (context) {
+    if (context && canvasRef.current) {
       context.clearRect(
         0,
         0,
         canvasRef.current.width,
         canvasRef.current.height,
       );
-
-      // Draw paddles
-      context.fillStyle = "#fff";
-      context.fillRect(50, leftPaddleY, 20, 100); // Left paddle
-      context.fillRect(canvasRef.current.width - 70, rightPaddleY, 20, 100); // Right paddle
-
-      // Draw ball
-      context.beginPath();
-      context.arc(ballX, ballY, 10, 0, Math.PI * 2);
-      context.fillStyle = "#fff";
-      context.fill();
-      context.closePath();
+      drawMiddleLine();
+      drawBall();
+      drawPaddles();
     }
   };
 
+  const drawMiddleLine = () => {
+    context.lineWidth = 3;
+    context.strokeStyle = "rgb(255, 255, 255)";
+    context.beginPath();
+    context.moveTo(canvasRef.current.width / 2, 10);
+    context.lineTo(canvasRef.current.width / 2, canvasRef.current.height - 10);
+    context.closePath();
+    context.stroke();
+  };
+
+  const drawBall = () => {
+    context.beginPath();
+    context.fillStyle = "white";
+    context.arc(ball.x, ball.y, 10, 0, Math.PI * 2, true);
+    context.fill();
+  };
+
+  const drawPaddles = () => {
+    context.fillStyle = "#fff";
+    context.fillRect(50, leftPaddleY, 20, 100); // Left paddle
+    context.fillRect(canvasRef.current.width - 70, rightPaddleY, 20, 100); // Right paddle
+  };
+
   const update = () => {
-    if (canvasRef.current) {
-      setBallX(ballX + ballSpeedX);
-      setBallY(ballY + ballSpeedY);
+    moveBall();
+    movePaddles();
+  };
 
-      // Check collision with top and bottom walls
-      if (
-        ballY + ballSpeedY > canvasRef.current.height - 10 ||
-        ballY + ballSpeedY < 10
-      ) {
-        setBallSpeedY(-ballSpeedY);
-      }
+  const moveBall = () => {
+    setBall((prevBall) => ({
+      ...prevBall,
+      x: prevBall.x + prevBall.vx,
+      y: prevBall.y + prevBall.vy,
+    }));
 
-      // Check collision with paddles
-      if (
-        (ballX + ballSpeedX < 70 &&
-          ballY + ballSpeedY > leftPaddleY &&
-          ballY + ballSpeedY < leftPaddleY + 100) ||
-        (ballX + ballSpeedX > canvasRef.current.width - 90 &&
-          ballY + ballSpeedY > rightPaddleY &&
-          ballY + ballSpeedY < rightPaddleY + 100)
-      ) {
-        setBallSpeedX(-ballSpeedX);
-      }
+    handleBallCollision();
+  };
 
-      // Check if ball goes out of bounds
-      if (
-        ballX + ballSpeedX > canvasRef.current.width - 10 ||
-        ballX + ballSpeedX < 10
-      ) {
-        // Reset ball position
-        setBallX(canvasRef.current.width / 2);
-        setBallY(canvasRef.current.height / 2);
-      }
+  const handleBallCollision = () => {
+    // Handle collision with top and bottom walls
+    if (
+      ball.y + ball.vy > canvasRef.current.height - 10 ||
+      ball.y + ball.vy < 10
+    ) {
+      setBall((prevBall) => ({ ...prevBall, vy: -prevBall.vy }));
+    }
+
+    // Handle collision with paddles
+    if (
+      (ball.x + ball.vx < 70 &&
+        ball.y > leftPaddleY &&
+        ball.y < leftPaddleY + 100) ||
+      (ball.x + ball.vx > canvasRef.current.width - 70 &&
+        ball.y > rightPaddleY &&
+        ball.y < rightPaddleY + 100)
+    ) {
+      setBall((prevBall) => ({ ...prevBall, vx: -prevBall.vx }));
+    }
+
+    // Check if ball goes out of bounds
+    if (
+      ball.x + ball.vx > canvasRef.current.width - 10 ||
+      ball.x + ball.vx < 10
+    ) {
+      // Reset ball position
+      setBall({
+        x: canvasRef.current.width / 2,
+        y: canvasRef.current.height / 2,
+        vx: 3,
+        vy: 3,
+      });
+    }
+  };
+
+  const movePaddles = () => {
+    // Move paddles based on key press
+    // Left paddle
+    if (leftPaddleY < 0) {
+      setLeftPaddleY(0);
+    } else if (leftPaddleY > canvasRef.current.height - 100) {
+      setLeftPaddleY(canvasRef.current.height - 100);
+    }
+
+    // Right paddle
+    if (rightPaddleY < 0) {
+      setRightPaddleY(0);
+    } else if (rightPaddleY > canvasRef.current.height - 100) {
+      setRightPaddleY(canvasRef.current.height - 100);
     }
   };
 
   const handleKeyDown = (event) => {
     switch (event.code) {
-      case "ArrowUp":
-        setLeftPaddleY(Math.max(leftPaddleY - 20, 0));
-        break;
       case "ArrowDown":
-        setLeftPaddleY(
-          Math.min(leftPaddleY + 20, canvasRef.current.height - 100),
-        );
+        setRightPaddleY(rightPaddleY + 20); // Adjust paddle movement speed
+        break;
+      case "ArrowUp":
+        setRightPaddleY(rightPaddleY - 20); // Adjust paddle movement speed
         break;
       case "KeyW":
-        setRightPaddleY(Math.max(rightPaddleY - 20, 0));
+        setLeftPaddleY(leftPaddleY - 20); // Adjust paddle movement speed
         break;
       case "KeyS":
-        setRightPaddleY(
-          Math.min(rightPaddleY + 20, canvasRef.current.height - 100),
-        );
+        setLeftPaddleY(leftPaddleY + 20); // Adjust paddle movement speed
         break;
       default:
         break;
     }
   };
 
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [leftPaddleY, rightPaddleY]);
+
   return (
     <div>
       <h2>{t("game.title")}</h2>
+      <p>{t("game.controls")}</p>
       <canvas ref={canvasRef} width={800} height={600} />
     </div>
   );
