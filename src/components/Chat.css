@@ -1,26 +1,35 @@
+/* Chat container */
 .msger {
   margin: 20px;
-  height: 300px;
   border-radius: 10px;
   background: #000000;
   overflow: hidden;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column; /* Ensure vertical layout */
+  flex-direction: column;
+  height: 100%; /* Set chat container height to fill parent */
+}
+
+.msger-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #808080; /* Change to gray */
+  color: white;
 }
 
 .msger-chat {
-  padding: 10px;
+  flex: 1;
   overflow-y: auto;
-  flex: 1; /* Take remaining space */
-}
-
-.msger-chat {
-  padding: 10px;
-  overflow-y: auto;
+  height: 300px; /* Adjust as needed */
 }
 
 /* Messages */
+.msg-wrapper {
+  display: flex;
+  flex-direction: column-reverse; /* Reverse the order of messages */
+}
+
 .msg {
   display: flex;
   align-items: flex-end;
@@ -29,10 +38,10 @@
 
 /* Bubble */
 .msg-bubble {
-  max-width: 600px;
+  max-width: 300px;
   padding: 15px;
   border-radius: 15px;
-  background: rgb(24, 23, 23);
+  background: white;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   color: black;
 }
@@ -62,8 +71,28 @@
   margin-right: auto;
 }
 
-.msg-wrapper {
-  padding: 10px; /* Add padding to the message wrapper */
-  overflow-y: auto; /* Enable vertical scrolling for overflow */
-  flex-grow: 1; /* Allow the wrapper to grow and fill available space */
+/* Input area */
+.msger-inputarea {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #f0f0f0;
+}
+
+.msger-input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.msger-send-btn {
+  background-color: #0084ff; /* Change to blue */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.msger-send-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
