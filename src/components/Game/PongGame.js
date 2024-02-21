@@ -153,16 +153,16 @@ const PongGame = () => {
   const handleKeyDown = (event) => {
     switch (event.code) {
       case "ArrowDown":
-        setRightPaddleY(rightPaddleY + 10); // Adjust paddle movement speed
+        setRightPaddleY(rightPaddleY + 10);
         break;
       case "ArrowUp":
-        setRightPaddleY(rightPaddleY - 10); // Adjust paddle movement speed
+        setRightPaddleY(rightPaddleY - 10);
         break;
       case "KeyW":
-        setLeftPaddleY(leftPaddleY - 10); // Adjust paddle movement speed
+        setLeftPaddleY(leftPaddleY - 10);
         break;
       case "KeyS":
-        setLeftPaddleY(leftPaddleY + 10); // Adjust paddle movement speed
+        setLeftPaddleY(leftPaddleY + 10);
         break;
       default:
         break;

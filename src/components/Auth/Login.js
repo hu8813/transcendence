@@ -91,7 +91,7 @@ const Login = ({ setLoggedIn }) => {
         console.log("Access Token:", accessToken);
 
         // Redirect to /game after successful login
-        window.location.href = "/game";
+        window.location.href = "/leaderboard";
       })
       .catch((error) => {
         console.error(
@@ -119,7 +119,7 @@ const Login = ({ setLoggedIn }) => {
       if (data.trim() === "Login successful") {
         setLoggedIn(true); // Update isLoggedIn state if login is successful
         localStorage.setItem("isLoggedIn", true); // Set isLoggedIn to true in local storage
-        navigate("/game"); // Redirect to /game route after successful login
+        navigate("/leaderboard"); // Redirect to /game route after successful login
       }
     } catch (error) {
       console.error("Error logging in:", error);
