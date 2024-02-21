@@ -55,29 +55,14 @@ const Chat = () => {
     setInputText("");
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit(event);
+    }
+  };
+
   return (
     <div className="msger">
-      <header className="msger-header">
-        <br /> <br /> <br />
-        <div className="msger-inputarea">
-          <br /> <br /> <br />
-          <input
-            type="text"
-            className="msger-input"
-            placeholder="Enter your message..."
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-          />
-          <button
-            type="submit"
-            className="msger-send-btn"
-            onClick={handleSubmit}
-          >
-            Send
-          </button>
-        </div>
-      </header>
-
       <main className="msger-chat">
         <div className="msg-wrapper">
           {messages.map((msg, index) => (
@@ -97,9 +82,29 @@ const Chat = () => {
               </div>
             </div>
           ))}
+          <div ref={messagesEndRef} />
         </div>
-        <div ref={messagesEndRef} />
       </main>
+
+      <header className="msger-header">
+        <div className="msger-inputarea">
+          <input
+            type="text"
+            className="msger-input"
+            placeholder="Enter your message..."
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+            onKeyPress={handleKeyPress} // Call handleKeyPress on key press
+          />
+          <button
+            type="submit"
+            className="msger-send-btn"
+            onClick={handleSubmit}
+          >
+            Send
+          </button>
+        </div>
+      </header>
 
       <aside className="msger-users">
         <h2>Online Users</h2>

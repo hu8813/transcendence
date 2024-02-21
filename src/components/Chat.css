@@ -1,44 +1,50 @@
+/* Chat container */
 .msger {
   margin: 20px;
-  height: 300px;
+  height: 500px; /* Adjust the height as needed */
   border-radius: 10px;
   background: #000000;
   overflow: hidden;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+.msger-header {
   display: flex;
-  flex-direction: column; /* Ensure vertical layout */
+  justify-content: space-between;
+  padding: 10px;
+  background: #808080; /* Change to gray */
+  color: white;
 }
 
 .msger-chat {
   padding: 10px;
   overflow-y: auto;
-  flex: 1; /* Take remaining space */
+  height: 80%; /* Adjust the height as needed */
 }
 
-.msger-chat {
-  padding: 10px;
-  overflow-y: auto;
+.msg-wrapper {
+  display: table;
+  width: 100%;
 }
 
 /* Messages */
 .msg {
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: 20px;
+  display: table-row;
 }
 
 /* Bubble */
 .msg-bubble {
-  max-width: 600px;
+  max-width: 300px;
   padding: 15px;
   border-radius: 15px;
-  background: rgb(24, 23, 23);
+  background: white;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   color: black;
 }
 
 /* Avatar */
 .msg-img {
+  display: table-cell;
   width: 50px;
   height: 50px;
   margin-right: 10px;
@@ -62,8 +68,22 @@
   margin-right: auto;
 }
 
-.msg-wrapper {
-  padding: 10px; /* Add padding to the message wrapper */
-  overflow-y: auto; /* Enable vertical scrolling for overflow */
-  flex-grow: 1; /* Allow the wrapper to grow and fill available space */
+/* Online users */
+.msger-users {
+  padding: 10px;
+  background: #000000;
+  border-left: 1px solid #ddd;
+}
+
+.msger-users h2 {
+  margin-bottom: 10px;
+}
+
+.msger-users ul {
+  list-style: none;
+  padding: 0;
+}
+
+.msger-users li {
+  margin-bottom: 5px;
 }
