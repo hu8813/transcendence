@@ -3,9 +3,7 @@
 ## Work in Process..
 
 # Frontend: React
-
+https://transcendence-beige.vercel.app/
 
 # Backend: Django
-
-
-https://transcendence-beige.vercel.app/
+https://github.com/hu8813/transcendence_backend
