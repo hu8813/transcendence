@@ -8,6 +8,9 @@ https://transcendence-beige.vercel.app/
 # Backend: Django
 https://github.com/hu8813/transcendence_backend
 
-# Smart Contract Testnet planned to use
-Sepolia on Ethereum
+# Saving Leaderboard on Blockchain
+Sepolia Testnet on Ethereum 
+Contract created via
 
+https://remix.ethereum.org/  
+Env: Remix VM - Sepolia fork

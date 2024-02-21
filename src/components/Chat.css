@@ -1,50 +1,69 @@
-/* Chat.css */
-.user-list {
+.msger {
+  margin: 20px;
+  height: 300px;
+  border-radius: 10px;
+  background: #000000;
+  overflow: hidden;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column; /* Ensure vertical layout */
+}
+
+.msger-chat {
   padding: 10px;
-  border-right: 1px solid #ccc;
+  overflow-y: auto;
+  flex: 1; /* Take remaining space */
 }
 
-.user-list h3 {
-  margin-top: 0;
-}
-
-.user {
-  padding: 5px 0;
-  cursor: pointer;
-}
-
-.chat-container {
-  border: 1px solid #ccc;
-  height: 400px; /* Set the height of chat container */
+.msger-chat {
+  padding: 10px;
   overflow-y: auto;
 }
 
-.message-wrapper {
-  clear: both;
-  margin-bottom: 10px;
+/* Messages */
+.msg {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 20px;
 }
 
-.chat-bubble {
-  border-radius: 5px;
-  display: inline-block;
-  padding: 10px 18px;
-  margin: 10px;
-  max-width: 80%;
+/* Bubble */
+.msg-bubble {
+  max-width: 600px;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgb(24, 23, 23);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  color: black;
 }
 
-.message {
-  font-size: 14px;
+/* Avatar */
+.msg-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-size: cover;
 }
 
-.message-detail {
-  white-space: nowrap;
-  font-size: 12px;
+/* Person message */
+.right-msg .msg-bubble {
+  margin-left: auto;
+  background: #808080; /* Change to gray */
+  color: white;
 }
 
-.bold {
-  font-weight: bold;
+.right-msg .msg-info-name {
+  color: white;
 }
 
-.message-input {
-  margin-top: 20px;
+/* BOT message */
+.left-msg .msg-bubble {
+  margin-right: auto;
+}
+
+.msg-wrapper {
+  padding: 10px; /* Add padding to the message wrapper */
+  overflow-y: auto; /* Enable vertical scrolling for overflow */
+  flex-grow: 1; /* Allow the wrapper to grow and fill available space */
 }
