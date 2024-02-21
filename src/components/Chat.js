@@ -1,69 +1,123 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { Container, Row, Col, Form, Button, Table } from "react-bootstrap";
+import React, { useState, useRef, useEffect } from "react";
+import "./Chat.css";
+
+const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
+const PERSON_NAME = "user42";
 
 const Chat = () => {
-  const { t } = useTranslation();
+  const [messages, setMessages] = useState([
+    {
+      name: PERSON_NAME,
+      img: PERSON_IMG,
+      side: "right",
+      text: "Hello!",
+      time: formatDate(new Date()),
+    },
+    {
+      name: PERSON_NAME,
+      img: PERSON_IMG,
+      side: "right",
+      text: "How are you?",
+      time: formatDate(new Date()),
+    },
+    {
+      name: PERSON_NAME,
+      img: PERSON_IMG,
+      side: "right",
+      text: "Is anyone there?",
+      time: formatDate(new Date()),
+    },
+  ]);
+  const [inputText, setInputText] = useState("");
+  const [onlineUsers, setOnlineUsers] = useState(["John", "Alice", "Bob"]); // Example online users
 
-  // Sample data for users and messages
-  const chatData = [
-    { user: "User1", message: "Hello, how are you?", time: "10:00 AM" },
-    { user: "User2", message: "Hi, I'm fine, thank you!", time: "10:05 AM" },
-    { user: "User3", message: "Hey there!", time: "10:10 AM" },
-    { user: "User4", message: "What's up?", time: "10:15 AM" },
-    { user: "User5", message: "Not much, just chilling.", time: "10:20 AM" },
-  ];
+  const messagesEndRef = useRef(null);
 
-  // Sample data for logged-in users
-  const loggedInUsers = ["User1", "User2", "User3", "User4", "User5"];
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(scrollToBottom, [messages]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!inputText.trim()) return;
+
+    const newMessage = {
+      name: PERSON_NAME,
+      img: PERSON_IMG,
+      side: "right",
+      text: inputText,
+      time: formatDate(new Date()),
+    };
+    setMessages([...messages, newMessage]);
+    setInputText("");
+  };
 
   return (
-    <Container className="mt-4">
-      <Row>
-        <Col md={8}>
-          <div className="chat-container">
-            <h2>{t("chat.title")}</h2>
-            {/* Render each message in the chat */}
-            <Table striped bordered hover>
-              <tbody>
-                {chatData.map((entry, index) => (
-                  <tr key={index}>
-                    <td className="username">{entry.user}</td>
-                    <td>{entry.message}</td>
-                    <td className="message-time">{entry.time}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-            {/* Form for sending messages */}
-            <Form>
-              <Form.Group controlId="messageInput">
-                <Form.Control type="text" placeholder="Type your message..." />
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Send
-              </Button>
-            </Form>
-          </div>
-        </Col>
-        <Col md={4}>
-          <div className="user-list">
-            <h3>{t("chat.users")}</h3>
-            {/* Table to display logged-in users */}
-            <Table striped bordered hover>
-              <tbody>
-                {loggedInUsers.map((user, index) => (
-                  <tr key={index}>
-                    <td>{user}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </div>
-        </Col>
-      </Row>
-    </Container>
+    <div className="msger">
+      <header className="msger-header">
+        <br /> <br /> <br />
+        <div className="msger-inputarea">
+          <br /> <br /> <br />
+          <input
+            type="text"
+            className="msger-input"
+            placeholder="Enter your message..."
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="msger-send-btn"
+            onClick={handleSubmit}
+          >
+            Send
+          </button>
+        </div>
+      </header>
+
+      <main className="msger-chat">
+        <div className="msg-wrapper">
+          {messages.map((msg, index) => (
+            <div key={index} className={`msg ${msg.side}-msg`}>
+              <div
+                className="msg-img"
+                style={{ backgroundImage: `url(${msg.img})` }}
+              ></div>
+
+              <div className="msg-bubble">
+                <div className="msg-info">
+                  <div className="msg-info-name">{msg.name}</div>
+                  <div className="msg-info-time">{msg.time}</div>
+                </div>
+
+                <div className="msg-text">{msg.text}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div ref={messagesEndRef} />
+      </main>
+
+      <aside className="msger-users">
+        <h2>Online Users</h2>
+        <ul>
+          {onlineUsers.map((user, index) => (
+            <li key={index}>{user}</li>
+          ))}
+        </ul>
+      </aside>
+    </div>
   );
 };
+
+// Utility function
+function formatDate(date) {
+  const h = "0" + date.getHours();
+  const m = "0" + date.getMinutes();
+  return `${h.slice(-2)}:${m.slice(-2)}`;
+}
 
 export default Chat;
