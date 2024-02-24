@@ -81,8 +81,6 @@ const Chat = () => {
                 {msg.time} {msg.name}: {msg.text}
               </div>
             </div>
-
-            <div className="msg-text"></div>
           </div>
         ))}
       </main>

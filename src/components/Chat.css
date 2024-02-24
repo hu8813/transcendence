@@ -19,9 +19,8 @@
 }
 
 .msger-chat {
-  flex: 1;
   overflow-y: auto;
-  height: 300px; /* Adjust as needed */
+  max-height: 300px; /* Adjust this value as needed */
 }
 
 /* Messages */

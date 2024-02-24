@@ -13,7 +13,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
-import PongGame from "./components/Game/PongGame";
+import StartGame from "./components/Game/StartGame";
 import Footer from "./components/Footer";
 import Leaderboard from "./components/Leaderboard";
 import Chat from "./components/Chat";
@@ -35,7 +35,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route
               path="/game"
-              element={isLoggedIn ? <PongGame /> : <Navigate to="/login" />}
+              element={isLoggedIn ? <StartGame /> : <Navigate to="/login" />}
             />
             <Route
               path="/chat"
