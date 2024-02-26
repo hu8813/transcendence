@@ -20,7 +20,8 @@
     "passwordMismatch": "Password empty/invalid",
     "confirmPassword": "Confirm password",
     "termsAndConditions": "Terms & Conditions",
-    "acceptTerms": "i accept Terms & Conditions"
+    "acceptTerms": "i accept Terms & Conditions",
+    "profile": "Profile"
   },
   "game": {
     "title": "Play!",

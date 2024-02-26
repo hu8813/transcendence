@@ -19,7 +19,8 @@
     "passwordMismatch": "Şifre boş/geçersiz",
     "confirmPassword": "Şifreyi Onayla",
     "termsAndConditions": "Koşullar ve Şartlar",
-    "acceptTerms": "Şartları ve Koşulları Kabul Ediyorum"
+    "acceptTerms": "Şartları ve Koşulları Kabul Ediyorum",
+    "profile": "Profil"
   },
   "game": {
     "title": "Oyna!"

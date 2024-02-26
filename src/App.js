@@ -16,6 +16,7 @@ import Register from "./components/Auth/Register";
 import StartGame from "./components/Game/StartGame";
 import Footer from "./components/Footer";
 import Leaderboard from "./components/Leaderboard";
+import Profile from "./components/Auth/Profile";
 import Chat from "./components/Chat";
 
 const App = () => {
@@ -44,6 +45,10 @@ const App = () => {
             <Route
               path="/leaderboard"
               element={isLoggedIn ? <Leaderboard /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/profile"
+              element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
             />
           </Routes>
           <Footer />

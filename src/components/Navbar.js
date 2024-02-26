@@ -87,6 +87,10 @@ const Navbar = ({ isLoggedIn: initialIsLoggedIn, setLoggedIn }) => {
                 <FiGlobe className="mr-2" />
                 {t("leaderboard.title")}
               </Link>
+              <Link to="/profile" className="nav-link">
+                <FiGlobe className="mr-2" />
+                {t("auth.profile")}
+              </Link>
               <Button
                 variant="link"
                 className="nav-link"

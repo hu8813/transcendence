@@ -18,7 +18,8 @@
     "passwordMismatch": "Passwort leer/ungültig",
     "confirmPassword": "Passwort bestätigen",
     "termsAndConditions": "Geschäftsbedingungen",
-    "acceptTerms": "Ich akzeptiere die Geschäftsbedingungen"
+    "acceptTerms": "Ich akzeptiere die Geschäftsbedingungen",
+    "profile": "Profil"
   },
   "game": {
     "title": "Spiel es!",
