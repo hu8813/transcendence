@@ -14,6 +14,7 @@ import Home from "./pages/Home";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import StartGame from "./components/Game/StartGame";
+import PongGame from "./components/Game/PongGame";
 import Footer from "./components/Footer";
 import Leaderboard from "./components/Leaderboard";
 import Profile from "./components/Auth/Profile";

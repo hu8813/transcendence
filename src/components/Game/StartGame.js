@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PongGame from "./PongGame";
+
 import {
   IoGameControllerOutline,
   IoGameControllerSharp,
@@ -16,21 +18,19 @@ const StartGame = () => {
 
   return (
     <div className="container mt-5 text-center">
-      {" "}
-      {/* Updated to include text-center class */}
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <h1 className="mb-4">Select a Game:</h1>{" "}
-          {/* Removed text-center class */}
+          <h1 className="mb-4">Select a Game:</h1>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
-              <button
-                className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
-                onClick={() => handleGameSelection("PongGame")}
-              >
-                <span>Standart Game (2 Players locally)</span>
-                <IoGameControllerOutline />
-              </button>
+              <Link to="/ponggame">
+                <button
+                  className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
+                  onClick={() => handleGameSelection("PongGame")}
+                >
+                  <span>Standard Game (2 Players locally)</span>
+                </button>
+              </Link>
             </li>
             <li className="list-group-item">
               <button
