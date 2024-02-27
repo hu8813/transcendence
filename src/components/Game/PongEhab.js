@@ -6,8 +6,8 @@ const Pong = () => {
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
-        canvas.width = 800;
-        canvas.height = 400;
+        canvas.width = 1000;
+        canvas.height = 730;
 
         let ball = {
             x: canvas.width / 2,
@@ -20,22 +20,63 @@ const Pong = () => {
         };
 
         let player = {
-            x: 0, // links vom Canvas
-            y: (canvas.height - 100) / 2, // -100 ist die Höhe des Schlägers
+            x: 0,
+            y: (canvas.height - 100) / 2,
             width: 10,
             height: 100,
             score: 0,
-            color: "#fff"
+            color: "#fff",
+            moveUp: false,
+            moveDown: false
         };
 
         let computer = {
-            x: canvas.width - 10, // rechts vom Canvas
-            y: (canvas.height - 100) / 2, // -100 ist die Höhe des Schlägers
+            x: canvas.width - 10,
+            y: (canvas.height - 100) / 2,
             width: 10,
             height: 100,
             score: 0,
-            color: "#fff"
+            color: "#fff",
+            moveUp: false,
+            moveDown: false
         };
+
+        const keyDownHandler = (event) => {
+            switch(event.key) {
+                case 'w':
+                    player.moveUp = true;
+                    break;
+                case 's':
+                    player.moveDown = true;
+                    break;
+                case 'ArrowUp':
+                    computer.moveUp = true;
+                    break;
+                case 'ArrowDown':
+                    computer.moveDown = true;
+                    break;
+            }
+        };
+
+        const keyUpHandler = (event) => {
+            switch(event.key) {
+                case 'w':
+                    player.moveUp = false;
+                    break;
+                case 's':
+                    player.moveDown = false;
+                    break;
+                case 'ArrowUp':
+                    computer.moveUp = false;
+                    break;
+                case 'ArrowDown':
+                    computer.moveDown = false;
+                    break;
+            }
+        };
+
+        document.addEventListener('keydown', keyDownHandler);
+        document.addEventListener('keyup', keyUpHandler);
 
         const drawRect = (x, y, w, h, color) => {
             ctx.fillStyle = color;
@@ -58,12 +99,22 @@ const Pong = () => {
         };
 
         const update = () => {
+            if(player.moveUp && player.y > 0) {
+                player.y -= 10;
+            }
+            if(player.moveDown && (player.y + player.height) < canvas.height) {
+                player.y += 10;
+            }
+            if(computer.moveUp && computer.y > 0) {
+                computer.y -= 10;
+            }
+            if(computer.moveDown && (computer.y + computer.height) < canvas.height) {
+                computer.y += 10;
+            }
+
             ball.x += ball.velocityX;
             ball.y += ball.velocityY;
 
-            let computerLevel = 0.1;
-            computer.y += (ball.y - (computer.y + computer.height / 2)) * computerLevel;
-            
             if(ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
                 ball.velocityY = -ball.velocityY;
             }
@@ -72,13 +123,13 @@ const Pong = () => {
             if(collision(ball, playerOrComputer)) {
                 let collidePoint = (ball.y - (playerOrComputer.y + playerOrComputer.height / 2));
                 collidePoint = collidePoint / (playerOrComputer.height / 2);
-                
+
                 let angleRad = (Math.PI / 4) * collidePoint;
-                
+
                 let direction = (ball.x < canvas.width / 2) ? 1 : -1;
                 ball.velocityX = direction * ball.speed * Math.cos(angleRad);
                 ball.velocityY = ball.speed * Math.sin(angleRad);
-                
+
                 ball.speed += 0.1;
             }
 
@@ -96,12 +147,12 @@ const Pong = () => {
             b.bottom = b.y + b.radius;
             b.left = b.x - b.radius;
             b.right = b.x + b.radius;
-            
+
             p.top = p.y;
             p.bottom = p.y + p.height;
             p.left = p.x;
             p.right = p.x + p.width;
-            
+
             return b.right > p.left && b.bottom > p.top && b.left < p.right && b.top < p.bottom;
         };
 
@@ -122,6 +173,8 @@ const Pong = () => {
 
         return () => {
             clearInterval(interval);
+            document.removeEventListener('keydown', keyDownHandler);
+            document.removeEventListener('keyup', keyUpHandler);
         };
     }, []);
 
