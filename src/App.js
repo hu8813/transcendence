@@ -16,6 +16,9 @@ import Register from "./components/Auth/Register";
 import StartGame from "./components/Game/StartGame";
 import PongGame from "./components/Game/PongGame";
 import PongEhab from "./components/Game/PongEhab";
+import Player3D1 from "./components/Game/Player3D1";
+import Playerai1 from "./components/Game/PlayerAi1";
+import Playersremote2 from "./components/Game/PlayersRemote2";
 import Footer from "./components/Footer";
 import Leaderboard from "./components/Leaderboard";
 import Profile from "./components/Auth/Profile";
@@ -55,6 +58,18 @@ const App = () => {
             <Route
               path="/ponggame"
               element={isLoggedIn ? <PongGame /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/player3d1"
+              element={isLoggedIn ? <Player3D1 /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/playerai1"
+              element={isLoggedIn ? <Playerai1 /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/playersremote2"
+              element={isLoggedIn ? <Playersremote2 /> : <Navigate to="/login" />}
             />
             <Route
               path="/profile"
