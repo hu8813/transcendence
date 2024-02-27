@@ -15,6 +15,7 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import StartGame from "./components/Game/StartGame";
 import PongGame from "./components/Game/PongGame";
+import PongEhab from "./components/Game/PongEhab";
 import Footer from "./components/Footer";
 import Leaderboard from "./components/Leaderboard";
 import Profile from "./components/Auth/Profile";
@@ -46,6 +47,14 @@ const App = () => {
             <Route
               path="/leaderboard"
               element={isLoggedIn ? <Leaderboard /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/pongehab"
+              element={isLoggedIn ? <PongEhab /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/ponggame"
+              element={isLoggedIn ? <PongGame /> : <Navigate to="/login" />}
             />
             <Route
               path="/profile"

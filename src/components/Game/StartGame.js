@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PongGame from "./PongGame";
+import PongEhab from "./PongEhab";
 
 import {
   IoGameControllerOutline,
@@ -29,6 +30,16 @@ const StartGame = () => {
                   onClick={() => handleGameSelection("PongGame")}
                 >
                   <span>Standard Game (2 Players locally)</span>
+                </button>
+              </Link>
+            </li>
+            <li className="list-group-item">
+              <Link to="/pongehab">
+                <button
+                  className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
+                  onClick={() => handleGameSelection("PongGame")}
+                >
+                  <span>Standard Game (2 Players locally) version ehab</span>
                 </button>
               </Link>
             </li>
