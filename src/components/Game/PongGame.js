@@ -1,189 +1,131 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
+import React, { useEffect, useRef } from 'react';
 
-const PongGame = () => {
-  const { t } = useTranslation();
+const Pong = () => {
+    const canvasRef = useRef(null);
 
-  const canvasRef = useRef(null);
-  const [context, setContext] = useState(null);
-  const [leftPaddleY, setLeftPaddleY] = useState(250);
-  const [rightPaddleY, setRightPaddleY] = useState(250);
-  const [ball, setBall] = useState({ x: 400, y: 300, vx: 1, vy: 1 }); // Adjust initial velocity
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        canvas.width = 800;
+        canvas.height = 400;
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    setContext(ctx);
-  }, []);
+        let ball = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            radius: 10,
+            velocityX: 5,
+            velocityY: 5,
+            speed: 7,
+            color: "#fff"
+        };
 
-  useEffect(() => {
-    const handleResize = () => {
-      const canvas = canvasRef.current;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
+        let player = {
+            x: 0, // links vom Canvas
+            y: (canvas.height - 100) / 2, // -100 ist die Höhe des Schlägers
+            width: 10,
+            height: 100,
+            score: 0,
+            color: "#fff"
+        };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+        let computer = {
+            x: canvas.width - 10, // rechts vom Canvas
+            y: (canvas.height - 100) / 2, // -100 ist die Höhe des Schlägers
+            width: 10,
+            height: 100,
+            score: 0,
+            color: "#fff"
+        };
 
-  useEffect(() => {
-    if (context) {
-      const animate = () => {
-        update();
-        draw();
-        requestAnimationFrame(animate);
-      };
+        const drawRect = (x, y, w, h, color) => {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, w, h);
+        };
 
-      animate();
+        const drawArc = (x, y, r, color) => {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI*2, true);
+            ctx.closePath();
+            ctx.fill();
+        };
 
-      return () => {
-        cancelAnimationFrame(animate);
-      };
-    }
-  }, [context, leftPaddleY, rightPaddleY, ball]);
+        const resetBall = () => {
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height / 2;
+            ball.velocityX = -ball.velocityX;
+            ball.speed = 7;
+        };
 
-  const draw = () => {
-    if (context && canvasRef.current) {
-      context.clearRect(
-        0,
-        0,
-        canvasRef.current.width,
-        canvasRef.current.height,
-      );
-      drawMiddleLine();
-      drawBall();
-      drawPaddles();
-    }
-  };
+        const update = () => {
+            ball.x += ball.velocityX;
+            ball.y += ball.velocityY;
 
-  const drawMiddleLine = () => {
-    context.lineWidth = 3;
-    context.strokeStyle = "rgb(255, 255, 255)";
-    context.beginPath();
-    context.moveTo(canvasRef.current.width / 2, 10);
-    context.lineTo(canvasRef.current.width / 2, canvasRef.current.height - 10);
-    context.closePath();
-    context.stroke();
-  };
+            let computerLevel = 0.1;
+            computer.y += (ball.y - (computer.y + computer.height / 2)) * computerLevel;
+            
+            if(ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
+                ball.velocityY = -ball.velocityY;
+            }
 
-  const drawBall = () => {
-    context.beginPath();
-    context.fillStyle = "white";
-    context.arc(ball.x, ball.y, 10, 0, Math.PI * 2, true);
-    context.fill();
-  };
+            let playerOrComputer = (ball.x < canvas.width / 2) ? player : computer;
+            if(collision(ball, playerOrComputer)) {
+                let collidePoint = (ball.y - (playerOrComputer.y + playerOrComputer.height / 2));
+                collidePoint = collidePoint / (playerOrComputer.height / 2);
+                
+                let angleRad = (Math.PI / 4) * collidePoint;
+                
+                let direction = (ball.x < canvas.width / 2) ? 1 : -1;
+                ball.velocityX = direction * ball.speed * Math.cos(angleRad);
+                ball.velocityY = ball.speed * Math.sin(angleRad);
+                
+                ball.speed += 0.1;
+            }
 
-  const drawPaddles = () => {
-    context.fillStyle = "#fff";
-    context.fillRect(50, leftPaddleY, 20, 100); // Left paddle
-    context.fillRect(canvasRef.current.width - 70, rightPaddleY, 20, 100); // Right paddle
-  };
+            if(ball.x - ball.radius < 0) {
+                computer.score++;
+                resetBall();
+            } else if(ball.x + ball.radius > canvas.width) {
+                player.score++;
+                resetBall();
+            }
+        };
 
-  const update = () => {
-    moveBall();
-    movePaddles();
-  };
+        const collision = (b, p) => {
+            b.top = b.y - b.radius;
+            b.bottom = b.y + b.radius;
+            b.left = b.x - b.radius;
+            b.right = b.x + b.radius;
+            
+            p.top = p.y;
+            p.bottom = p.y + p.height;
+            p.left = p.x;
+            p.right = p.x + p.width;
+            
+            return b.right > p.left && b.bottom > p.top && b.left < p.right && b.top < p.bottom;
+        };
 
-  const moveBall = () => {
-    setBall((prevBall) => ({
-      ...prevBall,
-      x: prevBall.x + prevBall.vx,
-      y: prevBall.y + prevBall.vy,
-    }));
+        const render = () => {
+            drawRect(0, 0, canvas.width, canvas.height, '#000');
+            drawRect(player.x, player.y, player.width, player.height, player.color);
+            drawRect(computer.x, computer.y, computer.width, computer.height, computer.color);
+            drawArc(ball.x, ball.y, ball.radius, ball.color);
+        };
 
-    handleBallCollision();
-  };
+        const game = () => {
+            update();
+            render();
+        };
 
-  const handleBallCollision = () => {
-    // Handle collision with top and bottom walls
-    if (
-      ball.y + ball.vy > canvasRef.current.height - 10 ||
-      ball.y + ball.vy < 10
-    ) {
-      setBall((prevBall) => ({ ...prevBall, vy: -prevBall.vy }));
-    }
+        const framePerSecond = 50;
+        const interval = setInterval(game, 1000 / framePerSecond);
 
-    // Handle collision with paddles
-    if (
-      (ball.x + ball.vx < 70 &&
-        ball.y > leftPaddleY &&
-        ball.y < leftPaddleY + 100) ||
-      (ball.x + ball.vx > canvasRef.current.width - 70 &&
-        ball.y > rightPaddleY &&
-        ball.y < rightPaddleY + 100)
-    ) {
-      setBall((prevBall) => ({ ...prevBall, vx: -prevBall.vx }));
-    }
+        return () => {
+            clearInterval(interval);
+        };
+    }, []);
 
-    // Check if ball goes out of bounds
-    if (ball.x + ball.vx > canvasRef.current.width - 10) {
-      resetBall(); // Player 1 scores
-    } else if (ball.x + ball.vx < 10) {
-      resetBall(); // Player 2 scores
-    }
-  };
-
-  const resetBall = () => {
-    setBall({
-      x: canvasRef.current.width / 2,
-      y: canvasRef.current.height / 2,
-      vx: -ball.vx, // Change direction of the ball
-      vy: ball.vy,
-    });
-  };
-
-  const movePaddles = () => {
-    // Move paddles based on key press
-    // Left paddle
-    if (leftPaddleY < 0) {
-      setLeftPaddleY(0);
-    } else if (leftPaddleY > canvasRef.current.height - 100) {
-      setLeftPaddleY(canvasRef.current.height - 100);
-    }
-
-    // Right paddle
-    if (rightPaddleY < 0) {
-      setRightPaddleY(0);
-    } else if (rightPaddleY > canvasRef.current.height - 100) {
-      setRightPaddleY(canvasRef.current.height - 100);
-    }
-  };
-
-  const handleKeyDown = (event) => {
-    switch (event.code) {
-      case "ArrowDown":
-        setRightPaddleY(rightPaddleY + 10);
-        break;
-      case "ArrowUp":
-        setRightPaddleY(rightPaddleY - 10);
-        break;
-      case "KeyW":
-        setLeftPaddleY(leftPaddleY - 10);
-        break;
-      case "KeyS":
-        setLeftPaddleY(leftPaddleY + 10);
-        break;
-      default:
-        break;
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
-
-  return (
-    <div>
-      <h2>{t("game.title")}</h2>
-      <p>{t("game.controls")}</p>
-      <canvas ref={canvasRef} width={1800} height={600} />
-    </div>
-  );
+    return <canvas ref={canvasRef}></canvas>;
 };
 
-export default PongGame;
+export default Pong;

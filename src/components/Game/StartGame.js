@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import PongGame from "./PongGame";
-import PongEhab from "./PongEhab";
+//import PongGame from "./PongGame";
+//import PongEhab from "./PongEhab";
 
 import {
   IoGameControllerOutline,
@@ -23,16 +23,7 @@ const StartGame = () => {
         <div className="col-md-6">
           <h1 className="mb-4">Select a Game:</h1>
           <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <Link to="/ponggame">
-                <button
-                  className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
-                  onClick={() => handleGameSelection("PongGame")}
-                >
-                  <span>Standard Game (2 Players locally)</span>
-                </button>
-              </Link>
-            </li>
+            
             <li className="list-group-item">
               <Link to="/pongehab">
                 <button
@@ -44,6 +35,17 @@ const StartGame = () => {
               </Link>
             </li>
             <li className="list-group-item">
+              <Link to="/ponggame">
+                <button
+                  className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
+                  onClick={() => handleGameSelection("PongGame")}
+                >
+                  <span>Standard Game (2 Players locally)</span>
+                </button>
+              </Link>
+            </li>
+            <li className="list-group-item">
+            <Link to="/player3d1">
               <button
                 className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
                 onClick={() => handleGameSelection("Player3D1")}
@@ -51,8 +53,10 @@ const StartGame = () => {
                 <span>1 Player 3D</span>
                 <IoGameControllerSharp />
               </button>
+              </Link>
             </li>
             <li className="list-group-item">
+            <Link to="/playerai1">
               <button
                 className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
                 onClick={() => handleGameSelection("PlayerAi1")}
@@ -60,8 +64,10 @@ const StartGame = () => {
                 <span>1 Player with AI</span>
                 <IoGameControllerSharp />
               </button>
+              </Link>
             </li>
             <li className="list-group-item">
+            <Link to="/playersremote2">
               <button
                 className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
                 onClick={() => handleGameSelection("PlayersRemote2")}
@@ -69,6 +75,7 @@ const StartGame = () => {
                 <span>2 Players Remotely</span>
                 <IoGameController />
               </button>
+              </Link>
             </li>
           </ul>
         </div>
