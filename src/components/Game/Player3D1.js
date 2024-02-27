@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import * as THREE from "three";
-import { MeshLambertMaterial, Mesh } from "three";
+import { MeshLambertMaterial } from "three";
 
 const Player3D1 = () => {
   useEffect(() => {
@@ -215,12 +215,14 @@ const Player3D1 = () => {
           -(((WIDTH - mouseX) / WIDTH) * FIELD_WIDTH) + FIELD_WIDTH / 2;
       };
 
-      renderer.domElement.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mousemove", handleMouseMove);
       renderer.domElement.style.cursor = "none";
 
       return () => {
         // Cleanup function
         stopRender();
+        window.removeEventListener("mousemove", handleMouseMove);
+        container.removeChild(renderer.domElement);
       };
     }
 
@@ -242,7 +244,6 @@ const Player3D1 = () => {
     return () => {
       // Stop rendering and cleanup if component unmounts
       renderer.dispose();
-      container.removeChild(renderer.domElement);
     };
   }, []);
 
