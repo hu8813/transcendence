@@ -202,6 +202,10 @@ const Player3D1 = () => {
 
       camera.lookAt(ball.position);
 
+      container.style.display = "flex";
+      container.style.justifyContent = "center";
+      container.style.alignItems = "center";
+
       startRender();
 
       // Handle mouse move event
@@ -237,7 +241,8 @@ const Player3D1 = () => {
     // Cleanup function
     return () => {
       // Stop rendering and cleanup if component unmounts
-      stopRender();
+      renderer.dispose();
+      container.removeChild(renderer.domElement);
     };
   }, []);
 
