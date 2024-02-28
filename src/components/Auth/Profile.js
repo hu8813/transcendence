@@ -1,44 +1,93 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Profile = () => {
   const [avatar, setAvatar] = useState(null);
+  const [nickname, setNickname] = useState("");
   const [score, setScore] = useState(null);
+  const [email, setEmail] = useState("");
 
   // Function to handle avatar upload
   const handleAvatarUpload = (event) => {
     const file = event.target.files[0];
     setAvatar(file);
+  };
 
-    // You can also upload the avatar to the backend here using axios
-    // Example:
-    // const formData = new FormData();
-    // formData.append("avatar", file);
-    // axios.post("https://four2trans-backend.onrender.com/upload-avatar", formData)
-    //   .then(response => {
-    //     // Handle successful upload
-    //   })
-    //   .catch(error => {
-    //     // Handle upload error
-    //   });
+  // Function to upload avatar to Django backend
+  const uploadAvatar = () => {
+    const formData = new FormData();
+    formData.append("avatar", avatar);
+    
+    axios.post("https://four2trans-backend.onrender.com/upload-avatar", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    .then((response) => {
+      // Handle successful upload
+      console.log("Avatar uploaded successfully:", response.data);
+    })
+    .catch((error) => {
+      // Handle upload error
+      console.error("Error uploading avatar:", error);
+    });
   };
 
   // Function to fetch current score from the backend
   const fetchScore = () => {
     axios
-      .get("https://four2trans-backend.onrender.com/get-score")
+      .get("https://four2trans-backend.onrender.com/get-score/")
       .then((response) => {
         // Handle JsonResponse here
         const responseData = response.data;
         setScore(responseData.score);
-        // You can also handle user info if included in the response
-        // const userInfo = responseData.users;
       })
       .catch((error) => {
         // Handle error
         console.error("Error fetching score:", error);
       });
   };
+
+  // Function to fetch user's email address from the backend
+  const fetchEmail = () => {
+    axios
+      .get("https://four2trans-backend.onrender.com/get-email/")
+      .then((response) => {
+        // Handle JsonResponse here
+        const responseData = response.data;
+        setEmail(responseData.email);
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("Error fetching email address:", error);
+      });
+  };
+
+  // Function to fetch user's nickname from the backend
+  const fetchNickname = () => {
+    axios
+      .get("https://four2trans-backend.onrender.com/get-nickname/")
+      .then((response) => {
+        // Handle JsonResponse here
+        const responseData = response.data;
+        setNickname(responseData.nickname);
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("Error fetching nickname:", error);
+      });
+  };
+
+  // Function to update user's nickname
+  const updateNickname = () => {
+    // Make API request to update the nickname
+    console.log("Nickname updated successfully");
+  };
+
+  // Fetch nickname on component mount
+  useEffect(() => {
+    fetchNickname();
+  }, []);
 
   return (
     <div>
@@ -49,9 +98,23 @@ const Profile = () => {
         {avatar && (
           <div>
             <p>Selected avatar: {avatar.name}</p>
-            {/* You can display a preview of the avatar here */}
+            <button onClick={uploadAvatar}>Upload Avatar</button>
           </div>
         )}
+      </div>
+      <div>
+        <h3>Nickname</h3>
+        <input
+          type="text"
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+        />
+        <button onClick={updateNickname}>Change Nickname</button>
+      </div>
+      <div>
+        <h3>Email</h3>
+        <p>{email}</p>
+        <button onClick={fetchEmail}>Fetch Email</button>
       </div>
       <div>
         <h3>Score</h3>

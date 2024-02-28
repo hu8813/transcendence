@@ -11,6 +11,8 @@ import i18n from "./i18n"; // Import the i18n configuration
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import Inprint from "./components/Inprint";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import StartGame from "./components/Game/StartGame";
@@ -74,6 +76,13 @@ const App = () => {
             <Route
               path="/profile"
               element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
+            />
+
+            <Route path="/contact"
+              element={ <Inprint /> }
+            />
+            <Route path="/privacy-policy"
+              element={ <PrivacyPolicy /> }
             />
           </Routes>
           <Footer />

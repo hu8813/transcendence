@@ -6,8 +6,8 @@ const Pong = () => {
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
-        canvas.width = 1000;
-        canvas.height = 730;
+        canvas.width = window.innerWidth / 1.5  ;
+        canvas.height = window.innerHeight /1.5 ;
 
         let ball = {
             x: canvas.width / 2,
@@ -15,7 +15,7 @@ const Pong = () => {
             radius: 10,
             velocityX: 5,
             velocityY: 5,
-            speed: 7,
+            speed: 13,
             color: "#fff"
         };
 
