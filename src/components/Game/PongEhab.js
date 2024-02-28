@@ -1,25 +1,34 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import './Confetti.css'; // Stelle sicher, dass der Pfad zur CSS-Datei korrekt ist
+import { Link } from "react-router-dom";
 
 const Pong = () => {
     const canvasRef = useRef(null);
+    const [gameOver, setGameOver] = useState(false);
+    const [winner, setWinner] = useState('');
 
     useEffect(() => {
+        if (gameOver) {
+            generateConfetti();
+            return;
+        }
+
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth / 1.5  ;
-        canvas.height = window.innerHeight /1.5 ;
+        canvas.width = window.innerWidth / 1.5;
+        canvas.height = window.innerHeight / 1.5;
 
         let ball = {
             x: canvas.width / 2,
             y: canvas.height / 2,
             radius: 10,
-            velocityX: 5,
-            velocityY: 5,
-            speed: 13,
+            velocityX: 8,
+            velocityY: 8,
+            speed: 17,
             color: "#fff"
         };
 
-        let player = {
+        let player1 = {
             x: 0,
             y: (canvas.height - 100) / 2,
             width: 10,
@@ -30,7 +39,7 @@ const Pong = () => {
             moveDown: false
         };
 
-        let computer = {
+        let player2 = {
             x: canvas.width - 10,
             y: (canvas.height - 100) / 2,
             width: 10,
@@ -43,104 +52,24 @@ const Pong = () => {
 
         const keyDownHandler = (event) => {
             switch(event.key) {
-                case 'w':
-                    player.moveUp = true;
-                    break;
-                case 's':
-                    player.moveDown = true;
-                    break;
-                case 'ArrowUp':
-                    computer.moveUp = true;
-                    break;
-                case 'ArrowDown':
-                    computer.moveDown = true;
-                    break;
+                case 'w': player1.moveUp = true; break;
+                case 's': player1.moveDown = true; break;
+                case 'ArrowUp': player2.moveUp = true; break;
+                case 'ArrowDown': player2.moveDown = true; break;
             }
         };
 
         const keyUpHandler = (event) => {
             switch(event.key) {
-                case 'w':
-                    player.moveUp = false;
-                    break;
-                case 's':
-                    player.moveDown = false;
-                    break;
-                case 'ArrowUp':
-                    computer.moveUp = false;
-                    break;
-                case 'ArrowDown':
-                    computer.moveDown = false;
-                    break;
+                case 'w': player1.moveUp = false; break;
+                case 's': player1.moveDown = false; break;
+                case 'ArrowUp': player2.moveUp = false; break;
+                case 'ArrowDown': player2.moveDown = false; break;
             }
         };
 
         document.addEventListener('keydown', keyDownHandler);
         document.addEventListener('keyup', keyUpHandler);
-
-        const drawRect = (x, y, w, h, color) => {
-            ctx.fillStyle = color;
-            ctx.fillRect(x, y, w, h);
-        };
-
-        const drawArc = (x, y, r, color) => {
-            ctx.fillStyle = color;
-            ctx.beginPath();
-            ctx.arc(x, y, r, 0, Math.PI*2, true);
-            ctx.closePath();
-            ctx.fill();
-        };
-
-        const resetBall = () => {
-            ball.x = canvas.width / 2;
-            ball.y = canvas.height / 2;
-            ball.velocityX = -ball.velocityX;
-            ball.speed = 7;
-        };
-
-        const update = () => {
-            if(player.moveUp && player.y > 0) {
-                player.y -= 10;
-            }
-            if(player.moveDown && (player.y + player.height) < canvas.height) {
-                player.y += 10;
-            }
-            if(computer.moveUp && computer.y > 0) {
-                computer.y -= 10;
-            }
-            if(computer.moveDown && (computer.y + computer.height) < canvas.height) {
-                computer.y += 10;
-            }
-
-            ball.x += ball.velocityX;
-            ball.y += ball.velocityY;
-
-            if(ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
-                ball.velocityY = -ball.velocityY;
-            }
-
-            let playerOrComputer = (ball.x < canvas.width / 2) ? player : computer;
-            if(collision(ball, playerOrComputer)) {
-                let collidePoint = (ball.y - (playerOrComputer.y + playerOrComputer.height / 2));
-                collidePoint = collidePoint / (playerOrComputer.height / 2);
-
-                let angleRad = (Math.PI / 4) * collidePoint;
-
-                let direction = (ball.x < canvas.width / 2) ? 1 : -1;
-                ball.velocityX = direction * ball.speed * Math.cos(angleRad);
-                ball.velocityY = ball.speed * Math.sin(angleRad);
-
-                ball.speed += 0.1;
-            }
-
-            if(ball.x - ball.radius < 0) {
-                computer.score++;
-                resetBall();
-            } else if(ball.x + ball.radius > canvas.width) {
-                player.score++;
-                resetBall();
-            }
-        };
 
         const collision = (b, p) => {
             b.top = b.y - b.radius;
@@ -153,32 +82,116 @@ const Pong = () => {
             p.left = p.x;
             p.right = p.x + p.width;
 
-            return b.right > p.left && b.bottom > p.top && b.left < p.right && b.top < p.bottom;
+            return b.right > p.left && b.top < p.bottom && b.left < p.right && b.bottom > p.top;
         };
 
-        const render = () => {
-            drawRect(0, 0, canvas.width, canvas.height, '#000');
-            drawRect(player.x, player.y, player.width, player.height, player.color);
-            drawRect(computer.x, computer.y, computer.width, computer.height, computer.color);
-            drawArc(ball.x, ball.y, ball.radius, ball.color);
+        const resetBall = () => {
+            if (player1.score === 7 || player2.score === 7) {
+                setGameOver(true);
+                setWinner(player1.score === 7 ? 'Player 1' : 'Player 2');
+                return;
+            }
+
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height / 2;
+            ball.velocityX = 8;
+            ball.velocityY = 8;
         };
 
-        const game = () => {
+        const update = () => {
+            if (player1.moveUp && player1.y > 0) player1.y -= 10;
+            if (player1.moveDown && player1.y < canvas.height - player1.height) player1.y += 10;
+            if (player2.moveUp && player2.y > 0) player2.y -= 10;
+            if (player2.moveDown && player2.y < canvas.height - player2.height) player2.y += 10;
+
+            ball.x += ball.velocityX;
+            ball.y += ball.velocityY;
+
+            if (ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
+                ball.velocityY = -ball.velocityY;
+            }
+
+            if (collision(ball, player1)) {
+                ball.velocityX = -ball.velocityX;
+                ball.x = player1.x + player1.width + ball.radius;
+            }
+
+            if (collision(ball, player2)) {
+                ball.velocityX = -ball.velocityX;
+                ball.x = player2.x - ball.radius;
+            }
+
+            if (ball.x - ball.radius < 0) {
+                player2.score++;
+                resetBall();
+            } else if (ball.x + ball.radius > canvas.width) {
+                player1.score++;
+                resetBall();
+            }
+        };
+
+        const draw = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Zeichne Spieler und Ball
+            ctx.fillStyle = ball.color;
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, true);
+            ctx.fill();
+
+            ctx.fillStyle = player1.color;
+            ctx.fillRect(player1.x, player1.y, player1.width, player1.height);
+
+            ctx.fillStyle = player2.color;
+            ctx.fillRect(player2.x, player2.y, player2.width, player2.height);
+
+            // Punktestand
+            ctx.font = '35px Arial';
+            ctx.fillText(player1.score, 100, 50);
+            ctx.fillText(player2.score, canvas.width - 100, 50);
+        };
+
+        const gameInterval = setInterval(() => {
             update();
-            render();
-        };
-
-        const framePerSecond = 50;
-        const interval = setInterval(game, 1000 / framePerSecond);
+            draw();
+        }, 1000 / 60); // 60 FPS
 
         return () => {
-            clearInterval(interval);
+            clearInterval(gameInterval);
             document.removeEventListener('keydown', keyDownHandler);
             document.removeEventListener('keyup', keyUpHandler);
         };
-    }, []);
+    }, [gameOver]);
 
-    return <canvas ref={canvasRef}></canvas>;
+    const generateConfetti = () => {
+        
+      };
+
+
+    return (
+        <>
+            {gameOver ? (
+                <div className="wrapper" id="confetti-wrapper">
+                    <div className="modal">
+                        <span className="emoji round">🏆</span>
+                        <h1>Congratulations, {winner}</h1>
+                        
+                            <Link to="/game">
+                <button
+                  className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
+                  
+                >
+                  <span>Play again</span>
+                </button>
+              </Link>
+
+                        
+                    </div>
+                </div>
+            ) : (
+                <canvas ref={canvasRef}></canvas>
+            )}
+        </>
+    );
 };
 
 export default Pong;

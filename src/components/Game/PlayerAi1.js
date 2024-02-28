@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const Pong = () => {
+const PlayerAi1 = () => {
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -128,4 +128,5 @@ const Pong = () => {
     return <canvas ref={canvasRef}></canvas>;
 };
 
-export default Pong;
+export default PlayerAi1;
+ 
