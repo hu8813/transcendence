@@ -1,14 +1,142 @@
+/* 
+@media (max-width: 767px) {
+  .nav-items {
+      display: flex;
+      flex-direction: column; 
+      align-items: center; 
+  }
+
+  .nav-link {
+      margin: 5px 0;
+  }
+
+  .nav-link > a {
+      display: block;
+      width: 100%;
+  }
+
+
+  .nav-items {
+      display: flex;
+      flex-direction: column; 
+      align-items: center; 
+  }
+
+  .nav-link {
+      margin: 5px 0; 
+  }
+
+  .nav-link > a {
+      display: block;
+      width: 100%;
+  }
+}
+
+.pong-navbar {
+  background-color: #212529;
+  font-family: 'Press Start 2P', cursive;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  width: 100%;
+  padding: 10px; 
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  color: #d2d2d2;
+  text-align: center; 
+  margin: 10px 0; 
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+}
+
+.language-container {
+  display: flex;
+  align-items: center; 
+  margin-right: 10px; 
+  color: #000;
+}
+
+.nav-link {
+  margin: 0 10px; 
+  padding: 15px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #343a40;
+}
+
+.language-button {
+  margin-left: 10px;
+}
+
+.language-container select {
+  margin-left: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+} */
+
+
+/* @media (max-width: 767px) {
+  .nav-items {
+      display: flex;
+      flex-direction: column; 
+      align-items: center; 
+  }
+
+  .nav-link {
+      margin: 5px 0;
+  }
+
+  .nav-link > a {
+      display: block;
+      width: 100%;
+  }
+}
+*/
+
+
 /* Navbar.css */
 
 /* Default styles */
 
 /* Responsive styles for screens smaller than 767px (typical mobile devices) */
 @media (max-width: 767px) {
-  .navbar-brand,
-  .language-container,
+  .nav-items {
+    display: flex;
+    flex-direction: column; /* Stapelt die Elemente vertikal für kleinere Bildschirme */
+    align-items: center; /* Zentriert die Elemente horizontal */
+  }
+
   .nav-link {
-      text-align: center; /* Zentriert die Elemente, wenn sie gestapelt sind */
-      width: 100%; /* Sorgt dafür, dass sie die volle Breite einnehmen */
+    margin: 5px 0; /* Passenden Abstand für die Links */
+    display: flex; /* Flex-Layout verwenden, um Icon und Text zu positionieren */
+    align-items: center; /* Zentriert das Icon und den Text vertikal */
+  }
+
+  .nav-link > span {
+    display: none; /* Verstecke den Text auf kleinen Bildschirmen */
+  }
+
+  .nav-link > svg {
+    margin-right: 5px; /* Füge einen kleinen Abstand zwischen dem Icon und dem Text hinzu */
+  }
+}
+
+/* Responsive styles for screens larger than 767px */
+@media (min-width: 768px) {
+  .nav-link {
+    justify-content: center; /* Zentriert den Text und das Icon horizontal */
+  }
+
+  .nav-link > span {
+    display: inline-block; /* Stelle den Text wieder her */
   }
 }
 
@@ -19,7 +147,6 @@
   justify-content: space-between; /* Align items at both ends of the container */
   align-items: center; /* Center items vertically */
   width: 100%;
-  flex-wrap: wrap; /* Erlaubt den Navbar-Elementen, in neue Zeilen zu fließen */
   padding: 10px; /* Add padding for better appearance */
 }
 
@@ -32,22 +159,18 @@
 
 .nav-items {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 50%; /* Anpassen je nach Bedarf */
 }
 
 .language-container {
   display: flex;
-  justify-content: flex-end; /* Align items to the right */
   align-items: center; /* Center items vertically */
   margin-right: 10px; /* Add right margin */
   color: #000;
 }
 
 .nav-link {
-  color: #d2d2d2 !important;
-  margin: 10px 10px;
+  margin: 0 10px; /* Passenden Abstand für die Links */
   padding: 15px 10px;
   transition: background-color 0.3s ease;
 }
