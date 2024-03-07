@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './Confetti.css'; // Stelle sicher, dass der Pfad zur CSS-Datei korrekt ist
+import './Confetti.css';
 import { Link } from "react-router-dom";
 
 const Pong = () => {
@@ -84,6 +84,23 @@ const Pong = () => {
 
             return b.right > p.left && b.top < p.bottom && b.left < p.right && b.bottom > p.top;
         };
+
+        const drawCourt = () => {
+            // Zeichnet die Umrandung des Spielfelds
+            //drawRect(0, 0, canvas.width, canvas.height, '#000');
+            // Zeichnet die Mittellinie
+            ctx.strokeStyle = "#FFF";
+            ctx.setLineDash([10, 15]);
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.stroke();
+            // Zurücksetzen auf durchgehende Linie
+            ctx.setLineDash([]);
+            // Zeichnet den Rand des Spielfelds
+            ctx.strokeRect(0, 0, canvas.width, canvas.height);
+        };
+
 
         const resetBall = () => {
             if (player1.score === 7 || player2.score === 7) {

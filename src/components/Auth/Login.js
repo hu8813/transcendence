@@ -82,6 +82,7 @@ const Login = ({ setLoggedIn }) => {
 
     fetch("https://api.intra.42.fr/oauth/token", {
       method: "POST",
+
       body: requestBody,
     })
       .then((response) => response.json())

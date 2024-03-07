@@ -4,33 +4,22 @@
 
 /* Responsive styles for screens smaller than 767px (typical mobile devices) */
 @media (max-width: 767px) {
-    .navbar-brand {
-      font-size: 1.2rem;
-      margin: 5px 0;
-    }
-  
-    .nav-link {
-      margin: 5px 0;
-      padding: 10px 5px;
-    }
-  
-    .language-button {
-      margin-left: 0;
-    }
-  
-    .language-container {
-      justify-content: flex-end;
-      margin-right: 5px;
-    }
+  .navbar-brand,
+  .language-container,
+  .nav-link {
+      text-align: center; /* Zentriert die Elemente, wenn sie gestapelt sind */
+      width: 100%; /* Sorgt dafür, dass sie die volle Breite einnehmen */
   }
-  
-  
+}
+
 .pong-navbar {
   background-color: #212529;
   font-family: 'Press Start 2P', cursive;
   display: flex;
   justify-content: space-between; /* Align items at both ends of the container */
   align-items: center; /* Center items vertically */
+  width: 100%;
+  flex-wrap: wrap; /* Erlaubt den Navbar-Elementen, in neue Zeilen zu fließen */
   padding: 10px; /* Add padding for better appearance */
 }
 
@@ -39,7 +28,13 @@
   color: #d2d2d2;
   text-align: center; /* Center the title */
   margin: 10px 0; /* Add margin to the title */
-  flex: 1; /* Take remaining space */
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%; /* Anpassen je nach Bedarf */
 }
 
 .language-container {
@@ -59,10 +54,6 @@
 
 .nav-link:hover {
   background-color: #343a40;
-}
-
-.navbar-toggler-icon {
-  background-color: #d2d2d2;
 }
 
 .language-button {
