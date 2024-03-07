@@ -68,20 +68,26 @@ const Profile = () => {
     axios
       .get("https://four2trans-backend.onrender.com/get-nickname/")
       .then((response) => {
-        // Handle JsonResponse here
         const responseData = response.data;
         setNickname(responseData.nickname);
       })
       .catch((error) => {
-        // Handle error
         console.error("Error fetching nickname:", error);
       });
   };
 
   // Function to update user's nickname
   const updateNickname = () => {
-    // Make API request to update the nickname
-    console.log("Nickname updated successfully");
+    axios
+      .post("https://four2trans-backend.onrender.com/update-nickname/", {
+        nickname: nickname,
+      })
+      .then((response) => {
+        console.log("Nickname updated successfully");
+      })
+      .catch((error) => {
+        console.error("Error updating nickname:", error);
+      });
   };
 
   // Fetch nickname on component mount
