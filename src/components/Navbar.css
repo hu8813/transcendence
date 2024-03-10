@@ -118,6 +118,7 @@
     margin: 5px 0; /* Passenden Abstand für die Links */
     display: flex; /* Flex-Layout verwenden, um Icon und Text zu positionieren */
     align-items: center; /* Zentriert das Icon und den Text vertikal */
+    color: #fff;
   }
 
   .nav-link > span {
@@ -133,10 +134,12 @@
 @media (min-width: 768px) {
   .nav-link {
     justify-content: center; /* Zentriert den Text und das Icon horizontal */
+    color: #fff;
   }
 
   .nav-link > span {
     display: inline-block; /* Stelle den Text wieder her */
+    color: #fff;
   }
 }
 
@@ -173,6 +176,7 @@
   margin: 0 10px; /* Passenden Abstand für die Links */
   padding: 15px 10px;
   transition: background-color 0.3s ease;
+  color: #fff;
 }
 
 .nav-link:hover {
