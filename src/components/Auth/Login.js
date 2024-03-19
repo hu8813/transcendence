@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18n";
 import { Form, Button, Container } from "react-bootstrap";
@@ -16,6 +16,7 @@ const Login = ({ setLoggedIn }) => {
   const [loginStatus, setLoginStatus] = useState(
     "Before clicking Login please wait a bit, as Django backend is on Free server which must be waken up first.",
   );
+  const [token, setToken] = useState(""); // State to store the token
 
   useEffect(() => {
     fetchCsrfToken();
@@ -36,16 +37,10 @@ const Login = ({ setLoggedIn }) => {
 
   const wakeUpBackend = async () => {
     try {
-      // Define the URL of your Django backend's ping endpoint
       const pingURL = "https://four2trans-backend.onrender.com/ping/";
-
-      // Send an HTTP GET request to the ping endpoint using axios
       const response = await axios.get(pingURL);
-
-      // Log the response message to the console
       console.log(response.data.message);
     } catch (error) {
-      // Log any errors to the console
       console.error("Error waking up server:", error);
     }
   };
@@ -82,17 +77,15 @@ const Login = ({ setLoggedIn }) => {
 
     fetch("https://api.intra.42.fr/oauth/token", {
       method: "POST",
-
       body: requestBody,
     })
       .then((response) => response.json())
       .then((data) => {
         const accessToken = data.access_token;
         localStorage.setItem("access_token", accessToken);
+        setToken(accessToken); // Set the token in state upon successful retrieval
         console.log("Access Token:", accessToken);
-
-        // Redirect to /game after successful login
-        window.location.href = "/leaderboard";
+        navigate("/leaderboard"); // Redirect to /leaderboard after successful login
       })
       .catch((error) => {
         console.error(
@@ -120,12 +113,32 @@ const Login = ({ setLoggedIn }) => {
       if (data.trim() === "Login successful") {
         setLoggedIn(true); // Update isLoggedIn state if login is successful
         localStorage.setItem("isLoggedIn", true); // Set isLoggedIn to true in local storage
-        navigate("/leaderboard"); // Redirect to /game route after successful login
+        // Exchange username and password for a token upon successful login
+        exchangeUsernamePasswordForToken(formData.get("username"), formData.get("password"));
       }
     } catch (error) {
       console.error("Error logging in:", error);
       setLoginStatus("Error logging in"); // Update login status if an error occurs
     }
+    navigate("/leaderboard");
+  };
+
+  const exchangeUsernamePasswordForToken = (username, password) => {
+    // Send a request to your Django backend to obtain a token using the provided username and password
+    // Example:
+    axios.post("https://four2trans-backend.onrender.com/api/token/", {
+      username: username,
+      password: password,
+    })
+    .then((response) => {
+      const token = response.data.access; // Assuming the token is returned in the response
+      localStorage.setItem("token", token); // Store the token in localStorage for future use
+      setToken(token); // Update the token in state
+      //console.log(token);
+    })
+    .catch((error) => {
+      console.error("Error obtaining token:", error);
+    });
   };
 
   return (

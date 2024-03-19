@@ -14,24 +14,30 @@ const Profile = () => {
   };
 
   // Function to upload avatar to Django backend
-  const uploadAvatar = () => {
-    const formData = new FormData();
-    formData.append("avatar", avatar);
-    
-    axios.post("https://four2trans-backend.onrender.com/upload-avatar/", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    })
-    .then((response) => {
-      // Handle successful upload
-      console.log("Avatar uploaded successfully:", response.data);
-    })
-    .catch((error) => {
-      // Handle upload error
-      console.error("Error uploading avatar:", error);
-    });
-  };
+const uploadAvatar = () => {
+  const formData = new FormData();
+  formData.append("avatar", avatar);
+
+  // Retrieve token from localStorage
+  const token = localStorage.getItem("access_token");
+
+  axios.post("https://four2trans-backend.onrender.com/upload-avatar/", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      // Include token in Authorization header
+      "Authorization": `Bearer ${token}`,
+    },
+  })
+  .then((response) => {
+    // Handle successful upload
+    console.log("Avatar uploaded successfully:", response.data);
+  })
+  .catch((error) => {
+    // Handle upload error
+    console.error("Error uploading avatar:", error);
+  });
+};
+
 
   // Function to fetch current score from the backend
   const fetchScore = () => {
