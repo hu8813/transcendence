@@ -18,7 +18,7 @@ const Profile = () => {
     const formData = new FormData();
     formData.append("avatar", avatar);
     
-    axios.post("https://four2trans-backend.onrender.com/upload-avatar", formData, {
+    axios.post("https://four2trans-backend.onrender.com/upload-avatar/", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
