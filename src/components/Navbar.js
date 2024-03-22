@@ -49,8 +49,8 @@ const Navbar = ({ isLoggedIn: initialIsLoggedIn, setLoggedIn }) => {
           onSelect={(countryCode) => changeLanguage(countryCode.toLowerCase())}
           placeholder="ENG"
           defaultCountry="US"
-          selectedSize={16}
-          optionsSize={16}
+          selectedSize={12}
+          optionsSize={12}
           optionStyles={{
             backgroundColor: "#000 !important",
             color: "#fff !important",
