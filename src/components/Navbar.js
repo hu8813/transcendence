@@ -93,7 +93,7 @@ const Navbar = ({ isLoggedIn: initialIsLoggedIn, setLoggedIn }) => {
               </Link>
               <Button
                 variant="link"
-                className="nav-link"
+                className="nav-link-logout"
                 onClick={handleLogout}
               >
                 {t("auth.logout")}

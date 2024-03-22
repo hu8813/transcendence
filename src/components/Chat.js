@@ -70,21 +70,45 @@ const Chat = () => {
 
   return (
     <div className="msger">
-      <main className="msger-chat" ref={messagesEndRef}>
-        {messages.map((msg, index) => (
-          <div key={index} className={`msg ${msg.side}-msg`}>
-            <div
-              className="msg-info"
-              style={{ order: msg.side === "right" ? 1 : 2 }}
-            >
-              <div className="msg-info-name">
-                {msg.time} {msg.name}: {msg.text}
+      <div style={{display: 'flex', width: '100%'}}>
+        <main className="msger-chat" ref={messagesEndRef}>
+          {messages.map((msg, index) => (
+            <div key={index} className={`msg ${msg.side}-msg`}>
+              <div
+                className="msg-info"
+                style={{ order: msg.side === "right" ? 1 : 2 }}
+              >
+                <div className="msg-info-name">
+                  {msg.time} {msg.name}: {msg.text}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </main>
-
+          ))}
+        </main>
+  
+        <aside className="msger-users">
+          
+          <ul>
+          <h2>Online Users</h2>
+            {onlineUsers.map((user, index) => (
+              <li key={index}>
+               
+                <div className="user-actions">
+                  {user} <br/>
+                  <button onClick={() => handleUserAction("View Profile", user)}>
+                    View Profile
+                  </button>
+                  <button onClick={() => handleUserAction("Invite to Play", user)}>
+                    Invite to Play
+                  </button>
+                </div>
+                <br/>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </div>
+  
       <header className="msger-header">
         <div className="msger-inputarea">
           <input
@@ -104,29 +128,9 @@ const Chat = () => {
           </button>
         </div>
       </header>
-
-      <aside className="msger-users">
-        <h2>Online Users</h2>
-        <ul>
-          {onlineUsers.map((user, index) => (
-            <li key={index}>
-              <div className="user-actions">
-                {user}{" "}
-                <button onClick={() => handleUserAction("View Profile", user)}>
-                  View Profile
-                </button>{" "}
-                <button
-                  onClick={() => handleUserAction("Invite to Play", user)}
-                >
-                  Invite to Play
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </aside>
     </div>
   );
+  
 };
 
 function formatDate(date) {

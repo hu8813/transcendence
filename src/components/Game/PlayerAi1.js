@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import './Confetti.css';
+import { Link } from "react-router-dom";
 
 const PlayerAi1 = () => {
     const canvasRef = useRef(null);
@@ -25,7 +27,9 @@ const PlayerAi1 = () => {
             width: 10,
             height: 100,
             score: 0,
-            color: "#fff"
+            color: "#fff",
+            moveUp: false,
+            moveDown: false
         };
 
         let computer = {
@@ -36,6 +40,40 @@ const PlayerAi1 = () => {
             score: 0,
             color: "#fff"
         };
+
+        const keyDownHandler = (event) => {
+            switch(event.key) {
+                case 'w': player.moveUp = true; break;
+                case 's': player.moveDown = true; break;
+            }
+        };
+
+        const keyUpHandler = (event) => {
+            switch(event.key) {
+                case 'w': player.moveUp = false; break;
+                case 's': player.moveDown = false; break;
+            }
+        };
+
+        document.addEventListener('keydown', keyDownHandler);
+        document.addEventListener('keyup', keyUpHandler);
+
+        /* const collision = (b, p) => {
+            b.top = b.y - b.radius;
+            b.bottom = b.y + b.radius;
+            b.left = b.x - b.radius;
+            b.right = b.x + b.radius;
+
+            p.top = p.y;
+            p.bottom = p.y + p.height;
+            p.left = p.x;
+            p.right = p.x + p.width;
+
+            return b.right > p.left && b.top < p.bottom && b.left < p.right && b.bottom > p.top;
+        }; */
+
+
+
 
         const drawRect = (x, y, w, h, color) => {
             ctx.fillStyle = color;
@@ -130,3 +168,48 @@ const PlayerAi1 = () => {
 
 export default PlayerAi1;
  
+/*
+import React, { useEffect, useRef, useState } from 'react';
+import { Link } from "react-router-dom";
+
+const Pong = () => {
+    const canvasRef = useRef(null);
+    const [gameOver, setGameOver] = useState(false);
+    const [winner, setWinner] = useState('');
+    const ws = useRef(null);
+
+    useEffect(() => {
+        ws.current = new WebSocket('ws://localhost:8080');
+
+        ws.current.onopen = () => {
+            console.log('WebSocket connected');
+        };
+
+        ws.current.onmessage = (event) => {
+            const message = JSON.parse(event.data);
+            // Hier die Logik implementieren, um auf Nachrichten vom Server zu reagieren
+            // Zum Beispiel Bewegungen des remote Spielers aktualisieren
+        };
+
+        return () => {
+            ws.current.close();
+        };
+    }, []);
+
+    // WebSocket-Nachricht senden Funktion
+    const sendWSMessage = (message) => {
+        if (ws.current.readyState === WebSocket.OPEN) {
+            ws.current.send(JSON.stringify(message));
+        }
+    };
+
+    // Ihre vorhandene useEffect und andere Funktionen hier, mit Anpassungen für WebSocket
+    // Zum Beispiel, sendWSMessage in den keyDownHandler und keyUpHandler einbauen
+
+    return (
+        // Ihr vorhandenes JSX
+    );
+};
+
+export default Pong;
+*/

@@ -1,4 +1,4 @@
-/* Chat container */
+
 .msger {
   margin: 20px;
   border-radius: 10px;
@@ -8,6 +8,10 @@
   display: flex;
   flex-direction: column;
   height: 100%; /* Set chat container height to fill parent */
+  
+  
+  display: flex;
+  justify-content: space-between;
 }
 
 .msger-header {
@@ -15,12 +19,18 @@
   justify-content: space-between;
   padding: 10px;
   background: #808080; /* Change to gray */
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .msger-chat {
-  overflow-y: auto;
-  max-height: 300px; /* Adjust this value as needed */
+  overflow-y: auto; /* Keeps vertical scrollbar if content overflows vertically */
+  width: 800px; /* Adjusted from max-width to width for a fixed larger size */
+}
+
+/* Additionally, to ensure text wraps within the message bubbles: */
+.msg-bubble {
+  max-width: 100%; /* Ensures bubble uses available space up to its max-width */
+  word-wrap: break-word; /* Ensures long words do not cause horizontal overflow */
 }
 
 /* Messages */
@@ -37,12 +47,8 @@
 
 /* Bubble */
 .msg-bubble {
-  max-width: 300px;
-  padding: 15px;
-  border-radius: 15px;
-  background: white;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  color: black;
+  max-width: 100%; /* Ensures bubble uses available space up to its max-width */
+  word-wrap: break-word; /* Ensures long words do not cause horizontal overflow */
 }
 
 /* Avatar */
@@ -75,12 +81,22 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  background: #f0f0f0;
+  background: #333; /* Changed background color to darker shade */
 }
 
 .msger-input {
   flex-grow: 1;
   margin-right: 10px;
+  color: rgb(0, 0, 0); /* Ensured input text is visible */
+}
+
+
+.msger-users {
+  display: flex;
+  flex-grow: 1;
+  margin-right: 10px;
+  justify-content: flex-end;
+  
 }
 
 .msger-send-btn {
@@ -95,3 +111,6 @@
 .msger-send-btn:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }
+
+
+

@@ -86,8 +86,37 @@ const Pong = () => {
         };
 
         const drawCourt = () => {
+            ctx.strokeStyle = "#FFF";
+            ctx.setLineDash([10, 15]);
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.strokeRect(0, 0, canvas.width, canvas.height);
+        };
+        
+        /* const drawArc = (x, y, r, color) => {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI*2, true);
+            ctx.closePath();
+            ctx.fill();
+        };
+        
+        const drawText = (text, x, y) => {
+            ctx.fillStyle = "#FFF";
+            ctx.font = "50px Arial";
+            ctx.fillText(text, x, y);
+        };
+        
+        const drawRect = (x, y, w, h, color) => {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, w, h);
+        };
+        const drawCourt = () => {
             // Zeichnet die Umrandung des Spielfelds
-            //drawRect(0, 0, canvas.width, canvas.height, '#000');
+            drawRect(0, 0, canvas.width, canvas.height, '#000');
             // Zeichnet die Mittellinie
             ctx.strokeStyle = "#FFF";
             ctx.setLineDash([10, 15]);
@@ -99,7 +128,7 @@ const Pong = () => {
             ctx.setLineDash([]);
             // Zeichnet den Rand des Spielfelds
             ctx.strokeRect(0, 0, canvas.width, canvas.height);
-        };
+        }; */
 
 
         const resetBall = () => {
@@ -149,7 +178,6 @@ const Pong = () => {
 
         const draw = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            // Zeichne Spieler und Ball
             ctx.fillStyle = ball.color;
             ctx.beginPath();
             ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, true);
@@ -161,7 +189,6 @@ const Pong = () => {
             ctx.fillStyle = player2.color;
             ctx.fillRect(player2.x, player2.y, player2.width, player2.height);
 
-            // Punktestand
             ctx.font = '35px Arial';
             ctx.fillText(player1.score, 100, 50);
             ctx.fillText(player2.score, canvas.width - 100, 50);
@@ -170,7 +197,7 @@ const Pong = () => {
         const gameInterval = setInterval(() => {
             update();
             draw();
-        }, 1000 / 60); // 60 FPS
+        }, 1000 / 60);
 
         return () => {
             clearInterval(gameInterval);
