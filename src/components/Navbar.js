@@ -36,14 +36,15 @@ const Navbar = ({ isLoggedIn: initialIsLoggedIn, setLoggedIn }) => {
     <BootstrapNavbar expand="md" className="pong-navbar">
       <div className="language-container">
         <ReactFlagsSelect
-          countries={["US", "AT", "FR", "TR", "EG", "BG"]}
+          countries={["US", "AT", "TR", "BG", "EG", "FR", "JP"]}
           customLabels={{
             US: "EN",
-            FR: "FR",
             AT: "AT",
             TR: "TR",
-            EG: "EG",
             BG: "BG",
+            EG: "EG",
+            FR: "FR",
+            JP: "JP",
           }}
           selected={i18n.language.toUpperCase()}
           onSelect={(countryCode) => changeLanguage(countryCode.toLowerCase())}
