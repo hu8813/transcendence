@@ -13,7 +13,9 @@ const Home = () => {
         <div className="ping-pong-table">
           <div className="ping-pong-ball"></div>
         </div>
+        
         <h1 className="mx-auto">{t('home.welcome')}</h1> {/* Use the translated text */}
+        
 
       </div>
     </div>

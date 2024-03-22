@@ -62,12 +62,15 @@ const Navbar = ({ isLoggedIn: initialIsLoggedIn, setLoggedIn }) => {
           Pong42
         </Link>
       </div>
+      
       <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
+      
       <BootstrapNavbar.Collapse id="basic-navbar-nav">
+        
         <Nav className="ml-auto">
           {!isLoggedIn && (
             <>
-              <Link to="/login" className="nav-link">
+              <Link to="/login" className="nav-link bn">
                 <FiGlobe className="mr-2" />
                 {t("auth.login")}
               </Link>

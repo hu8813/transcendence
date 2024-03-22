@@ -143,16 +143,22 @@ const Login = ({ setLoggedIn }) => {
 
   return (
     <Container>
+      
       <div className="wrapper">
-        <Button
+      <div class="loader"></div>
+      <Button
           variant="contained"
           color="primary"
           href={`https://api.intra.42.fr/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`}
-          className="rounded focus:outline-none hover:bg-blue-600 mb-4"
+          className="rounded mb-4 bn"
         >
-          <FiUser className="mr-2" />
+          
+          <FiUser className="bn mr-2" />
           {t("auth.signInWith42")}
-        </Button>
+          
+        </Button> 
+        <br/><br/>
+        
         <div className="or-separator mb-4">
           <span className="or-text">{t("common.or")}</span>
         </div>
@@ -184,19 +190,23 @@ const Login = ({ setLoggedIn }) => {
                 defaultValue="Pass@42"
               />
             </div>
-            <Button type="submit" className="btn mt-3">
+            <Button type="submit" className="bn btn mt-3">
               {t("auth.login")}
-            </Button>
+            </Button><br/>
           </form>
         )}
-
+    <br/><hr /><br/><br/>
         <div className="text-center fs-6">
-          <Link to="/forgot-password">{t("auth.forgotPassword")}</Link>{" "}
-          {t("common.or")} <Link to="/register">{t("auth.registerHere")}</Link>
+          {/*<Link to="/forgot-password">{t("auth.forgotPassword")}</Link>{" "} t("common.or")*/}
+           <Link className="bn w-1600" to="/register">{t("auth.registerHere")}</Link><br/>
         </div>
-
+         
+        <br/>
+        
+        
         {/* Display login status */}
-        {loginStatus && <div className="text-center mt-3">{loginStatus}</div>}
+        {loginStatus && <div className="text-center mt-3">{loginStatus} </div> }
+        
       </div>
     </Container>
   );
