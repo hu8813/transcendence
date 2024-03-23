@@ -145,7 +145,7 @@ const Login = ({ setLoggedIn }) => {
     <Container>
       
       <div className="wrapper">
-      <div class="loader"></div>
+      <div class="loader"></div><br/>
       <Button
           variant="contained"
           color="primary"

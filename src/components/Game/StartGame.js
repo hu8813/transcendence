@@ -27,7 +27,7 @@ const StartGame = () => {
             <li className="list-group-item">
               <Link to="/pongehab">
                 <button
-                  className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
+                  className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center bn"
                   onClick={() => handleGameSelection("PongGame")}
                 >
                   <span>Standard Game (2 Players locally) version ehab</span>
@@ -37,7 +37,7 @@ const StartGame = () => {
             <li className="list-group-item">
               <Link to="/ponggame">
                 <button
-                  className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
+                  className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center bn"
                   onClick={() => handleGameSelection("PongGame")}
                 >
                   <span>Standard Game (2 Players locally)</span>
@@ -47,7 +47,7 @@ const StartGame = () => {
             <li className="list-group-item">
             <Link to="/player3d1">
               <button
-                className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
+                className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center bn"
                 onClick={() => handleGameSelection("Player3D1")}
               >
                 <span>1 Player 3D</span>
@@ -58,7 +58,7 @@ const StartGame = () => {
             <li className="list-group-item">
             <Link to="/playerai1">
               <button
-                className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
+                className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center bn"
                 onClick={() => handleGameSelection("PlayerAi1")}
               >
                 <span>1 Player with AI</span>
@@ -69,7 +69,7 @@ const StartGame = () => {
             <li className="list-group-item">
             <Link to="/playersremote2">
               <button
-                className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
+                className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center bn"
                 onClick={() => handleGameSelection("PlayersRemote2")}
               >
                 <span>2 Players Remotely</span>
