@@ -33,7 +33,7 @@ const StartGame = () => {
                   <span>Standard Game (2 Players locally) version ehab</span>
                 </button>
               </Link>
-            </li>
+            </li><br/>
             <li className="list-group-item">
               <Link to="/ponggame">
                 <button
@@ -43,7 +43,7 @@ const StartGame = () => {
                   <span>Standard Game (2 Players locally)</span>
                 </button>
               </Link>
-            </li>
+            </li><br/>
             <li className="list-group-item">
             <Link to="/player3d1">
               <button
@@ -54,7 +54,7 @@ const StartGame = () => {
                 <IoGameControllerSharp />
               </button>
               </Link>
-            </li>
+            </li><br/>
             <li className="list-group-item">
             <Link to="/playerai1">
               <button
@@ -65,7 +65,7 @@ const StartGame = () => {
                 <IoGameControllerSharp />
               </button>
               </Link>
-            </li>
+            </li><br/>
             <li className="list-group-item">
             <Link to="/playersremote2">
               <button
