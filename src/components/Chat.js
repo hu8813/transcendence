@@ -24,7 +24,7 @@ const Chat = () => {
       name: PERSON_NAME,
       img: PERSON_IMG,
       side: "right",
-      text: "Is anyone there?",
+      text: "Is anyone there? Sorry, chat is not working yet)",
       time: formatDate(new Date()),
     },
   ]);
