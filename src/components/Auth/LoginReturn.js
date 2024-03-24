@@ -40,7 +40,7 @@ const LoginReturn = ({ setLoggedIn }) => {
 
   return (
     <div>
-      <h2>Handle Login Return</h2>
+      <h2>Handle Login Return (work in process)</h2>
       {/* Render user data here */}
       {userInfo && (
         <div>
