@@ -95,7 +95,7 @@ const Login = ({ setLoggedIn }) => {
         process.env.REACT_APP_CLIENT_SECRET || "your-client-secret";
       redirectUri =
         process.env.REACT_APP_REDIRECT_URI ||
-        "https://42dashboard.vercel.app/login/42/return";
+        "https://four2trans-backend.onrender.com/api/proxy/";
     }
   
     const requestBody = new URLSearchParams();
