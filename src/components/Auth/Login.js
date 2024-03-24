@@ -184,6 +184,7 @@ const Login = ({ setLoggedIn }) => {
       <Button
           variant="contained"
           color="primary"
+          
           href={`https://api.intra.42.fr/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`}
           className="rounded mb-4 bn"
         >
