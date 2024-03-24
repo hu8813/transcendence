@@ -6,6 +6,7 @@ import { Form, Button, Container } from "react-bootstrap";
 import { FiUser } from "react-icons/fi";
 import axios from "axios";
 import "./Login.css";
+import LoginReturn from "./LoginReturn";
 
 const Login = ({ setLoggedIn }) => {
   const [csrftoken, setCsrfToken] = useState("");
@@ -48,6 +49,19 @@ const Login = ({ setLoggedIn }) => {
   };
 
   useEffect(() => {
+    console.log("Location search:", location.search);
+    const urlParams = new URLSearchParams(location.search);
+    const code = urlParams.get("code");
+  
+    if (code) {
+      setAuthCode(code);
+      console.log("Auth code:", code);
+      exchangeCodeForAccessToken(code);
+    }
+  }, [location.search]);
+  
+
+  useEffect(() => {
     const storedLanguage = localStorage.getItem("language");
     if (storedLanguage) {
       i18n.changeLanguage(storedLanguage);
@@ -66,17 +80,22 @@ const Login = ({ setLoggedIn }) => {
   const exchangeCodeForAccessToken = (code) => {
     let clientId, clientSecret, redirectUri;
   
+    // Check if the application is running on localhost
     if (window.location.hostname === "localhost") {
-
-      clientId = process.env.REACT_APP_CLIENT_ID;
-      clientSecret = process.env.REACT_APP_CLIENT_SECRET;
-      redirectUri = "http://localhost:3000/login/42/return";
+      clientId = process.env.REACT_APP_LOCAL_CLIENT_ID || "your-local-client-id";
+      clientSecret =
+        process.env.REACT_APP_LOCAL_CLIENT_SECRET || "your-local-client-secret";
+      redirectUri =
+        process.env.REACT_APP_LOCAL_REDIRECT_URI ||
+        "http://localhost:3000/login/return";
     } else {
-      clientId = process.env.REACT_APP_CLIENT_ID;
-      clientSecret = process.env.REACT_APP_CLIENT_SECRET;
+      // For production or any other environment
+      clientId = process.env.REACT_APP_CLIENT_ID || "your-client-id";
+      clientSecret =
+        process.env.REACT_APP_CLIENT_SECRET || "your-client-secret";
       redirectUri =
         process.env.REACT_APP_REDIRECT_URI ||
-        "https://transcendence-beige.vercel.app/login/42/return";
+        "https://42dashboard.vercel.app/login/42/return";
     }
   
     const requestBody = new URLSearchParams();
@@ -101,10 +120,11 @@ const Login = ({ setLoggedIn }) => {
       .catch((error) => {
         console.error(
           "Error exchanging authorization code for access token:",
-          error
+          error,
         );
       });
   };
+  
   
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -151,6 +171,10 @@ const Login = ({ setLoggedIn }) => {
       console.error("Error obtaining token:", error);
     });
   };
+
+  if (authCode) {
+    return <LoginReturn authCode={authCode} />;
+  }
 
   return (
     <Container>

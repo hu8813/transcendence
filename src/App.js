@@ -24,6 +24,7 @@ import Playersremote2 from "./components/Game/PlayersRemote2";
 import Footer from "./components/Footer";
 import Leaderboard from "./components/Leaderboard";
 import Profile from "./components/Auth/Profile";
+import LoginReturn from "./components/Auth/LoginReturn";
 import Chat from "./components/Chat";
 
 const App = () => {
@@ -36,6 +37,8 @@ const App = () => {
           <Navbar isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
           <Routes>
             <Route path="/" element={<Home />} />
+            
+            <Route path="/login/return" element={<LoginReturn />} />
             <Route
               path="/login"
               element={<Login setLoggedIn={setLoggedIn} />}
@@ -84,6 +87,7 @@ const App = () => {
             <Route path="/privacy-policy"
               element={ <PrivacyPolicy /> }
             />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </div>
@@ -91,5 +95,10 @@ const App = () => {
     </I18nextProvider>
   );
 };
+
+function NotFound() {
+  return <div>404 Not Found</div>;
+}
+
 
 export default App;
