@@ -22,7 +22,7 @@ const LoginReturn = () => {
       process.env.REACT_APP_CLIENT_SECRET || "your-client-secret";
     const redirectUri =
       process.env.REACT_APP_REDIRECT_URI ||
-      "https://42dashboard.vercel.app/login/return";
+      "http://42dashboard.vercel.app/login/return";
 
     const formData = new FormData();
     formData.append("grant_type", "authorization_code");
