@@ -69,32 +69,15 @@ const Chat = () => {
   };
 
   return (
-    <div className="msger">
-      <div style={{display: 'flex', width: '100%'}}>
-        <main className="msger-chat" ref={messagesEndRef}>
-          {messages.map((msg, index) => (
-            <div key={index} className={`msg ${msg.side}-msg`}>
-              <div
-                className="msg-info"
-                style={{ order: msg.side === "right" ? 1 : 2 }}
-              >
-                <div className="msg-info-name">
-                  {msg.time} {msg.name}: {msg.text}
-                </div>
-              </div>
-            </div>
-          ))}
-        </main>
-  
+    <div className="chat-body">
+      <div className="chat-container">
         <aside className="msger-users">
-          
-          <ul>
           <h2>Online Users</h2>
+          <ul>
             {onlineUsers.map((user, index) => (
               <li key={index}>
-               
                 <div className="user-actions">
-                  {user} <br/>
+                  {user} <br />
                   <button onClick={() => handleUserAction("View Profile", user)}>
                     View Profile
                   </button>
@@ -102,35 +85,44 @@ const Chat = () => {
                     Invite to Play
                   </button>
                 </div>
-                <br/>
+                <br />
               </li>
             ))}
           </ul>
         </aside>
-      </div>
-  
-      <header className="msger-header">
-        <div className="msger-inputarea">
-          <input
-            type="text"
-            className="msger-input"
-            placeholder="Enter your message..."
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            onKeyPress={handleKeyPress}
-          />
-          <button
-            type="submit"
-            className="msger-send-btn"
-            onClick={handleSubmit}
-          >
-            Send
-          </button>
+        <div className="chat-main">
+          <main className="msger-chat" ref={messagesEndRef}>
+            {messages.map((msg, index) => (
+              <div key={index} className={`msg ${msg.side}-msg`}>
+                <div className="msg-info-name">
+                  {msg.time} {msg.name}: {msg.text}
+                </div>
+              </div>
+            ))}
+          </main>
+          <header className="msger-header">
+            <div className="msger-inputarea">
+              <input
+                type="text"
+                className="msger-input"
+                placeholder="Enter your message..."
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                onKeyPress={handleKeyPress}
+              />
+              <button
+                type="submit"
+                className="msger-send-btn"
+                onClick={handleSubmit}
+              >
+                Send
+              </button>
+            </div>
+          </header>
         </div>
-      </header>
+      </div>
     </div>
   );
-  
 };
 
 function formatDate(date) {
