@@ -18,7 +18,7 @@ const LoginReturn = ({ setLoggedIn }) => {
 
   const fetchUserInfo = async (code) => {
     try {
-      const response = await axios.get(`https://four2trans-backend.onrender.com/api/proxy/?code=${code}`);
+      const response = await axios.get(`https://four2trans-backend.onrender.com/api/userinfo/?code=${code}`);
       const userData = response.data.user;
       setUserInfo(userData);
 
@@ -38,7 +38,6 @@ const LoginReturn = ({ setLoggedIn }) => {
         <div>
           <p>Email: {userInfo.email}</p>
           <p>Login: {userInfo.login}</p>
-          <p>Image URL: {userInfo.image_url}</p>
           {/* Add more user details as needed */}
         </div>
       )}
