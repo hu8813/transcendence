@@ -1,15 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './Confetti.css';
 import { Link } from "react-router-dom";
 
-const PlayerAi1 = () => {
+const PongGame = () => {
     const canvasRef = useRef(null);
+    const [gameOver, setGameOver] = useState(false);
+    const [winner, setWinner] = useState('');
 
     useEffect(() => {
+        if (gameOver) {
+            return; // Optional: Implementiere hier eine Gewinner-Animation oder ähnliches
+        }
+
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
-        canvas.width = 800;
-        canvas.height = 400;
+        canvas.width = window.innerWidth / 1.5;
+        canvas.height = window.innerHeight / 1.5;
 
         let ball = {
             x: canvas.width / 2,
@@ -18,47 +23,72 @@ const PlayerAi1 = () => {
             velocityX: 5,
             velocityY: 5,
             speed: 7,
-            color: "#fff"
+            color: "#FFF"
         };
 
-        let player = {
-            x: 0, // links vom Canvas
-            y: (canvas.height - 100) / 2, // -100 ist die Höhe des Schlägers
+        let player1 = {
+            x: 0,
+            y: (canvas.height - 100) / 2,
             width: 10,
             height: 100,
             score: 0,
-            color: "#fff",
+            color: "#FFF",
             moveUp: false,
             moveDown: false
         };
 
-        let computer = {
-            x: canvas.width - 10, // rechts vom Canvas
-            y: (canvas.height - 100) / 2, // -100 ist die Höhe des Schlägers
+        let player2 = {
+            x: canvas.width - 10,
+            y: (canvas.height - 100) / 2,
             width: 10,
             height: 100,
             score: 0,
-            color: "#fff"
+            color: "#FFF"
         };
 
         const keyDownHandler = (event) => {
             switch(event.key) {
-                case 'w': player.moveUp = true; break;
-                case 's': player.moveDown = true; break;
+                case 'w':
+                case 'W':
+                    player1.moveUp = true;
+                    break;
+                case 's':
+                case 'S':
+                    player1.moveDown = true;
+                    break;
             }
         };
 
         const keyUpHandler = (event) => {
             switch(event.key) {
-                case 'w': player.moveUp = false; break;
-                case 's': player.moveDown = false; break;
+                case 'w':
+                case 'W':
+                    player1.moveUp = false;
+                    break;
+                case 's':
+                case 'S':
+                    player1.moveDown = false;
+                    break;
             }
         };
 
         document.addEventListener('keydown', keyDownHandler);
         document.addEventListener('keyup', keyUpHandler);
 
-        /* const collision = (b, p) => {
+        const resetBall = () => {
+            if (player1.score === 7 || player2.score === 7) {
+                setGameOver(true);
+                setWinner(player1.score === 7 ? 'Player 1' : 'Ai ');
+                return;
+            }
+
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height / 2;
+            ball.velocityX = -ball.velocityX;
+            ball.speed = 7;
+        };
+
+        const collision = (b, p) => {
             b.top = b.y - b.radius;
             b.bottom = b.y + b.radius;
             b.left = b.x - b.radius;
@@ -69,11 +99,55 @@ const PlayerAi1 = () => {
             p.left = p.x;
             p.right = p.x + p.width;
 
-            return b.right > p.left && b.top < p.bottom && b.left < p.right && b.bottom > p.top;
-        }; */
+            return b.right > p.left && b.bottom > p.top && b.left < p.right && b.top < p.bottom;
+        };
 
+        const update = () => {
+            if(player1.moveUp && player1.y > 0) {
+                player1.y -= 8;
+            }
+            if(player1.moveDown && (player1.y + player1.height) < canvas.height) {
+                player1.y += 8;
+            }
 
+            // Einfache KI für player2
+            const player2Speed = 4;
+            if (ball.y > player2.y + player2.height / 2 && (player2.y + player2.height) < canvas.height) {
+                player2.y += player2Speed;
+            } else if (ball.y < player2.y + player2.height / 2 && player2.y > 0) {
+                player2.y -= player2Speed;
+            }
 
+            ball.x += ball.velocityX;
+            ball.y += ball.velocityY;
+
+            if(ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
+                ball.velocityY = -ball.velocityY;
+            }
+
+            if(ball.x - ball.radius < 0) {
+                player2.score++;
+                resetBall();
+            } else if(ball.x + ball.radius > canvas.width) {
+                player1.score++;
+                resetBall();
+            }
+
+            if(collision(ball, player1) || collision(ball, player2)) {
+                ball.velocityX = -ball.velocityX * 1.1; // Beschleunige den Ball bei jedem Schlag
+                ball.speed += 0.2; // Optional: Erhöhe die Geschwindigkeit, um das Spiel schwieriger zu machen
+            }
+        };
+
+        const render = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawRect(0, 0, canvas.width, canvas.height, '#000'); // Hintergrund
+            drawRect(player1.x, player1.y, player1.width, player1.height, player1.color); // Spieler 1
+            drawRect(player2.x, player2.y, player2.width, player2.height, player2.color); // Spieler 2
+            drawArc(ball.x, ball.y, ball.radius, ball.color); // Ball
+            drawText(player1.score.toString(), canvas.width / 4, canvas.height / 5); // Punktzahl Spieler 1
+            drawText(player2.score.toString(), 3 * canvas.width / 4, canvas.height / 5); // Punktzahl Spieler 2
+        };
 
         const drawRect = (x, y, w, h, color) => {
             ctx.fillStyle = color;
@@ -88,66 +162,10 @@ const PlayerAi1 = () => {
             ctx.fill();
         };
 
-        const resetBall = () => {
-            ball.x = canvas.width / 2;
-            ball.y = canvas.height / 2;
-            ball.velocityX = -ball.velocityX;
-            ball.speed = 7;
-        };
-
-        const update = () => {
-            ball.x += ball.velocityX;
-            ball.y += ball.velocityY;
-
-            let computerLevel = 0.1;
-            computer.y += (ball.y - (computer.y + computer.height / 2)) * computerLevel;
-            
-            if(ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
-                ball.velocityY = -ball.velocityY;
-            }
-
-            let playerOrComputer = (ball.x < canvas.width / 2) ? player : computer;
-            if(collision(ball, playerOrComputer)) {
-                let collidePoint = (ball.y - (playerOrComputer.y + playerOrComputer.height / 2));
-                collidePoint = collidePoint / (playerOrComputer.height / 2);
-                
-                let angleRad = (Math.PI / 4) * collidePoint;
-                
-                let direction = (ball.x < canvas.width / 2) ? 1 : -1;
-                ball.velocityX = direction * ball.speed * Math.cos(angleRad);
-                ball.velocityY = ball.speed * Math.sin(angleRad);
-                
-                ball.speed += 0.1;
-            }
-
-            if(ball.x - ball.radius < 0) {
-                computer.score++;
-                resetBall();
-            } else if(ball.x + ball.radius > canvas.width) {
-                player.score++;
-                resetBall();
-            }
-        };
-
-        const collision = (b, p) => {
-            b.top = b.y - b.radius;
-            b.bottom = b.y + b.radius;
-            b.left = b.x - b.radius;
-            b.right = b.x + b.radius;
-            
-            p.top = p.y;
-            p.bottom = p.y + p.height;
-            p.left = p.x;
-            p.right = p.x + p.width;
-            
-            return b.right > p.left && b.bottom > p.top && b.left < p.right && b.top < p.bottom;
-        };
-
-        const render = () => {
-            drawRect(0, 0, canvas.width, canvas.height, '#000');
-            drawRect(player.x, player.y, player.width, player.height, player.color);
-            drawRect(computer.x, computer.y, computer.width, computer.height, computer.color);
-            drawArc(ball.x, ball.y, ball.radius, ball.color);
+        const drawText = (text, x, y) => {
+            ctx.fillStyle = "#FFF";
+            ctx.font = "50px Arial";
+            ctx.fillText(text, x, y);
         };
 
         const game = () => {
@@ -160,56 +178,33 @@ const PlayerAi1 = () => {
 
         return () => {
             clearInterval(interval);
+            document.removeEventListener('keydown', keyDownHandler);
+            document.removeEventListener('keyup', keyUpHandler);
         };
-    }, []);
-
-    return <canvas ref={canvasRef}></canvas>;
-};
-
-export default PlayerAi1;
- 
-/*
-import React, { useEffect, useRef, useState } from 'react';
-import { Link } from "react-router-dom";
-
-const Pong = () => {
-    const canvasRef = useRef(null);
-    const [gameOver, setGameOver] = useState(false);
-    const [winner, setWinner] = useState('');
-    const ws = useRef(null);
-
-    useEffect(() => {
-        ws.current = new WebSocket('ws://localhost:8080');
-
-        ws.current.onopen = () => {
-            console.log('WebSocket connected');
-        };
-
-        ws.current.onmessage = (event) => {
-            const message = JSON.parse(event.data);
-            // Hier die Logik implementieren, um auf Nachrichten vom Server zu reagieren
-            // Zum Beispiel Bewegungen des remote Spielers aktualisieren
-        };
-
-        return () => {
-            ws.current.close();
-        };
-    }, []);
-
-    // WebSocket-Nachricht senden Funktion
-    const sendWSMessage = (message) => {
-        if (ws.current.readyState === WebSocket.OPEN) {
-            ws.current.send(JSON.stringify(message));
-        }
-    };
-
-    // Ihre vorhandene useEffect und andere Funktionen hier, mit Anpassungen für WebSocket
-    // Zum Beispiel, sendWSMessage in den keyDownHandler und keyUpHandler einbauen
+    }, [gameOver]);
 
     return (
-        // Ihr vorhandenes JSX
+        <>
+            {gameOver ? (
+                <div className="wrapper">
+                    <div className="modal">
+                        <span className="emoji round">🏆</span>
+                        <h1>Congratulations, {winner} wins!</h1>
+                        <Link to="/game">
+                <button
+                  className="btn btn-primary btn-lg w-100 d-flex justify-content-between align-items-center"
+                  
+                >
+                  <span>Play again</span>
+                </button>
+              </Link>
+                    </div>
+                </div>
+            ) : (
+                <canvas ref={canvasRef}></canvas>
+            )}
+        </>
     );
 };
 
-export default Pong;
-*/
+export default PongGame;
