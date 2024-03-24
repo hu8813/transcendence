@@ -35,6 +35,8 @@ const Login = ({ setLoggedIn }) => {
     }
   };
 
+
+
   const wakeUpBackend = async () => {
     try {
       const pingURL = "https://four2trans-backend.onrender.com/ping/";
@@ -56,25 +58,34 @@ const Login = ({ setLoggedIn }) => {
 
     if (code) {
       setAuthCode(code);
+      console.log(code);
       exchangeCodeForAccessToken(code);
     }
   }, [location.search]);
 
   const exchangeCodeForAccessToken = (code) => {
-    let clientId = process.env.REACT_APP_CLIENT_ID || "your-client-id";
-    let clientSecret =
-      process.env.REACT_APP_CLIENT_SECRET || "your-client-secret";
-    let redirectUri =
-      process.env.REACT_APP_REDIRECT_URI ||
-      "https://42dashboard.vercel.app/login/42/return";
+    let clientId, clientSecret, redirectUri;
+  
+    if (window.location.hostname === "localhost") {
 
+      clientId = process.env.REACT_APP_CLIENT_ID;
+      clientSecret = process.env.REACT_APP_CLIENT_SECRET;
+      redirectUri = "http://localhost:3000/login/42/return";
+    } else {
+      clientId = process.env.REACT_APP_CLIENT_ID;
+      clientSecret = process.env.REACT_APP_CLIENT_SECRET;
+      redirectUri =
+        process.env.REACT_APP_REDIRECT_URI ||
+        "https://transcendence-beige.vercel.app/login/42/return";
+    }
+  
     const requestBody = new URLSearchParams();
     requestBody.append("client_id", clientId);
     requestBody.append("client_secret", clientSecret);
     requestBody.append("code", code);
     requestBody.append("redirect_uri", redirectUri);
     requestBody.append("grant_type", "authorization_code");
-
+  
     fetch("https://api.intra.42.fr/oauth/token", {
       method: "POST",
       body: requestBody,
@@ -90,11 +101,11 @@ const Login = ({ setLoggedIn }) => {
       .catch((error) => {
         console.error(
           "Error exchanging authorization code for access token:",
-          error,
+          error
         );
       });
   };
-
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);

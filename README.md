@@ -22,4 +22,7 @@ export DB_NAME=dbname
 export DB_USER=username
 export DB_PASSWORD=dbpassword
 export DJANGO_SECRET_KEY="your-django-secret-here"
+export REACT_APP_CLIENT_ID='u-XXX-get-your-id-from-intra.42.fr-settings'
+export REACT_APP_CLIENT_SECRET='s-XXX-get-your-secret-from-intra.42.fr-settings'
+export REACT_APP_REDIRECT_URI='http://localhost:3000/login/return'
 ```
