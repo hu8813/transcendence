@@ -38,7 +38,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             
-            <Route path="/login/return" element={<LoginReturn />} />
+            <Route path="/login/return" element={<LoginReturn setLoggedIn={setLoggedIn}/>} />
             <Route
               path="/login"
               element={<Login setLoggedIn={setLoggedIn} />}

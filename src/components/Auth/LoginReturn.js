@@ -20,9 +20,9 @@ const LoginReturn = ({ setLoggedIn }) => {
     try {
       if (code)
       {
-        localStorage.setItem("isLoggedIn", true);
-      } 
-      
+      setLoggedIn(true);
+      localStorage.setItem("isLoggedIn", true);
+      }
       const response = await axios.get(`https://four2trans-backend.onrender.com/api/userinfo/?code=${code}`);
       const userData = response.data.user;
       setUserInfo(userData);
@@ -31,7 +31,8 @@ const LoginReturn = ({ setLoggedIn }) => {
     } catch (error) {
       if (code)
       {
-        localStorage.setItem("isLoggedIn", true);
+      setLoggedIn(true);
+      localStorage.setItem("isLoggedIn", true);
       }
       console.error("Error fetching user info:", error);
     }
