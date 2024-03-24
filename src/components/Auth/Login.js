@@ -19,6 +19,11 @@ const Login = ({ setLoggedIn }) => {
   );
   const [token, setToken] = useState(""); // State to store the token
 
+  const handleOAuthRedirect = () => {
+    window.location.href = `https://api.intra.42.fr/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`;
+};
+
+
   useEffect(() => {
     fetchCsrfToken();
     wakeUpBackend();
@@ -81,22 +86,14 @@ const Login = ({ setLoggedIn }) => {
     let clientId, clientSecret, redirectUri;
   
     // Check if the application is running on localhost
-    if (window.location.hostname === "localhost") {
-      clientId = process.env.REACT_APP_LOCAL_CLIENT_ID || "your-local-client-id";
-      clientSecret =
-        process.env.REACT_APP_LOCAL_CLIENT_SECRET || "your-local-client-secret";
-      redirectUri =
-        process.env.REACT_APP_LOCAL_REDIRECT_URI ||
-        "http://localhost:3000/login/return";
-    } else {
-      // For production or any other environment
+    
       clientId = process.env.REACT_APP_CLIENT_ID || "your-client-id";
       clientSecret =
         process.env.REACT_APP_CLIENT_SECRET || "your-client-secret";
       redirectUri =
         process.env.REACT_APP_REDIRECT_URI ||
         "https://four2trans-backend.onrender.com/api/proxy/";
-    }
+    
   
     const requestBody = new URLSearchParams();
     requestBody.append("client_id", clientId);
@@ -175,6 +172,8 @@ const Login = ({ setLoggedIn }) => {
   if (authCode) {
     return <LoginReturn authCode={authCode} />;
   }
+
+  
 
   return (
     <Container>
