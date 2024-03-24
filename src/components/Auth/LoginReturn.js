@@ -18,14 +18,21 @@ const LoginReturn = ({ setLoggedIn }) => {
 
   const fetchUserInfo = async (code) => {
     try {
+      if (code)
+      {
+        localStorage.setItem("isLoggedIn", true);
+      } 
+      
       const response = await axios.get(`https://four2trans-backend.onrender.com/api/userinfo/?code=${code}`);
       const userData = response.data.user;
       setUserInfo(userData);
 
       // Update isLoggedIn state and set it to true in local storage
-      setLoggedIn(true);
-      localStorage.setItem("isLoggedIn", true);
     } catch (error) {
+      if (code)
+      {
+        localStorage.setItem("isLoggedIn", true);
+      }
       console.error("Error fetching user info:", error);
     }
   };
