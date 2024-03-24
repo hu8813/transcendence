@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 const LoginReturn = () => {
   const location = useLocation();
   const [accessToken, setAccessToken] = useState(null);
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -40,16 +41,42 @@ const LoginReturn = () => {
         const accessToken = response.data.access_token;
         setAccessToken(accessToken);
         console.log("Received access token:", accessToken);
+        // Once you have the access token, fetch user data
+        fetchUserData(accessToken);
       })
       .catch((error) => {
         console.error("Error exchanging code for token:", error);
       });
   };
 
+  const fetchUserData = (token) => {
+    axios
+      .get("https://api.intra.42.fr/v2/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        const userData = response.data;
+        setUserData(userData);
+        console.log("Received user data:", userData);
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  };
+
   return (
     <div>
       <h2>Handle Login Return</h2>
-      {/* You can render user data here */}
+      {/* Render user data here */}
+      {userData && (
+        <div>
+          <p>ID: {userData.id}</p>
+          <p>Email: {userData.email}</p>
+          {/* Add more user details as needed */}
+        </div>
+      )}
     </div>
   );
 };
