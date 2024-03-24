@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-<<<<<<< HEAD
-//import './Profile.css';
-=======
 import "./Profile.css";
->>>>>>> 91d8da3614b2ffdb5d884a1acd6c6ed405a4b563
 
 const Profile = () => {
   const [avatar, setAvatar] = useState(null);

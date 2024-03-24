@@ -22,7 +22,7 @@ const LoginReturn = () => {
       process.env.REACT_APP_CLIENT_SECRET || "your-client-secret";
     const redirectUri =
       process.env.REACT_APP_REDIRECT_URI ||
-      "http://42dashboard.vercel.app/login/return";
+      "https://four2trans-backend.onrender.com/api/proxy/";
 
     const formData = new FormData();
     formData.append("grant_type", "authorization_code");
