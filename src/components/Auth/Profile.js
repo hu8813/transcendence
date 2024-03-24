@@ -103,7 +103,7 @@ const uploadAvatar = () => {
   }, []);
 
   return (
-    <div className="profile-body">
+    <div className="body">
       <div className="profile-container">
         <h2 className="profile-title">Edit Profile</h2>
         <div className="profile-info-section">

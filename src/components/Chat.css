@@ -109,7 +109,7 @@
 .msger-users h2 {
   padding: 20px;
   margin: 0;
-  background: #21d4fd; /* Header color to match profile */
+  background: #0f5fc7; /* Header color to match profile */
   text-align: center;
 }
 
@@ -126,7 +126,7 @@
 }
 
 .msger-users button {
-  background: #21d4fd; /* Button color to match profile */
+  background: #2d75e0; /* Button color to match profile */
   color: white;
   border: none;
   padding: 5px 10px;
@@ -136,7 +136,7 @@
 }
 
 .msger-users button:hover {
-  background-color: #1a8cd8; /* Darker shade on hover */
+  background-color: #672bd8; /* Darker shade on hover */
 }
 
 /* Responsive adjustments */
