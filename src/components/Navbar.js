@@ -63,7 +63,7 @@ const Navbar = ({ isLoggedIn: initialIsLoggedIn, setLoggedIn }) => {
         </Link>
       </div>
       
-      <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
+     
       
       <BootstrapNavbar.Collapse id="basic-navbar-nav">
         
