@@ -12,7 +12,7 @@ const LanguageInitializer = () => {
     const wakeUpBackend = async () => {
       try {
         // Define the URL of your Django backend's ping endpoint
-        const pingURL = "https://four2trans-backend.onrender.com/ping/";
+        const pingURL = "https://pong42.azurewebsites.net/ping/";
 
         // Send an HTTP GET request to the ping endpoint
         const response = await axios.get(pingURL);

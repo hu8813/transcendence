@@ -45,7 +45,7 @@ const Login = ({ setLoggedIn }) => {
 
   const wakeUpBackend = async () => {
     try {
-      const pingURL = "https://four2trans-backend.onrender.com/ping/";
+      const pingURL = "https://pong42.azurewebsites.net/ping/";
       const response = await axios.get(pingURL);
       console.log(response.data.message);
     } catch (error) {
@@ -92,7 +92,7 @@ const Login = ({ setLoggedIn }) => {
         process.env.REACT_APP_CLIENT_SECRET || "your-client-secret";
       redirectUri =
         process.env.REACT_APP_REDIRECT_URI ||
-        "https://four2trans-backend.onrender.com/api/proxy/";
+        "https://pong42.azurewebsites.net/api/proxy/";
     
   
     const requestBody = new URLSearchParams();
@@ -129,7 +129,7 @@ const Login = ({ setLoggedIn }) => {
 
     try {
       const response = await fetch(
-        "https://four2trans-backend.onrender.com/login/",
+        "https://pong42.azurewebsites.net/login/",
         {
           method: "POST",
           body: formData,
@@ -154,7 +154,7 @@ const Login = ({ setLoggedIn }) => {
   const exchangeUsernamePasswordForToken = (username, password) => {
     // Send a request to your Django backend to obtain a token using the provided username and password
     // Example:
-    axios.post("https://four2trans-backend.onrender.com/api/token/", {
+    axios.post("https://pong42.azurewebsites.net/api/token/", {
       username: username,
       password: password,
     })

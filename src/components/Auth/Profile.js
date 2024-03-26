@@ -22,7 +22,7 @@ const Profile = () => {
     // Retrieve token from localStorage
     const token = localStorage.getItem("access_token");
 
-    axios.post("https://four2trans-backend.onrender.com/upload-avatar/", formData, {
+    axios.post("https://pong42.azurewebsites.net/upload-avatar/", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         // Include token in Authorization header
@@ -43,7 +43,7 @@ const Profile = () => {
   // Function to fetch current score from the backend
   const fetchScore = () => {
     axios
-      .get("https://four2trans-backend.onrender.com/get-score/")
+      .get("https://pong42.azurewebsites.net/get-score/")
       .then((response) => {
         // Handle JsonResponse here
         const responseData = response.data;
@@ -58,7 +58,7 @@ const Profile = () => {
   // Function to fetch user's email address from the backend
   const fetchEmail = () => {
     axios
-      .get("https://four2trans-backend.onrender.com/get-email/")
+      .get("https://pong42.azurewebsites.net/get-email/")
       .then((response) => {
         // Handle JsonResponse here
         const responseData = response.data;
@@ -73,7 +73,7 @@ const Profile = () => {
   // Function to fetch user's nickname from the backend
   const fetchNickname = () => {
     axios
-      .get("https://four2trans-backend.onrender.com/get-nickname/")
+      .get("https://pong42.azurewebsites.net/get-nickname/")
       .then((response) => {
         const responseData = response.data;
         setNickname(responseData.nickname);
@@ -86,7 +86,7 @@ const Profile = () => {
   // Function to update user's nickname
   const updateNickname = () => {
     axios
-      .post("https://four2trans-backend.onrender.com/update-nickname/", {
+      .post("https://pong42.azurewebsites.net/update-nickname/", {
         nickname: nickname,
       })
       .then((response) => {

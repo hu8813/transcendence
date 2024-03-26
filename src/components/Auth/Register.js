@@ -22,7 +22,7 @@ const Register = () => {
         formData.append("confirm_password", password);
 
         const response = await fetch(
-          "https://four2trans-backend.onrender.com/register/",
+          "https://pong42.azurewebsites.net/register/",
           {
             method: "POST",
             body: formData,

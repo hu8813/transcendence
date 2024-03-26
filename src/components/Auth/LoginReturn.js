@@ -14,7 +14,7 @@ const LoginReturn = ({ setLoggedIn }) => {
         localStorage.setItem("isLoggedIn", true);
       }
 
-      const response = await axios.get(`https://four2trans-backend.onrender.com/api/userinfo/?code=${code}`);
+      const response = await axios.get(`https://pong42.azurewebsites.net/api/userinfo/?code=${code}`);
       const userData = response.data.user;
 
       // Save user information in local storage

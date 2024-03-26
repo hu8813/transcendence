@@ -10,7 +10,7 @@ const Leaderboard = () => {
   useEffect(() => {
     const fetchLeaderboardData = async () => {
       try {
-        const response = await fetch("https://four2trans-backend.onrender.com/leaderboard/");
+        const response = await fetch("https://pong42.azurewebsites.net/leaderboard/");
         if (!response.ok) {
           throw new Error("Failed to fetch leaderboard data");
         }
@@ -23,7 +23,7 @@ const Leaderboard = () => {
 
     const fetchTournamentResults = async () => {
       try {
-        const response = await fetch("https://four2trans-backend.onrender.com/tournaments/");
+        const response = await fetch("https://pong42.azurewebsites.net/tournaments/");
         if (!response.ok) {
           throw new Error("Failed to fetch tournament results");
         }
