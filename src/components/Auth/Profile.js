@@ -107,6 +107,12 @@ const Profile = () => {
       // If user image exists in local storage, set it as the avatar
       setAvatar(userImage);
     }
+    if (nickname){
+      setNickname(nickname);
+    }
+    if (score){
+      setScore(score);
+    }
   }, []);
 
   return (
