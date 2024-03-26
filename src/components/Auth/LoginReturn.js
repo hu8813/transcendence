@@ -22,6 +22,7 @@ const LoginReturn = ({ setLoggedIn }) => {
       localStorage.setItem("userLogin", userData.login);
       localStorage.setItem("userImage", userData.image_link);
       localStorage.setItem("userScore", userData.score);
+      localStorage.setItem("userEmail", userData.email);
 
       // Update state with user information
       setUserInfo(userData);

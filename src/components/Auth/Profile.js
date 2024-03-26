@@ -102,7 +102,8 @@ const Profile = () => {
     fetchNickname();
     const userImage = localStorage.getItem("userImage");
     const score =  localStorage.getItem("userScore");
-    const nickname =  localStorage.getItem("userNickname"); 
+    const nickname = localStorage.getItem("userNickname"); 
+    const email = localStorage.getItem("userEmail"); 
     if (userImage) {
       // If user image exists in local storage, set it as the avatar
       setAvatar(userImage);
@@ -112,6 +113,9 @@ const Profile = () => {
     }
     if (score){
       setScore(score);
+    }
+    if (email){
+      setEmail(email);
     }
   }, []);
 
