@@ -43,6 +43,15 @@ const Leaderboard = () => {
     return "#" + Math.floor(Math.random() * 16777215).toString(16);
   };
 
+  // Function to calculate days since joining
+  const calculateDaysSinceJoining = (joinDate) => {
+    const today = new Date();
+    const joinedDate = new Date(joinDate);
+    const diffTime = Math.abs(today - joinedDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  };
+
   return (
     
     <div className="l-wrapper">
@@ -53,6 +62,7 @@ const Leaderboard = () => {
             <th>{t("leaderboard.rank")}</th>
             <th>{t("leaderboard.player")}</th>
             <th>{t("leaderboard.kudos")}</th>
+            <th>{t("leaderboard.membersince")}</th>
           </tr>
         </thead>
         <tbody>
@@ -78,6 +88,8 @@ const Leaderboard = () => {
               </td>
               <td>{member.score || 0}</td>{" "}
               {/* Display 0 if score is empty or 0 */}
+              <td>{calculateDaysSinceJoining(member.date_joined)} {t("leaderboard.days")}</td>{" "}
+              {/* Display days since joining */}
             </tr>
           ))}
         </tbody>

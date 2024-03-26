@@ -31,7 +31,9 @@
     "title": "Leaderboard",
     "rank": "Rank",
     "player": "Player",
-    "kudos": "Points"
+    "kudos": "Points",
+    "membersince":"Member since",
+    "days":"day(s)"
   },
   "chat": {
     "title": "Chat",
