@@ -48,7 +48,11 @@ const LoginReturn = ({ setLoggedIn }) => {
       {/* Render user data here */}
       {userInfo && (
         <div>
-          <img src={userInfo.image_link} alt="User Avatar" />
+           <img 
+    src={userInfo.image_link} 
+    alt="User Avatar" 
+    style={{ maxWidth: '200px', maxHeight: '200px' }}  // Adjust the values as needed
+  />
           <p>Nickname: {userInfo.nickname}</p>
           <p>Login: {userInfo.login}</p>
           <p>Score: {userInfo.score}</p>
