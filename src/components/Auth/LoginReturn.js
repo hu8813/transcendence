@@ -48,7 +48,7 @@ const LoginReturn = ({ setLoggedIn }) => {
       {/* Render user data here */}
       {userInfo && (
         <div>
-          <p>nickname: {userInfo.nickname}</p>
+          <p>Nickname: {userInfo.nickname}</p>
           <p>Login: {userInfo.login}</p>
           {/* Add more user details as needed */}
         </div>
