@@ -15,29 +15,29 @@ const Profile = () => {
   };
 
   // Function to upload avatar to Django backend
-const uploadAvatar = () => {
-  const formData = new FormData();
-  formData.append("avatar", avatar);
+  const uploadAvatar = () => {
+    const formData = new FormData();
+    formData.append("avatar", avatar);
 
-  // Retrieve token from localStorage
-  const token = localStorage.getItem("access_token");
+    // Retrieve token from localStorage
+    const token = localStorage.getItem("access_token");
 
-  axios.post("https://four2trans-backend.onrender.com/upload-avatar/", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-      // Include token in Authorization header
-      "Authorization": `Bearer ${token}`,
-    },
-  })
-  .then((response) => {
-    // Handle successful upload
-    console.log("Avatar uploaded successfully:", response.data);
-  })
-  .catch((error) => {
-    // Handle upload error
-    console.error("Error uploading avatar:", error);
-  });
-};
+    axios.post("https://four2trans-backend.onrender.com/upload-avatar/", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        // Include token in Authorization header
+        "Authorization": `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      // Handle successful upload
+      console.log("Avatar uploaded successfully:", response.data);
+    })
+    .catch((error) => {
+      // Handle upload error
+      console.error("Error uploading avatar:", error);
+    });
+  };
 
 
   // Function to fetch current score from the backend
@@ -100,6 +100,11 @@ const uploadAvatar = () => {
   // Fetch nickname on component mount
   useEffect(() => {
     fetchNickname();
+    const userImage = localStorage.getItem("userImage");
+    if (userImage) {
+      // If user image exists in local storage, set it as the avatar
+      setAvatar(userImage);
+    }
   }, []);
 
   return (
@@ -108,19 +113,23 @@ const uploadAvatar = () => {
         <h2 className="profile-title">Edit Profile</h2>
         <div className="profile-info-section">
           <h3 className="info-header">Avatar</h3>
-          <input
-            className="profile-input"
-            type="file"
-            accept="image/*"
-            onChange={handleAvatarUpload}
-          />
-          {avatar && (
+          {avatar ? (
+            // Render the avatar if it exists
             <div className="avatar-preview">
-              <p>Selected avatar: {avatar.name}</p>
-              <button className="profile-button" onClick={uploadAvatar}>
-                Upload Avatar
-              </button>
+              <img src={avatar} alt="User Avatar" className="avatar-image" />
             </div>
+          ) : (
+            <input
+              className="profile-input"
+              type="file"
+              accept="image/*"
+              onChange={handleAvatarUpload}
+            />
+          )}
+          {avatar && (
+            <button className="profile-button" onClick={uploadAvatar}>
+              Upload Avatar
+            </button>
           )}
         </div>
         <div className="nickname-info-section">
@@ -156,6 +165,5 @@ const uploadAvatar = () => {
     </div>
   );
 };
-
 
 export default Profile;

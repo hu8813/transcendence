@@ -20,6 +20,8 @@ const LoginReturn = ({ setLoggedIn }) => {
       // Save user information in local storage
       localStorage.setItem("userNickname", userData.nickname);
       localStorage.setItem("userLogin", userData.login);
+      localStorage.setItem("userImage", userData.image_link);
+      localStorage.setItem("userScore", userData.score);
 
       // Update state with user information
       setUserInfo(userData);
@@ -55,8 +57,8 @@ const LoginReturn = ({ setLoggedIn }) => {
   />
           <p>Nickname: {userInfo.nickname}</p>
           <p>Login: {userInfo.login}</p>
-          <p>Score: {userInfo.score}</p>
           <p>Email: {userInfo.email}</p>
+          <p>Score: {userInfo.score}</p>
           {/* Add more user details as needed */}
         </div>
       )}
