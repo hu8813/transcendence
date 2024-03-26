@@ -31,14 +31,14 @@ const LoginReturn = ({ setLoggedIn }) => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const code = params.get('code');
-  
+
     const fetchData = async () => {
       if (code) {
         // Use the authorization code to fetch user info from the backend
         await fetchUserInfo(code);
       }
     };
-  
+
     fetchData();
   }, [location]);
 
@@ -48,8 +48,11 @@ const LoginReturn = ({ setLoggedIn }) => {
       {/* Render user data here */}
       {userInfo && (
         <div>
+          <img src={userInfo.image_link} alt="User Avatar" />
           <p>Nickname: {userInfo.nickname}</p>
           <p>Login: {userInfo.login}</p>
+          <p>Score: {userInfo.score}</p>
+          <p>Email: {userInfo.email}</p>
           {/* Add more user details as needed */}
         </div>
       )}
