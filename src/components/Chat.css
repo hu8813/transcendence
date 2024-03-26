@@ -1,7 +1,7 @@
 /* Chat.css */
 
 .chat-body {
-  background-color: #ad9de6;
+  background-color: #525151;
   color: #ffffff;
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -109,7 +109,7 @@
 .msger-users h2 {
   padding: 20px;
   margin: 0;
-  background: #0c5cc5; /* Header color to match profile */
+  background: #5c5c5c; /* Header color to match profile */
   text-align: center;
 }
 
