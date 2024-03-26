@@ -101,6 +101,8 @@ const Profile = () => {
   useEffect(() => {
     fetchNickname();
     const userImage = localStorage.getItem("userImage");
+    const score =  localStorage.getItem("userScore");
+    const nickname =  localStorage.getItem("userNickname"); 
     if (userImage) {
       // If user image exists in local storage, set it as the avatar
       setAvatar(userImage);
@@ -153,7 +155,7 @@ const Profile = () => {
         </div>
         <div className="score-info-section">
           <h3 className="info-header">Score</h3>
-          <button className="profile-button" onClick={fetchScore}>
+          <button className="profile-button" onClick={score}>
             Fetch Score
           </button>
           {score && <p>Current score: {score}</p>}
