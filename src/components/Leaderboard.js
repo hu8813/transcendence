@@ -66,7 +66,7 @@ const Leaderboard = () => {
                     style={{ backgroundColor: getRandomColor() }}
                   >
                     {member.image_link ? (
-                      <img src={member.image_link} alt={member.username} />
+                      <img style={{ maxWidth: '200px', maxHeight: '200px' }}  src={member.image_link} alt={member.username} />
                     ) : (
                       <div className="default-profile-pic"></div>
                     )}
