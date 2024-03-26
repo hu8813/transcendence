@@ -119,6 +119,9 @@ const Profile = () => {
     }
   }, []);
 
+  const deleteProfile = () => {
+  }
+
   return (
     <div className="body">
       <div className="profile-container">
@@ -155,20 +158,20 @@ const Profile = () => {
           <button className="profile-button" onClick={updateNickname}>
             Change Nickname
           </button>
-        </div>
+        </div> <br/> <br/>
         <div className="email-info-section">
-          <h3 className="info-header">Email</h3>
-          <p>{email}</p>
-          <button className="profile-button" onClick={fetchEmail}>
-            Fetch Email
-          </button>
+          <h3 className="info-header">Email: {email}</h3>
+          <br/>
         </div>
         <div className="score-info-section">
-          <h3 className="info-header">Score</h3>
-          <button className="profile-button" onClick={score}>
-            Fetch Score
+          <h3 className="info-header">Score: {score}</h3>
+          <br/>
+          
+        </div> <br/> <br/>
+        <div className="delete-profile-section">
+          <button className="profile-button bn" onClick={deleteProfile}>
+            Delete Profile
           </button>
-          {score && <p>Current score: {score}</p>}
         </div>
         <div className="profile-footer">
           {/* Footer content */}
