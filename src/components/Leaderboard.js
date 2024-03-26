@@ -103,7 +103,7 @@ const Leaderboard = () => {
     </td>
 
     <td>
-      <button className="button bn">{t("leaderboard.invitetochat")}</button>{" "}
+      <button className="button bn">{t("leaderboard.addasfriend")}</button>{" "}
       {/* Display "Invite to play" as a button */}
     </td>
             </tr>
