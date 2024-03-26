@@ -33,7 +33,9 @@
     "player": "Player",
     "kudos": "Points",
     "membersince":"Member since",
-    "days":"day(s)"
+    "days":"day(s)",
+    "viewprofile":"View Profile",
+    "invitetoplay":"Invite to Play"
   },
   "chat": {
     "title": "Chat",

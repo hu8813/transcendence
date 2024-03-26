@@ -63,6 +63,8 @@ const Leaderboard = () => {
             <th>{t("leaderboard.player")}</th>
             <th>{t("leaderboard.kudos")}</th>
             <th>{t("leaderboard.membersince")}</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -72,11 +74,11 @@ const Leaderboard = () => {
               <td>
                 <div className="c-media">
                   <div
-                    className="c-avatar c-media__img"
+                    className="c-avatar c-media__img "
                     style={{ backgroundColor: getRandomColor() }}
                   >
                     {member.image_link ? (
-                      <img style={{ width: '40px', height: '40px', maxWidth: '40px', maxHeight: '40px' }}  src={member.image_link} alt={member.username} />
+                      <img style={{ width: '55px', height: '55px', maxWidth: '55px', maxHeight: '55px' }}  src={member.image_link} alt={member.username} />
                     ) : (
                       <div className="default-profile-pic"></div>
                     )}
@@ -90,6 +92,14 @@ const Leaderboard = () => {
               {/* Display 0 if score is empty or 0 */}
               <td>{calculateDaysSinceJoining(member.date_joined)} {t("leaderboard.days")}</td>{" "}
               {/* Display days since joining */}
+              <td>
+              <button className="button bn">{t("leaderboard.viewprofile")}</button>{" "}
+      {/* Display days since joining as a button */}
+    </td>
+    <td>
+      <button className="button bn">{t("leaderboard.invitetoplay")}</button>{" "}
+      {/* Display "Invite to play" as a button */}
+    </td>
             </tr>
           ))}
         </tbody>
@@ -112,6 +122,7 @@ const Leaderboard = () => {
                   <tr key={resultIndex}>
                     <td>{result.username}</td>
                     <td>{result.score}</td>
+                    
                   </tr>
                 ))}
               </tbody>
