@@ -28,7 +28,7 @@
     "controls": "Left Player: W/S - Right Player: UP/DOWN"
   },
   "leaderboard": {
-    "title": "Leaderboard:",
+    "title": "Leaderboard",
     "rank": "Rank",
     "player": "Player",
     "kudos": "Points",
@@ -37,7 +37,7 @@
     "viewprofile":"View Profile",
     "invitetoplay":"Invite to Play",
     "addasfriend":"Add as friend",
-    "tournamentResultsTitle": "Recent Tournaments:"
+    "tournamentResultsTitle": "Recent Tournaments"
   },
   "chat": {
     "title": "Chat",
