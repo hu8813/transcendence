@@ -118,7 +118,7 @@ body {
   width: 6px;
   color: #FFF;
   animation: paddles 0.75s ease-out infinite;
-  left: 56%; /* Aligning to the right */
+  left: 50%; /* Aligning to the right */
 }
 
 .loader:before {

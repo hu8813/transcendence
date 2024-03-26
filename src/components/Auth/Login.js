@@ -179,13 +179,20 @@ const Login = ({ setLoggedIn }) => {
     <Container>
       
       <div className="wrapper">
-      <div class="loader"></div><br/>
+      <div class="loader"></div><br/><br/><br/>
       <Button
           variant="contained"
           color="primary"
           
           href={`https://api.intra.42.fr/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`}
           className="rounded mb-4 bn"
+          style={{
+            width: 'auto', // Set width to 'auto' to allow content-based width
+            minWidth: '270px', // Set minimum width
+            
+            margin: '0 auto', // Center the button horizontally
+            textAlign: 'center', // Align text center within the button
+          }}
         >
           
           <FiUser className="bn mr-2" />
