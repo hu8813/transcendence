@@ -65,8 +65,8 @@ const Leaderboard = () => {
                     className="c-avatar c-media__img"
                     style={{ backgroundColor: getRandomColor() }}
                   >
-                    {member.img ? (
-                      <img src={member.img} alt={member.username} />
+                    {member.image_link ? (
+                      <img style={{ width: '40px', height: '40px', maxWidth: '40px', maxHeight: '40px' }}  src={member.image_link} alt={member.username} />
                     ) : (
                       <div className="default-profile-pic"></div>
                     )}
