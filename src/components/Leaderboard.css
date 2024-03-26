@@ -1,9 +1,10 @@
 /* Leaderboard.css */
 
 .l-wrapper {
-  margin: var(--spacer-16) auto;
-  max-width: 800px;
-  padding: var(--spacer-16);
+  margin: 1rem auto; /* Using rem for margin */
+  max-width: 900px;
+  padding: 1rem; /* Using rem for padding */
+  text-align: center;
 }
 
 .c-table {

@@ -55,7 +55,7 @@ const Leaderboard = () => {
   return (
     
     <div className="l-wrapper">
-      <h2>{t("leaderboard.title")}</h2>
+      <h1>{t("leaderboard.title")}</h1><br/>
       <table className="c-table">
       <thead>
           <tr>
@@ -63,6 +63,7 @@ const Leaderboard = () => {
             <th>{t("leaderboard.player")}</th>
             <th>{t("leaderboard.kudos")}</th>
             <th>{t("leaderboard.membersince")}</th>
+            <th></th>
             <th></th>
             <th></th>
           </tr>
@@ -100,12 +101,17 @@ const Leaderboard = () => {
       <button className="button bn">{t("leaderboard.invitetoplay")}</button>{" "}
       {/* Display "Invite to play" as a button */}
     </td>
+
+    <td>
+      <button className="button bn">{t("leaderboard.invitetochat")}</button>{" "}
+      {/* Display "Invite to play" as a button */}
+    </td>
             </tr>
           ))}
         </tbody>
       </table>
-
-      <h2>{t("leaderboard.tournamentResultsTitle")}</h2>
+                      <br/>
+      <h1>{t("leaderboard.tournamentResultsTitle")}</h1>
       <div className="tournament-results">
         {tournamentResults.map((tournament, index) => (
           <div key={index} className="tournament">

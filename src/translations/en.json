@@ -35,7 +35,8 @@
     "membersince":"Member since",
     "days":"day(s)",
     "viewprofile":"View Profile",
-    "invitetoplay":"Invite to Play"
+    "invitetoplay":"Invite to Play",
+    "invitetochat":"Invite to Chat"
   },
   "chat": {
     "title": "Chat",
