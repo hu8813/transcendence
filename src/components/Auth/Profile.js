@@ -125,7 +125,7 @@ const Profile = () => {
   return (
     <div className="body">
       <div className="profile-container">
-        <h2 className="profile-title">Edit Profile</h2>
+        <h2 className="profile-title">Profile of {nickname}</h2>
         <div className="profile-info-section">
           <h3 className="info-header">Avatar</h3>
           {avatar ? (
