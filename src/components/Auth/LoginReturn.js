@@ -6,37 +6,41 @@ const LoginReturn = ({ setLoggedIn }) => {
   const [userInfo, setUserInfo] = useState(null);
   const location = useLocation();
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const code = params.get('code');
-
-    if (code) {
-      // Use the authorization code to fetch user info from the backend
-      fetchUserInfo(code);
-    }
-  }, [location]);
-
   const fetchUserInfo = async (code) => {
     try {
-      if (code)
-      {
-      setLoggedIn(true);
-      localStorage.setItem("isLoggedIn", true);
+      if (code) {
+        // Set isLoggedIn state and save it to local storage
+        setLoggedIn(true);
+        localStorage.setItem("isLoggedIn", true);
       }
+
       const response = await axios.get(`https://four2trans-backend.onrender.com/api/userinfo/?code=${code}`);
       const userData = response.data.user;
-      setUserInfo(userData);
 
-      // Update isLoggedIn state and set it to true in local storage
+      // Save user information in local storage
+      localStorage.setItem("userNickname", userData.nickname);
+      localStorage.setItem("userLogin", userData.login);
+
+      // Update state with user information
+      setUserInfo(userData);
     } catch (error) {
-      if (code)
-      {
-      setLoggedIn(true);
-      localStorage.setItem("isLoggedIn", true);
-      }
       console.error("Error fetching user info:", error);
     }
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const code = params.get('code');
+  
+    const fetchData = async () => {
+      if (code) {
+        // Use the authorization code to fetch user info from the backend
+        await fetchUserInfo(code);
+      }
+    };
+  
+    fetchData();
+  }, [location]);
 
   return (
     <div>
@@ -44,7 +48,7 @@ const LoginReturn = ({ setLoggedIn }) => {
       {/* Render user data here */}
       {userInfo && (
         <div>
-          <p>Email: {userInfo.email}</p>
+          <p>nickname: {userInfo.nickname}</p>
           <p>Login: {userInfo.login}</p>
           {/* Add more user details as needed */}
         </div>
