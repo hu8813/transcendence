@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Chat.css";
+import WebSocketInstance from "./WebSocket"; 
 
 const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
 const PERSON_NAME = "user42";
@@ -41,6 +42,17 @@ const Chat = () => {
     messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
   };
 
+  useEffect(() => {
+    // Establish WebSocket connection when component mounts
+    WebSocketInstance.connect();
+
+    
+    // Clean up WebSocket connection when component unmounts
+    return () => {
+      //WebSocketInstance.disconnect();
+    };
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -54,7 +66,9 @@ const Chat = () => {
       time: formatDate(new Date()),
     };
 
-    setMessages([...messages, newMessage]);
+    // Send message to WebSocket server
+    WebSocketInstance.newChatMessage(newMessage);
+
     setInputText("");
   };
 
