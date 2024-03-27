@@ -1,46 +1,57 @@
 {
   "home": {
-    "welcome": "Pong Oyununa Hoş Geldin!"
+    "welcome": "Pong Oyununa Hoş Geldiniz!"
   },
   "auth": {
     "email": "E-posta",
-    "username": "Kullanıcı adı",
-    "enterEmail": "E-posta adresinizi girin",
+    "logout": "Çıkış Yap",
+    "username": "Kullanıcı Adı",
+    "enterEmail": "E-postanızı girin",
     "password": "Şifre",
     "enterPassword": "Şifrenizi girin",
     "rememberMe": "Beni hatırla",
-    "login": "Giriş yap",
+    "login": "Giriş",
     "forgotPassword": "Şifrenizi mi unuttunuz?",
     "notRegistered": "Henüz kayıtlı değil misiniz?",
-    "registerHere": "Buradan kaydolun",
-    "register": "Kayıt ol",
-    "signInWith42": "42Signin ile girin",
-    "signIn": "Giriş yap",
+    "registerHere": "Buradan kayıt olun",
+    "register": "Kayıt Ol",
+    "signInWith42": "42Sign-in ile Giriş Yap",
+    "signIn": "Standart Giriş:",
     "passwordMismatch": "Şifre boş/geçersiz",
     "confirmPassword": "Şifreyi Onayla",
-    "termsAndConditions": "Koşullar ve Şartlar",
-    "acceptTerms": "Şartları ve Koşulları Kabul Ediyorum",
+    "termsAndConditions": "Şartlar & Koşullar",
+    "acceptTerms": "Şartlar & Koşulları kabul ediyorum",
     "profile": "Profil"
   },
   "game": {
-    "title": "Oyna!"
+    "title": "Oyna!",
+    "controls": "Sol Oyuncu: W/S - Sağ Oyuncu: YUKARI/AŞAĞI"
   },
   "leaderboard": {
-    "title": "Liderlik Tablosu"
+    "title": "Sıralama Tablosu",
+    "rank": "Sıra",
+    "player": "Oyuncu",
+    "kudos": "Puanlar",
+    "membersince": "Katılım Tarihi",
+    "days": "gün(ler)",
+    "viewprofile": "Profili Görüntüle",
+    "invitetoplay": "Oynamaya Davet Et",
+    "addasfriend": "Arkadaş Olarak Ekle",
+    "tournamentResultsTitle": "Son Turnuva Sonuçları"
   },
   "chat": {
     "title": "Sohbet",
-    "users": "Online Üyeler"
+    "users": "Çevrimiçi Kullanıcılar"
   },
   "common": {
-    "home": "Anasayfa",
-    "or": "veya",
-    "switchLanguage": "Dil Değiştir"
+    "home": "Ana Sayfa",
+    "switchLanguage": "Dil Değiştir",
+    "or": "veya"
   },
   "footer": {
     "privacyPolicy": "Gizlilik Politikası",
-    "impressum": "İletişim",
-    "madeWith": "",
+    "impressum": "Yasal Uyarı",
+    "madeWith": "ile yapıldı",
     "at42Vienna": "42Vienna'da"
   }
 }
