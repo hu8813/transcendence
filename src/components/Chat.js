@@ -44,7 +44,7 @@ const Chat = () => {
 
   useEffect(() => {
     // Establish WebSocket connection when component mounts
-    WebSocketInstance.connect();
+    //WebSocketInstance.connect();
 
     
     // Clean up WebSocket connection when component unmounts
