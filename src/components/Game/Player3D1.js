@@ -207,8 +207,6 @@ const Player3D1 = () => {
       container.style.alignItems = "center";
 
       startRender();
-
-
       const handleMouseMove = (e) => {
         var mouseX = e.clientX;
         camera.position.x = paddle1.position.x =
@@ -239,8 +237,6 @@ const Player3D1 = () => {
     }
 
     init();
-
-
     return () => {
 
       renderer.dispose();

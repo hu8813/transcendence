@@ -6,8 +6,6 @@
       "command": "npm install"
     }
   ],
-
-
   "tasks": {
     "start": {
       "name": "start",

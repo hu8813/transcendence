@@ -109,8 +109,6 @@ const PongGame = () => {
             if(player1.moveDown && (player1.y + player1.height) < canvas.height) {
                 player1.y += 8;
             }
-
-
             const player2Speed = 4;
             if (ball.y > player2.y + player2.height / 2 && (player2.y + player2.height) < canvas.height) {
                 player2.y += player2Speed;

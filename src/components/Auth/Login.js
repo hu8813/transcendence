@@ -22,8 +22,6 @@ const Login = ({ setLoggedIn }) => {
   const handleOAuthRedirect = () => {
     window.location.href = `https://api.intra.42.fr/oauth/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`;
 };
-
-
   useEffect(() => {
     fetchCsrfToken();
     wakeUpBackend();
@@ -40,8 +38,6 @@ const Login = ({ setLoggedIn }) => {
       setCsrfToken("ns9y1mCcGwoeH5Sh4WTcJZfdg600L0nm");
     }
   };
-
-
 
   const wakeUpBackend = async () => {
     try {
@@ -152,8 +148,6 @@ const Login = ({ setLoggedIn }) => {
   };
 
   const exchangeUsernamePasswordForToken = (username, password) => {
-
-
     axios.post("https://pong42.azurewebsites.net/api/token/", {
       username: username,
       password: password,

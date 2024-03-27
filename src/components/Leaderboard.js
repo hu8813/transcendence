@@ -37,13 +37,9 @@ const Leaderboard = () => {
     fetchLeaderboardData();
     fetchTournamentResults();
   }, []);
-
-
   const getRandomColor = () => {
     return "#" + Math.floor(Math.random() * 16777215).toString(16);
   };
-
-
   const calculateDaysSinceJoining = (joinDate) => {
     const today = new Date();
     const joinedDate = new Date(joinDate);

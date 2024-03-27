@@ -3,14 +3,10 @@ import React, { useState } from "react";
 const Onboarding = () => {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [customAvatar, setCustomAvatar] = useState(null);
-
-
   const handleSelectAvatar = (avatarUrl) => {
     setSelectedAvatar(avatarUrl);
     setCustomAvatar(null); // Clear any previously selected custom avatar
   };
-
-
   const handleCustomAvatarUpload = (e) => {
     const file = e.target.files[0];
     if (file) {

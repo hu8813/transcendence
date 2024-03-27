@@ -13,22 +13,14 @@ const LanguageInitializer = () => {
       try {
 
         const pingURL = "https://pong42.azurewebsites.net/ping/";
-
-
         const response = await axios.get(pingURL);
-
-
         console.log(response.data.message);
       } catch (error) {
 
         console.error("Error waking up server:", error);
       }
     };
-
-
     wakeUpBackend();
-
-
     const storedLanguage = localStorage.getItem("language");
     i18n.changeLanguage(storedLanguage || "en");
   }, []);
@@ -42,8 +34,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <App />
   </React.StrictMode>,
 );
-
-
 
 
 reportWebVitals();

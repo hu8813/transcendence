@@ -7,19 +7,13 @@ const Profile = () => {
   const [nickname, setNickname] = useState("");
   const [score, setScore] = useState(null);
   const [email, setEmail] = useState("");
-
-
   const handleAvatarUpload = (event) => {
     const file = event.target.files[0];
     setAvatar(file);
   };
-
-
   const uploadAvatar = () => {
     const formData = new FormData();
     formData.append("avatar", avatar);
-
-
     const token = localStorage.getItem("access_token");
 
     axios.post("https://pong42.azurewebsites.net/upload-avatar/", formData, {
@@ -39,8 +33,6 @@ const Profile = () => {
     });
   };
 
-
-
   const fetchScore = () => {
     axios
       .get("https://pong42.azurewebsites.net/get-score/")
@@ -54,8 +46,6 @@ const Profile = () => {
         console.error("Error fetching score:", error);
       });
   };
-
-
   const fetchEmail = () => {
     axios
       .get("https://pong42.azurewebsites.net/get-email/")
@@ -69,8 +59,6 @@ const Profile = () => {
         console.error("Error fetching email address:", error);
       });
   };
-
-
   const fetchNickname = () => {
     axios
       .get("https://pong42.azurewebsites.net/get-nickname/")
@@ -82,8 +70,6 @@ const Profile = () => {
         console.error("Error fetching nickname:", error);
       });
   };
-
-
   const updateNickname = () => {
     axios
       .post("https://pong42.azurewebsites.net/update-nickname/", {
@@ -96,8 +82,6 @@ const Profile = () => {
         console.error("Error updating nickname:", error);
       });
   };
-
-
   useEffect(() => {
     fetchNickname();
     const userImage = localStorage.getItem("userImage");

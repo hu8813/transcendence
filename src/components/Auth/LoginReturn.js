@@ -16,15 +16,11 @@ const LoginReturn = ({ setLoggedIn }) => {
 
       const response = await axios.get(`https://pong42.azurewebsites.net/api/userinfo/?code=${code}`);
       const userData = response.data.user;
-
-
       localStorage.setItem("userNickname", userData.nickname);
       localStorage.setItem("userLogin", userData.login);
       localStorage.setItem("userImage", userData.image_link);
       localStorage.setItem("userScore", userData.score);
       localStorage.setItem("userEmail", userData.email);
-
-
       setUserInfo(userData);
     } catch (error) {
       console.error("Error fetching user info:", error);

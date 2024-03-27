@@ -29,8 +29,6 @@ const Register = () => {
           },
         );
         const data = await response.text();
-
-
         if (data.includes("Error occurred")) {
           const errorMessage = data.substring(data.indexOf(":") + 1).trim();
 
@@ -83,8 +81,6 @@ const Register = () => {
       const timeout = setTimeout(() => {
         window.location.href = "/login";
       }, 2000);
-
-
       return () => clearTimeout(timeout);
     }
   }, [registerSuccess]);

@@ -78,8 +78,6 @@
 .nav-link:hover {
   background-color: #343a40;
 }
-
-
 .nav-link-logout {
   margin: 0 10px; /* Passenden Abstand für die Links */
   padding: 15px 10px;
@@ -94,8 +92,6 @@
   
   transition: background-color 1s ease;
 }
-
-
 .language-button {
   margin-left: 10px;
 }

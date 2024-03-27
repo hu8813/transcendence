@@ -129,8 +129,6 @@ const Pong = () => {
 
             ctx.strokeRect(0, 0, canvas.width, canvas.height);
         }; */
-
-
         const resetBall = () => {
             if (player1.score === 7 || player2.score === 7) {
                 setGameOver(true);
@@ -209,8 +207,6 @@ const Pong = () => {
     const generateConfetti = () => {
         
       };
-
-
     return (
         <>
             {gameOver ? (
