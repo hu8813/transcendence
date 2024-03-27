@@ -9,7 +9,7 @@ const LoginReturn = ({ setLoggedIn }) => {
   const fetchUserInfo = async (code) => {
     try {
       if (code) {
-        // Set isLoggedIn state and save it to local storage
+
         setLoggedIn(true);
         localStorage.setItem("isLoggedIn", true);
       }
@@ -17,14 +17,14 @@ const LoginReturn = ({ setLoggedIn }) => {
       const response = await axios.get(`https://pong42.azurewebsites.net/api/userinfo/?code=${code}`);
       const userData = response.data.user;
 
-      // Save user information in local storage
+
       localStorage.setItem("userNickname", userData.nickname);
       localStorage.setItem("userLogin", userData.login);
       localStorage.setItem("userImage", userData.image_link);
       localStorage.setItem("userScore", userData.score);
       localStorage.setItem("userEmail", userData.email);
 
-      // Update state with user information
+
       setUserInfo(userData);
     } catch (error) {
       console.error("Error fetching user info:", error);
@@ -37,7 +37,7 @@ const LoginReturn = ({ setLoggedIn }) => {
 
     const fetchData = async () => {
       if (code) {
-        // Use the authorization code to fetch user info from the backend
+
         await fetchUserInfo(code);
       }
     };

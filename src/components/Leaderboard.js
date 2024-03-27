@@ -38,12 +38,12 @@ const Leaderboard = () => {
     fetchTournamentResults();
   }, []);
 
-  // Function to generate a random unique color
+
   const getRandomColor = () => {
     return "#" + Math.floor(Math.random() * 16777215).toString(16);
   };
 
-  // Function to calculate days since joining
+
   const calculateDaysSinceJoining = (joinDate) => {
     const today = new Date();
     const joinedDate = new Date(joinDate);

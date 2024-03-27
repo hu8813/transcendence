@@ -1,11 +1,11 @@
-// Footer.js
+
 import React from "react";
 import { AiFillHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./Footer.css";
 
-// Import the Contact and PrivacyPolicy components
+
 import Contact from "./Contact";
 import PrivacyPolicy from "./PrivacyPolicy";
 const Footer = () => {

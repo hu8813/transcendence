@@ -132,7 +132,7 @@ const Player3D1 = () => {
     }
 
     function updateScoreBoard() {
-      // Code for updating scoreboard if necessary
+
     }
 
     function stopBall() {
@@ -140,7 +140,7 @@ const Player3D1 = () => {
     }
 
     function addPoint(playerName) {
-      // Code for adding point to player if necessary
+
     }
 
     function startRender() {
@@ -148,7 +148,7 @@ const Player3D1 = () => {
     }
 
     function stopRender() {
-      // Code for stopping rendering if necessary
+
     }
 
     function render() {
@@ -208,7 +208,7 @@ const Player3D1 = () => {
 
       startRender();
 
-      // Handle mouse move event
+
       const handleMouseMove = (e) => {
         var mouseX = e.clientX;
         camera.position.x = paddle1.position.x =
@@ -219,7 +219,7 @@ const Player3D1 = () => {
       renderer.domElement.style.cursor = "none";
 
       return () => {
-        // Cleanup function
+
         stopRender();
         window.removeEventListener("mousemove", handleMouseMove);
         container.removeChild(renderer.domElement);
@@ -240,9 +240,9 @@ const Player3D1 = () => {
 
     init();
 
-    // Cleanup function
+
     return () => {
-      // Stop rendering and cleanup if component unmounts
+
       renderer.dispose();
     };
   }, []);

@@ -110,7 +110,7 @@ const PongGame = () => {
                 player1.y += 8;
             }
 
-            // Einfache KI für player2
+
             const player2Speed = 4;
             if (ball.y > player2.y + player2.height / 2 && (player2.y + player2.height) < canvas.height) {
                 player2.y += player2Speed;

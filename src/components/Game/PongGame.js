@@ -10,7 +10,7 @@ const PongGame = () => {
     
     useEffect(() => {
         if (gameOver) {
-            //generateConfetti();
+
             return;
         }
         
@@ -117,18 +117,18 @@ const PongGame = () => {
         };
 
         const drawCourt = () => {
-            // Zeichnet die Umrandung des Spielfelds
+
             drawRect(0, 0, canvas.width, canvas.height, '#000');
-            // Zeichnet die Mittellinie
+
             ctx.strokeStyle = "#FFF";
             ctx.setLineDash([10, 15]);
             ctx.beginPath();
             ctx.moveTo(canvas.width / 2, 0);
             ctx.lineTo(canvas.width / 2, canvas.height);
             ctx.stroke();
-            // Zurücksetzen auf durchgehende Linie
+
             ctx.setLineDash([]);
-            // Zeichnet den Rand des Spielfelds
+
             ctx.strokeRect(0, 0, canvas.width, canvas.height);
         };
 
@@ -203,7 +203,7 @@ const PongGame = () => {
 
         const render = () => {
             drawCourt();
-            //drawRect(0, 0, canvas.width, canvas.height, '#000');
+
             drawRect(player1.x, player1.y, player1.width, player1.height, player1.color);
             drawRect(player2.x, player2.y, player2.width, player2.height, player2.color);
             drawArc(ball.x, ball.y, ball.radius, ball.color);

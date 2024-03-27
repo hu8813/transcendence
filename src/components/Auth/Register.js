@@ -30,7 +30,7 @@ const Register = () => {
         );
         const data = await response.text();
 
-        // Inside handleRegister function after fetching response
+
         if (data.includes("Error occurred")) {
           const errorMessage = data.substring(data.indexOf(":") + 1).trim();
 
@@ -41,12 +41,12 @@ const Register = () => {
           } else {
             setRegisterStatus(errorMessage);
             console.log("Register Status:", errorMessage);
-            //setLoggedIn(true); // Update isLoggedIn state if login is successful
+
           }
         } else {
           setRegisterStatus(data.trim());
           console.log("Register Status:", data.trim());
-          // Move this line outside of the else block
+
           localStorage.setItem("isLoggedIn", true);
           setUsername("");
           setPassword("");
@@ -79,12 +79,12 @@ const Register = () => {
 
   useEffect(() => {
     if (registerSuccess) {
-      // Redirect to onboarding page after 2 seconds
+
       const timeout = setTimeout(() => {
         window.location.href = "/login";
       }, 2000);
 
-      // Clear timeout on component unmount
+
       return () => clearTimeout(timeout);
     }
   }, [registerSuccess]);

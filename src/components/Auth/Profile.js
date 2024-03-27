@@ -8,69 +8,69 @@ const Profile = () => {
   const [score, setScore] = useState(null);
   const [email, setEmail] = useState("");
 
-  // Function to handle avatar upload
+
   const handleAvatarUpload = (event) => {
     const file = event.target.files[0];
     setAvatar(file);
   };
 
-  // Function to upload avatar to Django backend
+
   const uploadAvatar = () => {
     const formData = new FormData();
     formData.append("avatar", avatar);
 
-    // Retrieve token from localStorage
+
     const token = localStorage.getItem("access_token");
 
     axios.post("https://pong42.azurewebsites.net/upload-avatar/", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
-        // Include token in Authorization header
+
         "Authorization": `Bearer ${token}`,
       },
     })
     .then((response) => {
-      // Handle successful upload
+
       console.log("Avatar uploaded successfully:", response.data);
     })
     .catch((error) => {
-      // Handle upload error
+
       console.error("Error uploading avatar:", error);
     });
   };
 
 
-  // Function to fetch current score from the backend
+
   const fetchScore = () => {
     axios
       .get("https://pong42.azurewebsites.net/get-score/")
       .then((response) => {
-        // Handle JsonResponse here
+
         const responseData = response.data;
         setScore(responseData.score);
       })
       .catch((error) => {
-        // Handle error
+
         console.error("Error fetching score:", error);
       });
   };
 
-  // Function to fetch user's email address from the backend
+
   const fetchEmail = () => {
     axios
       .get("https://pong42.azurewebsites.net/get-email/")
       .then((response) => {
-        // Handle JsonResponse here
+
         const responseData = response.data;
         setEmail(responseData.email);
       })
       .catch((error) => {
-        // Handle error
+
         console.error("Error fetching email address:", error);
       });
   };
 
-  // Function to fetch user's nickname from the backend
+
   const fetchNickname = () => {
     axios
       .get("https://pong42.azurewebsites.net/get-nickname/")
@@ -83,7 +83,7 @@ const Profile = () => {
       });
   };
 
-  // Function to update user's nickname
+
   const updateNickname = () => {
     axios
       .post("https://pong42.azurewebsites.net/update-nickname/", {
@@ -97,7 +97,7 @@ const Profile = () => {
       });
   };
 
-  // Fetch nickname on component mount
+
   useEffect(() => {
     fetchNickname();
     const userImage = localStorage.getItem("userImage");
@@ -105,7 +105,7 @@ const Profile = () => {
     const nickname = localStorage.getItem("userNickname"); 
     const email = localStorage.getItem("userEmail"); 
     if (userImage) {
-      // If user image exists in local storage, set it as the avatar
+
       setAvatar(userImage);
     }
     if (nickname){
@@ -129,7 +129,7 @@ const Profile = () => {
         <div className="profile-info-section">
           <h3 className="info-header">Avatar</h3>
           {avatar ? (
-            // Render the avatar if it exists
+
             <div className="avatar-preview">
               <img src={avatar} alt="User Avatar" className="avatar-image" />
             </div>

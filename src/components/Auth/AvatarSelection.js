@@ -4,13 +4,13 @@ const AvatarSelection = () => {
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [customAvatar, setCustomAvatar] = useState(null);
 
-  // Function to handle selection of sample avatar
+
   const handleSelectAvatar = (avatarUrl) => {
     setSelectedAvatar(avatarUrl);
     setCustomAvatar(null); // Clear any previously selected custom avatar
   };
 
-  // Function to handle custom avatar upload
+
   const handleCustomAvatarUpload = (e) => {
     const file = e.target.files[0];
     if (file) {

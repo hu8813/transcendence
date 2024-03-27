@@ -85,7 +85,7 @@ const Login = ({ setLoggedIn }) => {
   const exchangeCodeForAccessToken = (code) => {
     let clientId, clientSecret, redirectUri;
   
-    // Check if the application is running on localhost
+
     
       clientId = process.env.REACT_APP_CLIENT_ID || "your-client-id";
       clientSecret =
@@ -141,7 +141,7 @@ const Login = ({ setLoggedIn }) => {
       if (data.trim() === "Login successful") {
         setLoggedIn(true); // Update isLoggedIn state if login is successful
         localStorage.setItem("isLoggedIn", true); // Set isLoggedIn to true in local storage
-        // Exchange username and password for a token upon successful login
+
         exchangeUsernamePasswordForToken(formData.get("username"), formData.get("password"));
       }
     } catch (error) {
@@ -152,8 +152,8 @@ const Login = ({ setLoggedIn }) => {
   };
 
   const exchangeUsernamePasswordForToken = (username, password) => {
-    // Send a request to your Django backend to obtain a token using the provided username and password
-    // Example:
+
+
     axios.post("https://pong42.azurewebsites.net/api/token/", {
       username: username,
       password: password,
@@ -162,7 +162,7 @@ const Login = ({ setLoggedIn }) => {
       const token = response.data.access; // Assuming the token is returned in the response
       localStorage.setItem("token", token); // Store the token in localStorage for future use
       setToken(token); // Update the token in state
-      //console.log(token);
+
     })
     .catch((error) => {
       console.error("Error obtaining token:", error);
