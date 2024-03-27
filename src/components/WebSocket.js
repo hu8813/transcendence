@@ -5,7 +5,7 @@ class WebSocketInstance {
     }
   
     connect() {
-      this.socket = new WebSocket("ws://pong42.azurewebsites.net/ws/chat"); // Replace with your Django Channels WebSocket URL
+      this.socket = new WebSocket("wss://pong42.azurewebsites.net/ws/chat"); // Replace with your Django Channels WebSocket URL
   
       this.socket.onopen = () => {
         console.log("WebSocket connected");
