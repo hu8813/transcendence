@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n"; // Import the i18n configuration
-
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import PrivacyPolicy from "./components/PrivacyPolicy";

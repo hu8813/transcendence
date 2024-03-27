@@ -53,11 +53,10 @@ const Leaderboard = () => {
   };
 
   return (
-    
     <div className="l-wrapper">
       <h1>{t("leaderboard.title")}</h1><br/>
       <table className="c-table">
-      <thead>
+        <thead>
           <tr>
             <th>{t("leaderboard.rank")}</th>
             <th>{t("leaderboard.player")}</th>
@@ -94,23 +93,25 @@ const Leaderboard = () => {
               <td>{calculateDaysSinceJoining(member.date_joined)} {t("leaderboard.days")}</td>{" "}
               {/* Display days since joining */}
               <td>
-              <button className="button bn">{t("leaderboard.viewprofile")}</button>{" "}
-      {/* Display days since joining as a button */}
-    </td>
-    <td>
-      <button className="button bn">{t("leaderboard.invitetoplay")}</button>{" "}
-      {/* Display "Invite to play" as a button */}
-    </td>
-
-    <td>
-      <button className="button bn">{t("leaderboard.addasfriend")}</button>{" "}
-      {/* Display "Invite to play" as a button */}
-    </td>
+                <button className="button bn">
+                  <span className="bi bi-person"></span> {/* User icon */}
+                </button>
+              </td>
+              <td>
+                <button className="button bn">
+                  <span className="bi bi-play-fill"></span> {/* Play icon */}
+                </button>
+              </td>
+              <td>
+                <button className="button bn">
+                  <span className="bi bi-person-plus-fill"></span> {/* Add friend icon */}
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-                      <br/>
+      <br/>
       <h1>{t("leaderboard.tournamentResultsTitle")}</h1>
       <div className="tournament-results">
         {tournamentResults.map((tournament, index) => (
@@ -128,7 +129,6 @@ const Leaderboard = () => {
                   <tr key={resultIndex}>
                     <td>{result.username}</td>
                     <td>{result.score}</td>
-                    
                   </tr>
                 ))}
               </tbody>
